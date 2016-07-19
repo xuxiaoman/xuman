@@ -1,0 +1,11 @@
+[ 2016-06-05T14:33:48+08:00 ] ERR: [1] Maximum execution time of 30 seconds exceeded D:\WWW\2\Core\Extend\Library\ORG\Net\Http.class.php 第 67 行.
+[ 2016-06-05T14:33:48+08:00 ] ERR: [1] Maximum execution time of 30 seconds exceeded D:\WWW\2\admin\Lib\Action\CommonAction.class.php(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code 第 2 行.
+[ 2016-06-05T14:33:48+08:00 ] ERR: [1] Maximum execution time of 30 seconds exceeded D:\WWW\2\admin\Lib\Action\CommonAction.class.php(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code 第 2 行.
+[ 2016-06-05T14:33:48+08:00 ] ERR: [1] Maximum execution time of 30 seconds exceeded D:\WWW\2\admin\Lib\Action\CommonAction.class.php(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code 第 2 行.
+[ 2016-06-05T14:33:48+08:00 ] ERR: [1] Maximum execution time of 30 seconds exceeded D:\WWW\2\admin\Lib\Action\CommonAction.class.php(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code 第 2 行.
+[ 2016-06-05T14:34:38+08:00 ] ERR: [1] Maximum execution time of 30 seconds exceeded D:\WWW\2\Core\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+[ 2016-06-05T14:34:39+08:00 ] ERR: [1] Maximum execution time of 30 seconds exceeded D:\WWW\2\Core\Lib\Driver\Db\DbMysql.class.php 第 55 行.
+[ 2016-06-05T17:28:01+08:00 ] 0.0.0.0 /2/admin/index.php/hotel/ajax_del?id=34
+ERR: Table 'tule.jee_hotel_deleter' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `jee_hotel_deleter`
+

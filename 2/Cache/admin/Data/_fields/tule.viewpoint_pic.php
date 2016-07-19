@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'id', 1 => 'viewpoint_id', 2 => 'title', 3 => 'picpath', 4 => 'istitlepage', '_autoinc' => true, '_pk' => 'id', '_type' => array ( 'id' => 'int(11)', 'viewpoint_id' => 'int(11)', 'title' => 'varchar(100)', 'picpath' => 'varchar(100)', 'istitlepage' => 'int(11)', ), );?>

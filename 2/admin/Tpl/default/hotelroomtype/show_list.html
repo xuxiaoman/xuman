@@ -1,0 +1,107 @@
+<table cellspacing="0" cellpadding="0" class="t1">
+    <tbody>
+        <tr>
+            <th height="27" colspan="2" id="title">您当前位置：<a target="_top" href="{:U('index/index')}">首页</a> > 
+                <a href="{:U('hotel/show_list')}">酒店管理</a> > 房型管理（{$objHotel.names}）</th>
+        </tr>
+        <tr>
+            <td>
+              <div id="nav" class="mainnav_title">
+                <ul>
+                  <a class="on" href="{:U('hotelroomtype/show_list')}/hotel_id/{$hotel_id}">房型管理</a> |
+                  <a href="__URL__/add/hotel_id/{$hotel_id}">添加</a>
+                </ul>
+              </div>
+            </td>
+        </tr>
+    </tbody></table>
+<form name="myform" id="myform" action="" method="post">
+<div class="table-list">
+  <table cellspacing="0" cellpadding="0" width="100%">
+    <thead>
+      <tr>
+          <th><a href="javascript:void(0);" onclick="sel_all();">全选</a></th>
+          <th style="text-align: left;">名称{$p}</th>
+          <th>图片</th>
+          <th>排序</th>
+          <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <volist name="list" id="vo">
+        <tr class="ulbc" id="tr_{$vo.id}">
+          <td><input type="checkbox" class="sel" id="sel_{$vo.id}" value="{$vo.id}" name="items_{$vo.id}" /></td>
+          <td style="text-align: left;"><input type="text" name="names_{$vo.id}" id="names_{$vo.id}" value="{$vo.names}" /></td>
+          <td><img src="__ROOT__{$vo.logopath}" height="170"/></td>
+          <td><input type="text" name="sort[{$vo.id}]" id="sort_{$vo.id}" value="{$vo.sort}" /></td>
+          <td>
+            <a href="javascript:;" onclick="ajax_save('{$vo.id}')">保存</a>&nbsp;<a href="{:U('edit')}/hotel_id/{$hotel_id}/id/{$vo.id}">编辑</a>&nbsp;<a href="javascript:;" onclick= "javascript:if(confirm( '确定要删除该条记录吗？ '))ajax_del({$vo.id});">删除</a></td>
+        </tr>
+      </volist>
+    </tbody>
+  </table>
+</div>
+
+<div class="btn">
+    <input type="submit" class="button" name="dosubmit" value="删除" onclick="myform.action='{:U('deleteall')}/hotel_id/{$hotel_id}';"/>
+    <input type="button" class="button" name="dosubmit" value="排序" onclick="myform.action='{:U('sort_list')}/hotel_id/{$hotel_id}/p/{$p}';$('#myform').submit();"/>
+    <input type="hidden" name="hotel_id" value="{$hotel_id}" />
+</div>
+</form>
+
+<script language="javascript">
+    function ajax_save(id){
+        var url = "{:U('ajax_save')}?id="+id;
+        var names = $('#names_'+id).val(); 
+		var _sort = $('#sort_'+id).val();
+        $.ajax({
+            url: url,
+            type: "POST",
+            complete :function(){
+            }, 
+            dataType: 'json', 
+            data: "names="+names+"&sort="+_sort,
+            error: function() { alert('Ajax request error');},
+            success: function(result){
+                if(result==1){
+                    art.dialog.alert("保存成功");
+                }
+            }
+        }); 
+    }
+    
+    function ajax_del(id){
+        var url = "{:U('ajax_del')}?id="+id;
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            complete :function(){
+            }, 
+            dataType: 'json', 
+            error: function() { alert('Ajax request error');},
+            success: function(result){
+                if(result==1){
+                    //$("#tr_"+id).remove();
+                    art.dialog({
+						title: '删除提示',
+						content: '删除成功',
+						ok:function(){location.reload();},
+					});
+					
+                }
+            }
+        }); 
+    }
+    
+    function sel_all(){
+        $('input.sel').each(function(index){
+            if($(this).attr('checked')){
+                $(this).removeAttr('checked');
+            }else{
+                $(this).attr('checked', 'checked');
+            }
+        });
+    }
+</script>
+<div class="page">{$page} </div>

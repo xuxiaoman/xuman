@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../Public/css/hotel.css"/>
+<link rel="stylesheet" href="../Public/css/route_q.css"/>
+  <div class="col-19 omega page_content one1">
+  <div style="margin-top:12px;"></div>
+      <li ><div class="col-2 alpha title on col-full questions">酒店问答</div></li>
+        <div class="col-18 alpha body">
+        <volist name="ques" id="vo">
+          <table width="100%" class="table_list questions">
+            <tr>
+              <th>我对&nbsp;<font color="#3333FF">{$vo.names}</font>&nbsp;问：<span>{$vo.question1}</span></th>
+            </tr>
+            <tr>
+              <th><eq name="vo.status" value="0"><span class="hotel_wait">请等待回复...</span><else/>答：<span>{$vo.answer}</span></eq></th>
+            </tr>
+            <tr>
+              <td>
+              <div class="que_time">提问时间：{$vo.publish_time|date="Y年m月d日 H:i:s",###}
+              <eq name="vo.status" value="1">&nbsp;&nbsp;&nbsp;&nbsp;回答时间：{$vo.answer_time|date="Y年m月d日 H:i:s",###}
+              </eq>
+            </div>
+              </td>
+            </tr>
+          </table>
+         </volist>
+         <div class="page">{$page}</div>
+        </div>
+   </div>

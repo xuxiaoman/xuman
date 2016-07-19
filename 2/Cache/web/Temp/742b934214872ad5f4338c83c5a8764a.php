@@ -1,0 +1,3 @@
+<?php
+//000000003600a:1:{i:0;a:22:{s:2:"id";s:2:"14";s:5:"names";s:12:"杭州西湖";s:6:"seo_id";s:1:"0";s:7:"city_id";s:3:"330";s:4:"rank";s:1:"2";s:9:"view_type";s:1:"6";s:10:"fit_person";N;s:5:"video";s:0:"";s:12:"view_address";s:0:"";s:15:"tickets_address";s:0:"";s:7:"contact";s:0:"";s:9:"view_info";s:0:"";s:12:"traffic_info";s:0:"";s:10:"order_info";N;s:8:"buy_info";s:0:"";s:8:"position";s:20:"120.134145,30.266483";s:16:"special_shopping";s:0:"";s:12:"special_food";s:0:"";s:4:"sort";s:1:"9";s:6:"status";s:1:"0";s:4:"hits";s:1:"8";s:8:"property";s:1:"3";}}
+?>

@@ -1,0 +1,304 @@
+<!--#names 线路详细页 #-->
+<link rel="stylesheet" href="../Public/css/travel.css"/>
+<script type="text/javascript" src="../Public/js/jquery.xl_calendar.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var url = "{:U('consult',array('id'=>$line_base['id']))}";
+        $("input[name=consult_submit]").bind("click", function() {
+            $.ajax({url: url,
+                data: {},
+                async: false
+            });
+        });
+        url = "{:U('travel/add_coll',array('id'=>$_GET['id']))}";
+        $("#add_coll").bind("click", function() {
+            $.ajax({url: url,
+                async: false,
+                success:function(data){
+                        if(data.status == '1'){
+                            $("#add_coll").html("<img src=\"../Public/images/btn_icon.png\" width=\"17\" height=\"16\" align=\"absmiddle\"/>取消收藏");
+                        }else if(data.status == '2'){
+                            $("#add_coll").html("<img src=\"../Public/images/btn_icon.png\" width=\"17\" height=\"16\" align=\"absmiddle\"/>收藏该线路");
+                        }
+                }
+            });
+        });
+    });
+</script>
+<script type="text/javascript" src="../Public/js/travel.js"></script>
+<div class="wrapper w1200">
+<div class="col-24  travel_main_nav">
+    
+    <div class="clear"></div>
+    <div class="travel_main_left">
+        <div class="det_img eislideshow" id="ei-slider" style="height: 430px">
+            <ul class="ei-slider-large">
+                <volist name="linepic" id="pic">
+                    <li><img src="__ROOT__{$pic.pic_path}" alt="{$pic.names}"/> </li>
+                </volist>
+            </ul>
+            <ul class="ei-slider-thumbs">
+                <volist name="linepic" id="pic">
+                    <eq name="key" value="0">{~$style=' class="active_thumbs"'}<else/>{~$style=''}</eq>
+                    <li {$style}></li>
+                </volist>
+            </ul>
+        </div>
+        
+    </div>
+    <div class="det_img_main"><div class="travel_title alpha">
+        <h1 class="hot_route1">{$line_base.names}</h1><h1 class="hot_route" style="display: none"></h1>
+    </div> 
+        <ul class="detail_manyinfo">
+            <li><b class="web_map_f_css">线路编号：</b>{$line_base.code}</li>
+      <li><b class="web_map_f_css">出发城市：</b>{$start_city_belong.names}</li>
+      <li><b class="web_map_f_css">目的地：</b>{$target_city_belong|join=" "}</li>
+      <li><b class="web_map_f_css">时间安排：</b>{$line_base.trip_days}</li>
+      <li><b class="web_map_f_css">发团日期：</b>{$line_base.id|get_tuan}</li>
+      <li><b class="web_map_f_css">交通信息：</b>{$line_base.traffic}</li></ul>
+        <form action="{:U('order',array('id'=>$line_base['id']))}" method="post">
+            
+          <div class="clear"></div>
+        <div class="schedule_box" style="position: relative">
+            <div class="web_map2">
+                出发日期：<input tabindex="1" type="text" name="go_time" id="go_time" class="txt" value='' />
+                <textarea id="travel_price_list" style="display: none;">{$travel_price_list}</textarea>
+                <div tabindex="2" class="the_calendar" style="position: absolute; background: white;">
+                </div>
+            </div>
+
+            <span class="web_map2">价格类型： <span id="price_type">周末价</span></span>
+
+            <div class="price_list">
+                <table width="332px" class="table_list">
+                    <tr class="tr_bg_css">
+                        <th></th>
+                        <th>市场价</th>
+                        <th>优惠价</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>成人</td>
+                        <td class="price_rackrate">--</td>
+                        <td class="price_adult">--</td>
+                        <td>
+                            <div class="price_list_reg">
+                                 <img  class="plus" src="../Public/images/price_2.jpg" width="13" height="13"/>
+                                <input type="text" name="adult_num" style="margin-bottom:5px;" class="select_four" value="1"/>
+                               <img class="minus" src="../Public/images/price.jpg" width="13" height="13" align="absmiddle"/></div>
+                        </td>
+                    </tr>
+                    <tr class="tr_css_b">
+                        <td>儿童</td>
+                        <td class="price_rackrate">--</td>
+                        <td class="price_children">--</td>
+                        <td>
+                            <div class="price_list_reg">
+                                <img class="plus" src="../Public/images/price_2.jpg" width="13" height="13"/>
+                                <input type="text" name="children_num" style="margin-top:5px;" class="select_four" value="0"/><img class="minus" src="../Public/images/price.jpg" width="13" height="13" align="absmiddle"/>
+                                </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <span class="red">注：价格会根据您选择的出发日期而改变</span>
+<div class="price_list_btn">
+      <button class="btn danger active col-3" type="button" id="reserve">立即预定</button>
+                <div class="btn grey">
+                    <span class="btn_css"><a href="javascript:;" id='add_coll' ><if condition="$keep_status eq '0'"><img src="../Public/images/btn_icon.png" width="17" height="16" align="absmiddle"/>收藏该线路<else /><img src="../Public/images/btn_icon.png" width="17" height="16" align="absmiddle"/>取消收藏</if></a></span>
+                </div>
+            </div>
+            
+        </div>
+        </form>
+    </div>
+    <div class="clear"></div>
+    <span class="scroll_REF" style="height:0;">&nbsp;</span>
+
+<div class="col-24  page_content2 scroll_nav" style="z-index:99999; width:1180px;">
+    <ul>
+        <li class="title">特色介绍</li>
+        <li class="title">参考行程</li>
+        <li class="title">费用说明</li>
+        <li class="title">预订须知</li>
+        <li class="title">温馨提示</li>
+        <li class="title">预订流程</li>
+        <li class="title">线路点评</li>
+        <li class="title">在线咨询</li>
+        <!--<li class="title">旅游攻略</li>-->
+    </ul>
+</div>
+<div class="clear"></div>
+  
+  <div class="col-24">
+    <div class="col-24 travel_main">
+        <div class="col-24 travel_title alpha">
+
+            <h1 class="hot_route">特色介绍</h1>
+        </div>
+        <div class="feature"> {$lineinfo.special_info}</div>
+    </div>
+    <div class="clear"></div>
+    <div class="col-24 travel_main">
+        <div class="col-24 travel_title alpha">
+            <h1 class="hot_route">参考行程</h1>
+        </div>
+        <div class="clear"></div>
+        <if condition="$view_method eq 2">
+            <div class="general"><span class="font_brown">{$lineinfo.General}</span></div>
+            <else/>
+            <include file="travel:day_model" />
+        </if>
+    </div>
+    <div class="clear"></div>
+    <div class="col-24 travel_main">
+        <div class="col-24 travel_title alpha">
+            <h1 class="hot_route">费用说明</h1>
+        </div>
+        <div class="clear"></div>
+        <div class="ref_right_time">
+            <div class="khaki_left"><span class="font_brown_bg">费用包含</span></div>
+            <span class="font_brown">{$lineinfo.contain}</span></div>
+        <div class="ref_right_time">
+            <div class="khaki_left"><span class="font_brown_bg">费用不包含</span></div>
+            <span class="font_brown">{$lineinfo.notcontain}</span></div>
+        <div class="ref_right_time">
+            <div class="khaki_left"><span class="font_brown_bg">自费项目</span></div>
+            <span class="font_brown">{$lineinfo.selfpay}</span></div>
+    </div>
+    <div class="col-24 travel_main">
+        <div class="col-24 travel_title alpha">
+            <h1 class="hot_route">预订须知</h1>
+        </div>
+        <div class="feature"> {$lineinfo.order_info} </div>
+    </div>
+    <div class="col-24 travel_main">
+        <div class="col-24 travel_title alpha">
+            <h1 class="hot_route">温馨提示</h1>
+        </div>
+        <div class="feature"> {$lineinfo.tip}</div>
+    </div>
+    <include file="travel:order_flow"/>
+    <div class="col-24 travel_main">
+        <div class="col-24 travel_title alpha">
+            <h1 class="hot_route">线路点评</h1>
+        </div>
+        <div class="clear"></div>
+        <div class="grade">
+            <div class="grade_left">
+                <div class="main"><span>综合满意度</span> <span class="cent">{$impr_counts.avg_point|floatval|round="1"}%</span> <span>基于{$impr_counts.tmp_count}人评价</span>
+                </div>
+                <div class="cent_color">
+                    <div class="twig">
+                        <div class="twig_title">行程：</div>
+                        <div class="twig_right">
+                            <div class="twig_right1" style="width:{$impr_counts['avg_travel']*20}%;"></div>
+                        </div>
+                        <div class="twig_title_red">{$impr_counts.avg_travel|floatval|round="1"}分</div>
+                    </div>
+                    <div class="twig"><span class="twig_title">导游：</span>
+    
+                        <div class="twig_right">
+                            <div class="twig_right2" style="width:{$impr_counts['avg_guide']*20}%;"></div>
+                        </div>
+                        <div class="twig_title_red">{$impr_counts.avg_guide|floatval|round="1"}分</div>
+                    </div>
+                    <div class="twig"><span class="twig_title">交通：</span>
+    
+                        <div class="twig_right">
+                            <div class="twig_right3" style="width:{$impr_counts['avg_traffic']*20}%;"></div>
+                        </div>
+                        <div class="twig_title_red">{$impr_counts.avg_traffic|floatval|round="1"}分</div>
+                    </div>
+                    <div class="twig"><span class="twig_title">住宿：</span>
+    
+                        <div class="twig_right">
+                            <div class="twig_right4" style="width:{$impr_counts['avg_room']*20}%;"></div>
+                        </div>
+                        <div class="twig_title_red">{$impr_counts.avg_room|floatval|round="1"}分</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <volist name="impr_lists" id="vo">
+            <div class="grade">
+                <div class="appraise">
+                    <div class="appraise_left">
+                        <span class="font_brown">行程：<span class="font_red">{$vo.travel|impr_detail}</span> 导游：<span class="font_red">{$vo.guide|impr_detail}</span> 交通：<span class="font_red">{$vo.traffic|impr_detail}</span> 住宿：<span class="font_red">{$vo.room|impr_detail}</span> 满意度：<span class="font_red">{$vo.point|floatval}%</span> 点评奖金：<span class="font_red">{$vo.review_award|f_money}元</span></span><span class="appraise_right"></span>
+                    </div>
+                    <div class="appraise_right"><span class="font_red">{$vo.user_id|get_user} <span class="font_brown">{$vo.impr_time|f_time}</span></span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="appraise"><span class="font_brown">{$vo.content}</span></div>
+                <div class="impression">
+                    <table width="100%" class="table_form">
+                        <tr>
+                            <th>客户印象：</th>
+                            <td class="impr_class">
+                                {$vo.impr_id|impr_list}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </volist>
+    </div>
+    <div class="col-24 travel_main">
+        <div class="col-24 travel_title alpha">
+            <h1 class="hot_route">在线咨询</h1>
+        </div>
+        <div class="feature" id="lists_que">
+            <empty name="lists_que">
+                <span class="down">该产品暂无咨询信息！ </span>
+                <else/>
+                <span class="down">&nbsp;</span>
+                <volist name="lists_que" id="que">
+                    <div class="customer">
+                        <div class="customer_on">
+                            <div class="customer_on_1">
+                                <div class="customer_on_left">
+                                    <span class="font_blue"><img src="../Public/images/att_img_iocn.jpg" width="17" height="17"/>
+                                        &nbsp;<b>咨询内容：</b>{$que.question1}</span>
+                                </div>
+                                <div class="customer_on_right"><span class="font_brown blue">{$que.user_id|get_user}&nbsp;{$que.publish_time|f_time}</span></div>
+                                <div class="customer_on_left">
+                                    <span class="font_brown2"><img src="../Public/images/att_img_iocn2.jpg" width="17" height="17"/>
+                                        &nbsp;<b>客服回复：</b>{$que.answer|default="请等待回复"}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </empty>
+            <div class="clear"></div>
+            <div class="doubt"><span class="down"><img width="17" height="17"  src="../Public/images/b.jpg"></img>&nbsp;&nbsp;您的问题告诉我们您的疑惑，我们会在第一时间为您解答。</span></div>
+            <div class="doubt_main">
+                <form action="{:U('consult',array('id'=>$line_base['id']))}" ajax="true" class="check-form" method="post" id="consult">
+                    <table width="100%" class="table_form">
+                        <tr>
+                            <th class="test">咨询内容:</th>
+                            <td>
+                                <textarea name="question1" id="textarea" datatype="*5-255" cols="55" rows="5" class="textarea" tip="请输入文本" nullmsg="请输入文本"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="test">验证码:</th>
+                            <td  style="height:40px;">
+                                <input type="text" class="txt verify" imgpath="{:U('Common/verify')}" ajaxUrl="{:U('validform')}" name="verify" datatype="n4-4" errmsg="请填写验证码"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <td ><input name="consult_submit" type="submit" value="提交咨询" class="btn warning active"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+
+

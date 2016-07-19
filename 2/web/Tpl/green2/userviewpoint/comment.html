@@ -1,0 +1,25 @@
+<div class="col-19 omega page_content">
+<div style="margin-top:12px;"></div>
+  <ul>
+    <li class="col-4 alpha title on">我的点评</li>
+  </ul>
+  <div class="col-18 alpha body">
+    <div class="content_main_right_massage-box">
+      <div class="title"><b>编号：</b>{$order.serial_num}</div>
+      <div class="title"><b>景点名称：</b>{$order.names}</div>
+      <div class="title">
+	     <b>评价：</b><span class="rev_font">{$comment.impression}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+	     <b>满意度：</b><span class="rev_font">{$comment.points}%</span>&nbsp;&nbsp;&nbsp;&nbsp;
+	     <b>点评奖金：</b><span class="rev_font">{$order.review_bonus}元</span>&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+      <div class="title">
+	     <b>印象：</b>
+	     <span class="rev_font">
+        <volist name="impression" id="vo">
+	       {$vo}&nbsp;&nbsp;&nbsp;
+        </volist>
+	     </span>
+      </div>      
+    </div>
+  </div>
+</div>

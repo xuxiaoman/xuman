@@ -1,0 +1,3 @@
+<?php
+//000000003600a:3:{i:0;a:6:{s:2:"id";s:1:"3";s:5:"names";s:9:"周边游";s:10:"page_names";s:6:"around";s:4:"sort";s:1:"1";s:8:"describe";s:54:"玩转周边快乐无限，周末假期精彩生活！";s:6:"status";s:1:"1";}i:1;a:6:{s:2:"id";s:1:"4";s:5:"names";s:12:"国内旅游";s:10:"page_names";s:6:"tourin";s:4:"sort";s:1:"2";s:8:"describe";s:54:"游遍祖国大好河山，尝尽中华缤纷美味！";s:6:"status";s:1:"1";}i:2;a:6:{s:2:"id";s:1:"2";s:5:"names";s:12:"国外旅游";s:10:"page_names";s:7:"tourout";s:4:"sort";s:1:"3";s:8:"describe";s:42:"尽享异域风情，快乐不容错过！";s:6:"status";s:1:"1";}}
+?>

@@ -1,0 +1,1 @@
+<?php	return array ( 'type' => '-1', 'TRIPEC_VERSION' => 'v1.1.0 Released', 'TRIPEC_KEY' => 'TRIPEC20140220', 'SERVER_NAME' => NULL, );?>

@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="../Public/css/hotel.css"/>
+<script type="text/javascript" src="../Public/js/userhotel.js"></script>
+		<div class="col-19 omega page_content">
+      <div style="margin-top:12px;"></div> 
+              <div class="col-5 alpha title ppam "><h3><strong>酒店点评</strong></h3></div>
+              <div class="col-18 alpha body add">
+               <form action="hotel_impr/hotel/{$hotel_id}" method="post" enctype="multipart/form-data" name="myform" id="myform">
+            	 <table width="100%" class="bordered">
+                	<tr>
+                      <th width="100">订单号：</th>
+                      <td>{$info.order_id}</td>
+                    </tr>
+                    <tr>
+                      <th>房间名称：</th>
+                      <td>{$info.hotel_name}/{$info.room_name}</td>
+                    </tr>
+                    <tr>
+                      <th>设施装潢：</th>
+                      <td><label><input name="decoration" type="radio" id="_good" value="100" checked="checked" /></label><label for="_good">非常好</label>&nbsp;&nbsp;
+                        <label><input name="decoration" type="radio" id="_middle" value="80" /></label>
+                      <label for="_middle">很好</label>&nbsp;&nbsp;
+                      <label><input name="decoration" type="radio" id="_bad" value="60" /></label>
+                      <label for="_bad">一般</label>&nbsp;&nbsp;
+                      <label><input name="decoration" type="radio" id="_worse" value="40" /></label>
+                      <label for="_worse">差</label>&nbsp;&nbsp;
+                      <label><input name="decoration" type="radio" id="_worst" value="20" /></label>
+                      <label for="_worst">非常差</label></td>
+                      
+                      
+                    </tr>
+                    <tr>
+                      <th>交通设置：</th>
+                      <td><label><input name="traffic" type="radio" id="_good1" value="100" checked="checked" /></label><label for="_good1">非常好</label>&nbsp;&nbsp;
+                      <label><input name="traffic" type="radio" id="_middle1" value="80" /></label>
+                      <label for="_middle1">很好</label>&nbsp;&nbsp;
+                      <label><input name="traffic" type="radio" id="_bad1" value="60" /></label>
+                      <label for="_bad1">一般</label>&nbsp;&nbsp;
+                      <label><input name="traffic" type="radio" id="_worse1" value="40" /></label>
+                      <label for="_worse1">差</label>&nbsp;&nbsp;
+                      <label><input name="traffic" type="radio" id="_worst1" value="20" /></label>
+                      <label for="_worst1">非常差</label></td>
+                      
+                      
+                    </tr>
+                    <tr>
+                      <th>卫生情况：</th>
+                      <td><label><input name="hygiene" type="radio" id="_good2" value="100" checked="checked" /></label><label for="_good2">非常好</label>&nbsp;&nbsp;
+                      <label><input name="hygiene" type="radio" id="_middle2" value="80" /></label>
+                      <label for="_middle2">很好</label>&nbsp;&nbsp;
+                      <label><input name="hygiene" type="radio" id="_bad2" value="60" /></label>
+                      <label for="_bad2">一般</label>&nbsp;&nbsp;
+                      <label><input name="hygiene" type="radio" id="_worse2" value="40" /></label>
+                      <label for="_worse2">差</label>&nbsp;&nbsp;
+                      <label><input name="hygiene" type="radio" id="_worst2" value="20" /></label>
+                      <label for="_worst2">非常差</label></td>
+                      
+                      
+                    </tr>
+                    <tr>
+                      <th>性价比：</th>
+                      <td><label><input name="prices" type="radio" id="_good3" value="100" checked="checked" /></label><label for="_good3">非常好</label>&nbsp;&nbsp;
+                      <label><input name="prices" type="radio" id="_middle3" value="80" /></label>
+                      <label for="_middle3">很好</label>&nbsp;&nbsp;
+                      <label><input name="prices" type="radio" id="_bad3" value="60" /></label>
+                      <label for="_bad3">一般</label>&nbsp;&nbsp;
+                      <label><input name="prices" type="radio" id="_worse3" value="40" /></label>
+                      <label for="_worse3">差</label>&nbsp;&nbsp;
+                      <label><input name="prices" type="radio" id="_worst3" value="20" /></label>
+                      <label for="_worst3">非常差</label></td>
+                      
+                      
+                    </tr>
+                    
+                    <tr>
+                      <th>满意度：</th>
+                      <td><span><input type="text" class="txt" name="points" size="15" />&nbsp;</span>
+                        <span>1-100分</span></td>
+                    </tr>
+                    <tr>
+                      <th>客户印象：</th>
+                      <td id="imprs">
+                      	<volist name="imprs" id="vo">
+                        	<li class="li impr_li {$vo.color}" value="{$vo.id}" checkid="{$key}">{$vo.names}</li>
+                            <input name="impr_type[]" id="impr_type_{$key}" type="checkbox" value="{$vo.id}" class="hide" />
+                        </volist>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>评论方式：</th>
+                      <td><label for="with_name"><input type="radio" name="show_name" id="with_name" value="1" checked="checked" />显示用户名（{~echo $_SESSION['user_name']}）</label>&nbsp;&nbsp;
+                      <label for="no_name"><input type="radio" name="show_name" value="0" id="no_name" />匿名</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>内容：</th>
+                      <td height="125"><textarea name="content" id="content" cols="55" rows="5" class="textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                      <th><input type="hidden" name="hotel_id" value="{$info.hotel_id}" />
+                      <input type="hidden" name="room_id" value="{$info.room_id}" />
+                      <input type="hidden" name="order_id" value="{$info.id}" /></th>
+                      <td><input name="submit" id="submit" class="btn2 gray" type="submit" value="   点评   " /></td>
+                    </tr>
+                 </table>
+               </form>
+            </div>
+        </div>
+    </div>

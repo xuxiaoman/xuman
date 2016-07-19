@@ -1,0 +1,390 @@
+<div id="booking">
+    <div class="wrapper w1200">
+        <div class="row">
+            <div class="col-18" style="position: relative">
+                <div class="eislideshow top_ad" id="ei-slider">
+                    <ul class="ei-slider-large">
+                        <Wj:advert name="index_banner" id="ad" limit="3" adcount="adcount" order="ad.sort">
+                            <li><a target="_blank" href="{$ad.url}"><img src="{$ad.pic|get_file}" alt="{$ad.pic|get_file='names'}"/></a></li>
+                        </Wj:advert>
+                    </ul>
+                    <ul class="ei-slider-thumbs">
+                        <Wj:sfor max="adcount" id="i">
+                            <eq name="i" value="0">
+                            <li class="active_thumbs"><a href="#"></a></li>
+                            <else/>
+                            <li><a href="#"></a></li>
+                            </eq>
+                        </Wj:sfor>
+                    </ul>
+                </div>
+            </div><!-- 搜索 -->
+            <div class="col-6 booking-form">
+                <div id="booking-tabs" class="ui-tabs">
+                    <ul>
+                        <li class="span-full-4"><a href="#tabs-hotels" class="span-12">酒店预订</a></li>
+                        <li class="span-full-4"><a href="#tabs-tickets" class="span-12">门票预订</a></li>
+                        <li class="span-full-4"><a href="#tabs-roads" class="span-12">路线预订</a></li>
+                    </ul>
+                    <div id="tabs-hotels" class="ui-tabs-panel">
+                        <form action="{:U('hotel/lists')}">
+                            <div class="span-13">
+
+                                <div class="search-field">
+                                    <label class="search-tit">目的地</label>
+                                    <div class="search-input">
+                                        <input name="cid" type="hidden" id="cid" value="{$search.city_info.cid}" size="15"/>
+                                        <input type="text" class="form-input city-list-plugs" for-val="cid" id="cityName" url="{:U('hotel/get_hotel_city')}" value="{$search.city_info.names}">
+                                    </div>
+                                </div>
+                                <div class="search-field">
+                                    <label class="search-tit">酒店名称</label>
+                                    <div class="search-input"><input type="text"></div>
+                                </div>
+                            </div>
+                            <div class="search-field">
+                                <label class="search-tit">入住日期</label>
+                                <div class="search-input">
+                                    <input type="text" id="start_date" name="start_date" class="form-input ui-date">
+                                </div>
+                            </div>
+                            <div class="search-field">
+                                <label class="search-tit">离店日期</label>
+                                <div class="search-input">
+                                    <input type="text" id="end_date" name="end_date" class="form-input ui-date">
+                                </div>
+                            </div>
+                            <div class="search-field">
+                                <label class="search-tit">&nbsp;</label>
+                                <div class="search-input"><button type="submit" class="btn primary" >搜索</button></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="tabs-tickets" class="ui-tabs-panel">
+                        <form action="{:U('viewpoint/filter')}">
+                            <div class="search-field">
+                                <label class="search-tit"> 景点名称</label>
+                                <div class="search-input"><input type="text" name="viewName"></div>
+                            </div>
+                            <div class="search-field">
+                                <label class="search-tit">&nbsp;</label>
+                                <div class="search-input"><button type="submit" class="btn primary" >搜索</button></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="tabs-roads" class="ui-tabs-panel">
+
+                        <form action="{:U('travel/search_key_word')}">
+                            <div class="search-field">
+                                <label class="search-tit">关键字</label>
+                                <div class="search-input">
+                                    <input type="text" name="key_word">
+                                </div>
+                            </div>
+                            <div class="search-field">
+                                <label class="search-tit"> 出发城市</label>
+                                <div class="search-input">
+                                    <input name="cid" type="hidden" id="ctid" value="{$search.city_info.cid}"/>
+                                    <input type="text" size="28px" for-val="ctid" id="cityName2" class="inputText city-list-plugs" url="{:U('travel/get_line_city')}" value="{$search.city_info.names}"/>
+                                </div>
+                            </div>
+                            <div class="search-field">
+                                <label class="search-tit">旅游类型</label>
+
+                                <div class="search-input">
+                                    <select name="type" id="tid">
+                                        <volist name="tour_type" id="tid">
+                                            <option value="{$tid.id}">{$tid.names}</option>
+                                        </volist>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="search-field">
+                                <label class="search-tit"> &nbsp;</label>
+                                <div class="search-input">
+                                    <button type="submit" class="btn primary">搜索</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--wrapper-->
+<div class="wrapper w1200">
+    <div class="row">
+        <!--国内旅游             国外旅游               周边游-->
+        <div id="tourism" class="col-18">
+            <div id="tourism-tabs" class="ui-tabs">
+                <ul>
+                    <volist name="types" id="type">
+                        <li><a class="col-2" href="#tourism-{$type.id}">{$type.names}</a></li>
+                    </volist>
+                    <a href="" class="btn default xs more">更多</a>
+                </ul>
+                <volist name="types_result" id="type_re">
+                    <div id="tourism-{$key}">
+                        <ul class="imageslist">
+                            <volist name="type_re.0" id="list_0">
+                                <li>
+                                    <div class="im">
+                                        <a href="{:U('travel/detail',array('id'=>$list_0['id']))}">
+                                            <img src="{$list_0.id|get_line_img='m'}"></a>
+                                    </div>
+                                    <div class="img-arrow">
+                                        <div class="caption"><a href="{:U('travel/detail',array('id'=>$list_0['id']))}">{$list_0.names}</a>
+                                        </div>
+                                        <div class="info">
+                                            <h6>{$list_0.id|get_line_min_price|default=1}元起</h6>
+                                            <a class="booking-btn" href="{:U('travel/order',array('id'=>$list_0['id']))}">预定</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </volist>
+                        </ul>
+                        <div class="row">
+                            <ul class="text_list ">
+                                <volist name="type_re.1" id="list_1">
+                                    <li>
+                                        <a href="{:U('travel/detail',array('id'=>$list_1['id']))}">{$list_1.names} </a>
+                                        <span class="price">¥{$list_1.id|get_line_min_price|default=1}</span>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <ul class="text_list">
+                                <volist name="type_re.2" id="list_2">
+                                    <li>
+                                        <a href="{:U('travel/detail',array('id'=>$list_2['id']))}">{$list_2.names} </a>
+                                        <span class="price">¥{$list_2.id|get_line_min_price|default=1}</span>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <div class="sidebar side-lables col-6" style="margin-top:0px;height:370px;">
+            <h5></h5>
+            <volist name='target_type' id="vo">
+                <div class="hh5"><a href="{:U('travel/travel_lists',array('type'=>$key,'current_city'=>$currentCity['en']))}">{$types_names[$key]}</a></div>
+                <ul class="target_topic_ul">
+                    <volist name="vo" id="vo2">
+                        <li><a href="{:U('travel/travel_lists',array('type'=>$vo2['type_id'],'current_city'=>$currentCity['en']))}?goal={$vo2['area_id']}">{$vo2.areanames}</a></li>
+                    </volist>
+                </ul>
+            </volist>
+        </div>
+    </div>
+    <div class="row">
+        <!--酒店宾馆-->
+        <div id="hotels" class="col-18 ">
+            <div id="tabs-default" class="ui-tabs">
+                <div class="title">
+                    <h4>酒店宾馆</h4>
+                </div>
+                <ul class="ui-helper-reset ui-helper-clearfix ">
+                    <volist name="hotel_target" id="h_t">
+                        <li><a href="#hotels-{$h_t.cid}">{$h_t.names}</a></li>
+                    </volist>
+                    <a href="{:U('hotel/lists')}" class="btn default xs more">更多</a>
+                </ul>
+                <div class="clear"></div>
+                <div class="title-bottom"></div>
+                <volist name="hotel_result" id="ho">
+                    <div id="hotels-{$key}">
+                        <ul class="imageslist">
+                            <volist name="ho.0" id="ho_0">
+                                <li>
+                                    <div class="im2">
+                                        <a href="{:U('hotel/hotel_detailed',array('id'=>$ho_0['id']))}">
+                                            <img src="{$ho_0.id|get_hotel_img='p'}"></a>
+                                    </div>
+                                    <div class="img-arrow">
+                                        <div class="caption"><a href="{:U('hotel/hotel_detailed',array('id'=>$ho_0['id']))}">{$ho_0.names}</a></div>
+                                    </div>
+                                </li>
+                            </volist>
+                        </ul>
+                        <div class="row">
+                            <ul class="text_list">
+                                <volist name="ho.1" id="ho_1">
+                                    <li><a href="{:U('hotel/hotel_detailed',array('id'=>$ho_1['id']))}">{$ho_1.names} </a>
+                                        <span class="price">¥{$ho_1.id|get_min_price|default=1}</span></li>
+                                </volist>
+                            </ul>
+                            <ul class="text_list">
+                                <volist name="ho.2" id="ho_2">
+                                    <li><a href="{:U('hotel/hotel_detailed',array('id'=>$ho_2['id']))}">{$ho_2.names}</a>
+                                        <span class="price">¥{$ho_2.id|get_min_price|default=1}</span></li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar col-6 side-lables">
+        <h5>品牌连锁酒店</h5>
+        <ul>
+            <volist name="hotel_chain_lists" id="chain">
+                <li><a href="{:U('hotel/lists')}?cid={$search.city_info.cid}&chain={$chain.id}">{$chain.names}</a></li>
+            </volist>
+        </ul>
+        <div class="clear"></div>
+        <Wj:advert name="index_advertise1" id="ad" limit="2" adcount="adcount" order="ad.sort">
+            <div class="ht_img"><a target="_blank" href="{$ad.url}"></a></div>
+        </Wj:advert>
+
+        <div class="clear"></div>
+    </div>
+
+
+
+    <div class="row">
+        <!--景点门票-->
+        <div id="tickets" class="col-18 ">
+            <div id="tabs-viewpoint" class="ui-tabs">
+                <div class="title">
+                    <h4>景点门票</h4>
+                </div>
+                <ul class="ui-helper-reset ui-helper-clearfix ">
+                    <volist name="Viewpoint_target" id="v_t">
+                        <li><a href="#tickets-{$v_t.cid}">{$v_t.names}</a></li>
+                    </volist>
+                    <a href="{:U('viewpoint/lists')}" class="btn default xs more">更多</a>
+                </ul>
+
+                <div class="clear"></div>
+                <div class="title-bottom"></div>
+                <volist name="Viewpoint_result" id="vi">
+                    <div id="tickets-{$key}">
+                        <ul class="imageslist">
+                            <volist name="vi.0" id="vi_0">
+
+                                <li>
+                                    <div class="im">
+                                        <a href="{:U('viewpoint/detail',array('id'=>$vi_0['id']))}">
+                                            <img src="{$vi_0.id|get_viewpoint_img='p'}"></a>
+                                    </div>
+                                    <div class="img-arrow">
+                                        <div class="caption"><a href="{:U('viewpoint/detail',array('id'=>$vi_0['id']))}">{$vi_0.names}</a></div>
+                                    </div>
+                                </li>
+                            </volist>
+                        </ul>
+                        <div class="row">
+                            <ul class="text_list">
+                                <volist name="vi.1" id="vi_1">
+                                    <li><a href="{:U('viewpoint/detail',array('id'=>$vi_1['id']))}">{$vi_1.names} </a>
+                                        <span class="price">¥{$vi_1.id|get_vp_min_price|default=1}</span></li>
+                                </volist>
+                            </ul>
+                            <ul class="text_list">
+                                <volist name="vi.2" id="vi_2">
+                                    <li><a href="{:U('viewpoint/detail',array('id'=>$vi_2['id']))}">{$vi_2.names}</a>
+                                        <span class="price">¥{$vi_2.id|get_vp_min_price|default=1}</span></li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar col-6 side-lables">
+        <h5>游玩主题</h5>
+        <ul>
+            <volist name="viewpoint_type_lists" id="vl">
+                <li><a href="{:U('viewpoint/filter')}/zppo/{$vl.id}">{$vl.names}</a></li>
+            </volist>
+        </ul>
+        <div class="clear"></div>
+        <Wj:advert name="index_advertise2" id="ad" limit="2" adcount="adcount" order="ad.sort">
+            <div class="ht_img"><a target="_blank" href="{$ad.url}"></a></div>
+        </Wj:advert>
+        <div class="clear"></div>
+    </div>
+
+
+    <div class="col-24">
+        <Wj:advert name="index_center" id="ad_c" limit="1" adcount="ad_c_count" order="ad.sort">
+            <a target="_blank" href="{$ad_c.url}">
+                <img class="ad_banner" src="{$ad_c.pic|get_file}" alt="{$ad_c.pic|get_file='names'}"/>
+            </a>
+        </Wj:advert>
+    </div>
+    <div class="row">
+
+        <div id="guiding" class="col-18">
+            <div class="title col-18">
+                <h4>最新资讯</h4>
+                <a href="{:U('article/detail')}" class="btn default xs more">更多</a>
+                <div class="clear"></div>
+                <div class="title-bottom"></div>
+            </div>
+            <div class="row">
+                <notempty name="articles.0">
+                    <div class="preview">
+                        <div class="preview-image"><a href="{:U('article/detail',array('id'=>$articles[0][0]['id']))}">
+                                <img class="" src="__ROOT__{$articles[0][0]['pic']}"></a>
+                        </div>
+                        <div class="img-arrow">
+                            <div class="caption">
+                                <a href="{:U('article/detail',array('id'=>$articles[0][0]['id']))}">{$articles[0][0]['title']}</a>
+                            </div>
+                        </div>
+                        <span class="content">{$articles[0][0]['content']|f_html|msubstr=0,70}</span>
+                    </div>
+                </notempty>
+                <ul class="guiding_list">
+                    <volist name="articles.1" id="art">
+                        <dl>
+                            <div class="guiding_list-thumb">
+                                <a href="{:U('article/detail',array('id'=>$art['id']))}">
+                                    <img src="__ROOT__{$art.pic}" />
+                                </a>
+                            </div>
+                            <dt>
+                            <a href="{:U('article/detail',array('id'=>$art['id']))}">{$art.title}</a>
+                            <small>{$art.source}</small>
+                            </dt>
+                            <dd>
+                                {$art.content|f_html|msubstr=0,50}
+                            </dd>
+                        </dl>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div id="site_info">
+                <h5>网站公告</h5>
+
+                <div class="title-bottom"></div>
+                <ul>
+                    <volist name="notice_list" id="no">
+                        <li><a href="{:U('article/notice',array('id'=>$no['id']))}">{$no.title}</a></li>
+                    </volist>
+                </ul>
+            </div>
+            <div id="services">
+                <h5>服务承诺</h5>
+
+                <div class="title-bottom"></div>
+                <ul>
+                    <li class="tag1">全程价格透明</li>
+                    <li class="tag2">精心筛选形成</li>
+                    <li class="tag3">绝无强制消费</li>
+                    <li class="tag4">品牌质量保证</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,400 @@
+<link rel="stylesheet" href="../Public/css/hotel_detailed.css"/>
+<script type="text/javascript" src="../Public/js/hotel_detailed.js"></script>
+<script src="__ROOT__/Public/js/jquery.cityLink.js"></script>
+<script src="http://api.map.baidu.com/api?key=02b627b5ad5892889e9384d61d91bd08&v=1.1&services=true" type="text/javascript"></script>
+<script src="http://api.map.baidu.com/getscript?v=1.1&ak=&services=true&t=20130716024057" type="text/javascript"></script>
+<script src="__ROOT__/Public/js/baidu.js"></script>
+<style type="text/css">
+#l-map {
+	height: 300px;
+	width: 1168px;
+	margin: 10px 5px;
+	display: block;
+	border-radius: 6px;
+	border: 1px solid #E9ECF1;
+	text-align: center;
+}/*商家设置,LBS回复*/
+#l-map span.map-text {
+	display: block;
+	margin-top: 120px;
+}
+/*website*/
+.website-img {
+	height: 100px;
+}
+.website-logo {
+	height: 60px;
+}
+.website-slide {
+	margin-bottom: 0;
+	height: 100px;
+}
+.btn_medium {
+	padding: 0px 10px;
+	font-size: 13px;
+	line-height: 26px;
+	height: 28px;
+}
+.col03 {
+	width: 200px;
+}
+.help-block {
+	margin-left: 5px;
+	color: rgb(141, 141, 141);
+	text-align: left;
+}
+</style>
+<div class="wrapper w1200">
+  <div class="col-24 travel_main hotel-detailed">
+    <div class="col-24 travel_title alpha">
+      <div>
+        <h1 class="hot_route"><strong> <span style="padding-left:5px;">{$hotelinfo.names}</span> <span id="collect-cmd" hotel="{$hotelinfo.id}" url="{:U('ajax_collect')}">
+          <eq name="is_logined" value="true">
+            <neq name="is_collected" value="1"> <a title='添加至酒店收藏' class='_collect' value='1'><span class='collect_off'>&nbsp;</a>
+              <else/>
+              <a title='取消酒店收藏' class='_collect' value='0'> <span class='collect_on' style="width:80px;"  >[已收藏]</span></a> </neq>
+          </eq>
+          </span> </strong></h1>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="col-9 hotel_det_img">
+      <div class="col-9 advertisement" style="position: relative">
+        <div class="eislideshow" id="ei-slider" style="height: 290px">
+          <ul class="ei-slider-large">
+            <volist name='hotel_img' id='vo'>
+              <li><img src="__ROOT__{$vo.picpath}" height="290" /></li>
+            </volist>
+          </ul>
+          <ul class="ei-slider-thumbs">
+            {~for($i=0;$i<count($hotel_img);$i++):}
+            
+            
+            
+            <eq name="i" value="0">
+              <li class="active_thumbs"><a href="javascript:;"></a></li>
+              <else/>
+              <li><a href="javascript:;"></a></li>
+            </eq>
+            {~endfor}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-14" style="padding-left:7px;width:716px;">
+      <table width="100%" >
+        <tr class="web_map" style=" border-bottom:1px solid #dddddd;">
+          <th><b>开业时间：</b></th>
+          <td>{$hotelinfo.open_time|date="Y年m月d日",###}</td>
+        </tr>
+        <tr class="web_map" style=" border-bottom:1px solid #dddddd;">
+          <th style="width:105px"><b>最后装修时间：</b></th>
+          <td>{$hotelinfo.fix_time|date="Y年m月d日",###}</td>
+        </tr>
+        <tr class="web_map" style=" border-bottom:1px solid #dddddd;">
+          <th><b>联系方式：</b></th>
+          <td>{$hotelinfo.contact}</td>
+        </tr>
+        <tr class="web_map" style=" border-bottom:1px solid #dddddd;">
+          <th><b>特色服务：</b></th>
+          <td>{$services}</td>
+        </tr>
+        <tr class="web_map" style=" border-bottom:1px solid #dddddd;">
+          <th><b>餐饮服务：</b></th>
+          <td>{$dinners}</td>
+        </tr>
+        <tr class="web_map" style=" border-bottom:1px solid #dddddd;">
+          <th><b>休闲娱乐：</b></th>
+          <td>{$Recreations}</td>
+        </tr>
+        <tr class="web_map" style=" border-bottom:1px solid #dddddd;">
+          <th><b>服务项目：</b></th>
+          <td>{$Services}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-24 page_content2 hotel-detailed-bg"><span class="scroll_nav"></span>
+    <div class="col-24 page_content2 scroll_nav" style="width:1180px;">
+      <ul class="alpha">
+        <li class="col-2 title">酒店预订</li>
+        <li class="col-2 title">酒店信息</li>
+        <li class="col-2 title">客户点评</li>
+        <li class="col-2 title">酒店咨询</li>
+        <li class="col-2 title">房间信息</li>
+        <li class="col-2 title">酒店视频</li>
+        <li class="col-2 title">交通指南</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-24 hotel-detailed-bg hotel-detailed-content">
+    <div class="col-24 room_box" style="margin:0;"> <a name="bottom"></a>
+      <h1 class="hot_route">&nbsp;酒店预订</h1>
+      <div class="room_date">
+        <div class="room_date_one">
+          <form action="{:U('hotel_detailed')}/hotel/{$hotel_id}/#bottom" method="post">
+            <table class="select_date">
+              <tr>
+                <th style="text-align:right;"><a name="bottom"></a>入住日期：</th>
+                <td><input type="text" name="begin_time" id="begin_time" class="txt ui-date" value='{$during_time.begin|date="Y-m-d",###}' datatype="*" size="20" tip="请输入文本" nullmsg="请输入文本" /></td>
+                <th style="text-align:right">离店日期：</th>
+                <td><input type="text" name="begin_end" id="begin_end" class="txt ui-date" value='{$during_time.leave|date="Y-m-d",###}' datatype="*" size="20" tip="请输入文本" nullmsg="请输入文本" /></td>
+                <td class="filter_check"><button class="btn info">修改日期</button></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <div class="clear"></div>
+        <div class="col-24 price_list" style="width:1180px;">
+          <table class="table_list">
+            <tr>
+              <th>房型</th>
+              <th>门市价</th>
+              <th>优惠价</th>
+              <th>点评奖金</th>
+              <th>宽带</th>
+              <th>早餐</th>
+              <th>操作</th>
+            </tr>
+            <volist name="rooms" id="vo">
+              <tr>
+                <td>{$vo.names}</td>
+                <td><s>{$vo.price_retail}</s></td>
+                <td>{$vo.price_prefer}</td>
+                <td>{$vo.price_bonus_part}</td>
+                <td><switch name="vo.broadband">
+                    <case value="0">无</case>
+                    <case value="1">有（免费）</case>
+                    <case value="2">有（收费）</case>
+                  </switch></td>
+                <td><switch name="vo.breakfast">
+                    <case value="0">无</case>
+                    <case value="1">含早</case>
+                    <case value="2">含双早</case>
+                    <case value="3">含三早</case>
+                    <case value="4">有（收费）</case>
+                  </switch></td>
+                <if condition="$vo.order_roomcount lt $vo['room_count']">
+                  <td><div class="ide_btn">
+                      <div class="btn3 orange">
+                        <button class="btn info" onClick="location.href='{:U('hotel_order')}/hotel/{$vo.hotel_id}/room/{$vo.room_id}'"> 预定 </button>
+                      </div>
+                    </div></td>
+                  <else />
+                  <td class="hotel_full"> 已满 </td>
+                </if>
+              </tr>
+            </volist>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="col-24 room_box">
+      <h1 class="hot_route">&nbsp;酒店信息</h1>
+      <div>
+        <table width="100%" border="0" class="hotelinfo">
+          <tr>
+            <th>酒店介绍：</th>
+            <td><neq name="hotelinfo.detail" value="">{$hotelinfo.detail}
+                <else/>
+                无</neq></td>
+          </tr>
+          <tr>
+            <th>酒店特别提示：</th>
+            <td><neq name="hotelinfo.tip" value="">{$hotelinfo.tip}
+                <else/>
+                无</neq></td>
+          </tr>
+          <tr>
+            <th>附加服务：</th>
+            <td><neq name="hotelinfo.adds_service" value="">{$hotelinfo.adds_service}
+                <else/>
+                无</neq></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="col-24 room_box">
+      <h1 class="hot_route">&nbsp;客户点评</h1>
+      <div class="grade">
+        <div class="grade_left">
+          <div class="main"><span>综合满意度</span><span class="cent">{$point.point}%</span><span>基于 {$point.users} 人评价</span></div>
+          <div class="cent_color">
+            <div class="twig">
+              <div class="twig_title">设施装潢：</div>
+              <div class="twig_right">
+                <div class="twig_right1" style="width:{$impr_counts['decoration']}%;"></div>
+              </div>
+              <div class="twig_title_red">&nbsp;{$impr_counts['decoration']}分</div>
+            </div>
+            <div class="twig"><span class="twig_title">交通位置：</span>
+              <div class="twig_right">
+                <div class="twig_right2" style="width:{$impr_counts['traffic']}%;"></div>
+              </div>
+              <div class="twig_title_red">&nbsp;{$impr_counts['traffic']}分</div>
+            </div>
+            <div class="twig"><span class="twig_title">卫生情况：</span>
+              <div class="twig_right">
+                <div class="twig_right3" style="width:{$impr_counts['hygiene']}%;"></div>
+              </div>
+              <div class="twig_title_red">&nbsp;{$impr_counts['hygiene']}分</div>
+            </div>
+            <div class="twig"><span class="twig_title">&nbsp;性 价 比：</span>
+              <div class="twig_right">
+                <div class="twig_right4" style="width:{$impr_counts['prices']}%;"></div>
+              </div>
+              <div class="twig_title_red">&nbsp;{$impr_counts['prices']}分</div>
+            </div>
+          </div>
+        </div>
+        <div class="grade_right" style="margin:40px 18% auto auto">
+          <eq name="is_logined" value="true">
+            <div class="filter_check">
+              <input name="publish" type="button" id="publish" url="{:U('userhotel/hotel')}/status/3" value="   发表评论   " class="btn red  info">
+            </div>
+            <else />
+            <div class="btn_css_font"><span class="font_brown">只有登录后的用户才可进行点评</span></div>
+          </eq>
+        </div>
+      </div>
+      <volist name="imprs" id="vo">
+        <div class="grade1">
+          <div class="person-impr">
+            <div class="appraise">&nbsp;&nbsp;点评人：
+              <eq name="vo.show_name" value="1">{$vo.username}
+                <else/>
+                （匿名）</eq>
+            </div>
+            <div class="clear"></div>
+            <div class="appraise">
+              <div class="appraise_left"><span class="font_brown"><span class="twig_title">&nbsp;&nbsp;设施装潢</span>：<span class="font_red">{$vo['decoration']}</span>分&nbsp;&nbsp;交通位置：<span class="font_red">{$vo['traffic']}</span>分&nbsp;&nbsp;卫生情况：<span class="font_red">{$vo['hygiene']}</span>分&nbsp;&nbsp;性价比：<span class="font_red">{$vo['prices']}</span>分&nbsp;&nbsp;满意度：<span class="font_red">{$vo['points']}</span>%&nbsp;&nbsp;点评奖金：<span class="font_red">{$vo['bonus_comm']}</span></span>元</div>
+            </div>
+            <div class="clear"></div>
+            <div class="appraise">
+              <table>
+                <tr>
+                  <td width="75">&nbsp;&nbsp;点评内容：</td>
+                  <td>{$vo.content}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="impression">
+              <table width="100%" class="table_form">
+                <tr>
+                  <th width="88" style="text-align:right">客户印象：</th>
+                  <td><volist name="vo.cimprs" id="cs">
+                      <li class="li impr_li {$cs.color}">{$cs.names}</li>
+                    </volist></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </volist>
+    </div>
+    <div class="clear"></div>
+    <div class="col-24 room_box">
+      <h1 class="hot_route">&nbsp;在线咨询</h1>
+      <div class="feature" id="lists_que">
+        <eq name="ques" value=""> <span class="down" style="line-height:58px;">&nbsp;该产品暂无咨询信息！</span>
+          <else />
+          <volist name="ques" id="vo">
+            <div class="customer_on">
+              <div class="clear"></div>
+              <div class="customer_on_1">
+                <table width="100%">
+                  <tr>
+                    <td width="108"><span class="font_blue"><img src="../Public/images/att_img_iocn.jpg" width="17" height="17"/>&nbsp;咨询内容：</span></td>
+                    <td width="1016"><span>{$vo.question1}</span></td>
+                  </tr>
+                  <tr>
+                    <td class="customer_on_left" style="width:110px;border-top:none;"><span class="font_brown"><img src="../Public/images/att_img_iocn2.jpg" width="17" height="17"/>&nbsp;客服回复：</span></td>
+                    <td style="border-top:none;"><span>
+                      <neq name="vo.answer" value="">{$vo.answer}
+                        <else />
+                        <span style="color:#999">&lt;- 客服暂未作答 -&gt;</span></neq>
+                      </span></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="border-top:none; font-size:12px"> 提问用户：{$vo.username}&nbsp;&nbsp;|&nbsp;&nbsp;提问时间：{$vo.publish_time|date="Y年m月d日 H:i:s", ###}
+                      <eq name="vo.que_status" value="1">&nbsp;&nbsp;|&nbsp;&nbsp;回答时间：{$vo.answer_time|date="Y年m月d日 H:i:s", ###} </eq></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </volist>
+        </eq>
+        <div class="clear"></div>
+        <div class="doubt"><span class="down">&nbsp;您有问题？告诉我们您的疑惑，我们会在第一时间为您解答。</span></div>
+        <eq name="is_logined" value="true">
+          <div class="doubt_main">
+            <form action="{:U('hotel_quePublish')}/hotel/{$hotel_id}/#bottom" ajax="true" method="post" id="quePublish">
+              <table width="95%" class="table_form">
+                <tr>
+                  <th width="7%">咨询内容:</th>
+                  <td width="93%"><textarea name="question1" id="textarea" datatype="*5-255" cols="55" rows="5" class="textarea" tip="请输入文本" nullmsg="请输入文本"></textarea></td>
+                </tr>
+                <tr>
+                  <th>验证码:</th>
+                  <td><input type="text" class="txt" id="verify" name="verify" datatype="n4-4" nullmsg="请填写验证码" errmsg="请填写验证码"/>
+                    &nbsp;&nbsp;<span><img src="{:U('Common/verify')}" url="{:U('Common/verify')}" /></span></td>
+                </tr>
+                <tr>
+                  <th>&nbsp;</th>
+                  <td><input name="" type="submit" value="提交咨询" class="btn red info"></td>
+                </tr>
+              </table>
+            </form>
+          </div>
+          <else />
+          <div class="cannotSpeak">未登录的用户不能提问，请您先&nbsp;<a href="{:U('login/index')}">登录</a>！</div>
+        </eq>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="col-24 room_box">
+      <h1 class="hot_route">&nbsp;房间信息</h1>
+      <ul>
+        <volist name="piclist" id="vo">
+          <li class="adv_select_img">
+            <div class="adv_select_img_z"><img src="__ROOT__{$vo.logopath}" width="182" height="130"/>
+              <div class="adv_select_img_means"><span></span>
+                <h4><b style="color: #F90;">￥{$vo.nicePrice}元</b> 起</h4>
+              </div>
+            </div>
+          </li>
+        </volist>
+      </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="col-24 room_box">
+      <h1 class="hot_route">&nbsp;酒店视频</h1>
+      <div class="feature"><span class="url">
+        <neq name="hotelinfo.video" value=""> <a href="{$hotelinfo.video}" target="_blank"><u>{$hotelinfo.video}</u></a>
+          <else/>
+          <span style="color:#999">&lt;- 酒店未提供视频 -&gt;</span> </neq>
+        </span></div>
+    </div>
+    <div class="clear"></div>
+    <div class="col-24 room_box">
+      <h1 class="hot_route">&nbsp;交通指南</h1>
+      <div class="feature"><span class="down">{$hotelinfo.traffic_info}
+        <p></p>
+        <div class="otherinfo"><strong><font size="3"> 位置距离：</font></strong><br/>
+          {$hotelinfo.location}
+          <p></p>
+          <strong><font size="3"> 周围环境：</font></strong><br/>
+          {$hotelinfo.around_info}</div>
+        </span></div>
+      <div class="controls" style="float:left">
+        <div id="l-map" class="col06"> <i class="icon-spinner icon-spin icon-large"></i><span class="map-text">地图加载中...</span> </div>
+        <div id="r-result">
+          <input type="hidden" id="lng" name="position_x" value="{$hotelinfo.location_x}" class="col01"/>
+          <input type="hidden" id="lat" name="position_y" value="{$hotelinfo.location_y}" class="col01"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

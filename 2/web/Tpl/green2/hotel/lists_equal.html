@@ -1,0 +1,27 @@
+<tr>
+    <td>{$vo.names}</td>
+    <td>￥{$vo.price_retail}</td>
+    <td>￥{$vo.price_prefer}</td>
+    <td>￥{$vo.bonus_comm}</td>
+    <td>
+        <switch name="vo.broadband">
+            <case value="0">无</case>
+            <case value="1">有(免费)</case>
+            <case value="2">有(收费)</case>
+        </switch>
+    </td>
+    <td>
+        <switch name="vo.breakfast">
+            <case value="0">无</case>
+            <case value="1">有(含早)</case>
+            <case value="2">有(收早)</case>
+            <case value="3">有(收三早)</case>
+            <case value="4">有(收费)</case>
+        </switch>
+    </td>
+    <td>
+        <div class="filter_check">
+           <a href="{:U('hotel_order',array('hotel'=>$vo['hotel_id'],'room'=>$vo['room_id']))}" class="btn info">立即预定</a>
+        </div>
+    </td>
+</tr>

@@ -1,0 +1,45 @@
+</table>
+</div>
+</div>
+
+<div class=" travel_main1">
+<div class="leftside">
+  <div class="col-14 hotel_price_on_left"><b><a href="{:U('hotel_detailed',array('hotel'=>$vo['hotel_id']))}">&nbsp;{$vo.hotel_names}</a></b></div>
+  <div class="col-14 font_brown">地址：{$vo.address}{$vo.canton|get_area_belong=$url_lists['posittion']}</div>
+</div>
+<div class="rightside">
+  <div class="col-3 hotel_price_on_right"><b>￥ {$vo.price_prefer}元起</b></div>
+  <div class="col-3 font_brown">{$vo.hotel_id|get_impr_point|default="100"}%满意度<br>
+    {$vo.hotel_id|get_impr_count}条酒店点评 </div>
+</div>
+<div class="clear"></div>
+<div class="price_list" style="margin-top:10px; margin-left:15px;">
+<table width="720px" class="table_list" style="margin-top:5px; margin-bottom:10px;">
+<tr>
+  <th>房型</th>
+  <th>门市价</th>
+  <th>优惠价</th>
+  <th>点评奖金</th>
+  <th>宽带</th>
+  <th>早餐</th>
+  <th>早餐</th>
+</tr>
+<tr>
+  <td>{$vo.names}</td>
+  <td>￥{$vo.price_retail}</td>
+  <td>￥{$vo.price_prefer}</td>
+  <td>￥{$vo.bonus_comm}</td>
+  <td><switch name="vo.broadband">
+      <case value="0">无</case>
+      <case value="1">有(免费)</case>
+      <case value="2">有(收费)</case>
+    </switch></td>
+  <td><switch name="vo.breakfast">
+      <case value="0">无</case>
+      <case value="1">有(含早)</case>
+      <case value="2">有(收早)</case>
+      <case value="3">有(收三早)</case>
+      <case value="4">有(收费)</case>
+    </switch></td>
+  <td><div class="filter_check"> <a href="{:U('hotel_order',array('hotel'=>$vo['hotel_id'],'room'=>$vo['room_id']))}" class="btn info">立即预定</a> </div></td>
+</tr>

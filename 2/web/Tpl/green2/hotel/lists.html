@@ -1,0 +1,154 @@
+<link rel="stylesheet" href="../Public/css/hotels.css"/>
+<link rel="stylesheet" href="../Public/css/hotel_detailed.css"/>
+<script type="text/javascript" src="../Public/js/ui/jquery.ui.tabs.min.js"></script>
+<script type="text/javascript" src="../Public/js/jquery.city_list_plugs.js"></script>
+<script type="text/javascript" src="../Public/js/hotel.js"></script>
+<div class="wrapper w1200">
+   <div class="col-24 suffix_20 web_map"></div>
+<div class="clear"></div>
+    <div class="col-6 col-first nav nav_adv">
+      <div class="step_main_add col-only ">
+        <div class=" sidebar_title">
+          <h5><strong>酒店查询</strong></h5>
+        </div>
+        <div class="col-6 side_form1">
+          <form action="{:U('lists')}" name="hotelForm">
+            <div class="side_form2">
+                <div class="form_nav">目的城市：<input name="cid" type="hidden" id="cid" value="{$search.city_info.cid}"/><input type="text" size="28px" for-val="cid" id="cityName" class="inputText city-list-plugs" url="{:U('get_hotel_city')}" value="{$search.city_info.names}"/></div>
+                <div class="form_nav">入住日期：<input name="start_date" type="text" class="ui-date" size="28px"
+                                   value="{$search.start_date}"/></div>
+                <div class="form_nav">离店日期：<input name="end_date" type="text" class="ui-date" size="28px" value="{$search.end_date}"/></div>
+                <div class="form_nav">酒店名称：<input name="" type="text" size="28px"/></div>
+                <div colspan="2" class="filter_check  btn_z" ><button class="btn info">酒店查询</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+<div class="col-18 filter" >
+<div class=" filter_on alpha">
+    <div class=" filter_on_main">
+        <dl class="table-tr ui-tabs-pos" active="{$pos_index[1]}">
+            <dt class="table-th" >酒店位置：</dt>
+            <volist name="search_lists.position" id="pos">
+                <dd class="table-td ui-tabs-item"><a href="#pos-{$key}">{$pos_name_cn[$key]}</a></dd>
+            </volist>
+        </dl>
+        <dl class="table-tr">
+            <dt class="table-th" style="width: 60px"></dt>
+            <dd class="table-td">
+                <volist name="search_lists.position" id="pos">
+                    {~$poskey=$key}
+                    <div id="pos-{$key}" class="ui-tabs-div">
+                        <volist name="pos" id="posvo">
+                            <if condition="$pos_index[2] eq $key">
+                                <a href="{$url_lists.posittion}&pos={$poskey}-{$key}" class="selected">{$posvo}</a>
+                                <else/>
+                                <a href="{$url_lists.posittion}&pos={$poskey}-{$key}">{$posvo}</a>
+                            </if>
+                        </volist>
+                    </div>
+                </volist>
+            </dd>
+        </dl>
+        <form action="">
+            <dl class="table-tr">
+                <dt class="table-th">{$label_names['price']}：
+                </dt>
+                <dd class="table-td">
+                    <if condition="$search['price']">
+                        <a href="{$url_lists.price}">不限</a>
+                        <else/>
+                        <a href="{$url_lists.price}" class="selected">不限</a>
+                    </if>
+                </dd>
+                <volist name="search_lists.price" id="pri">
+                    <dd class="table-td">
+                        <if condition="$search['price'] eq $key">
+                            <a href="{$url_lists.price}&price={$key}" class="selected">{$pri}</a>
+                            <else/>
+                            <a href="{$url_lists.price}&price={$key}">{$pri}</a>
+                        </if>
+                    </dd>
+                </volist>
+                <dd class="table-td">
+                    自定义：<input class="self_input" value="{$search_lists.min_price}" name="min_price" type="text"/>
+                    -
+                    <input type="text" class="self_input" name="max_price" value="{$search_lists.max_price}"/>
+                    <button class="btn xs primary">确定</button>
+                </dd>
+            </dl>
+        </form>
+        <url style="display: none">{$url_lists.base_url}</url>
+        <volist name="search_lists" id="lists">
+            {~if($i<3||!$label_names[$key]) continue;$listskey=$key;}
+            <dl class="table-tr">
+                <dt class="table-th">{$label_names[$key]}：</dt>
+                <dd class="table-td search_title">
+                    <if condition="$search[$listskey]">
+                        <a href="#" data-name="{$listskey}">不限</a>
+                        <else/>
+                        <a href="#" class="selected" data-name="{$listskey}">不限</a>
+                    </if>
+                </dd>
+                <volist name="lists" id="item">
+                    <dd class="font_css  search_box" data-name="{$listskey}" style="margin-top:10px;">
+                        {~$_value=join(",",$search[$listskey])}
+                        <label for="{$listskey}_{$key}">
+                            <input id="{$listskey}_{$key}" name="{$listskey}[{$key}]" type="checkbox" value="{$key}" _value="$_value"/>
+                            {$item}
+                        </label>
+
+                    </dd>
+                </volist>
+            </dl>
+        </volist>
+    </div>
+</div>
+    <div class="clear"></div>
+    <div class=" filter_list">
+        <div class="title">
+     <span class="col-8 col-first filter_list_th">
+                    <a href="{$url_lists.sort}&sort=price_desc">价格</a>&nbsp;
+                    <eq name="lists_sort" value="price_desc">
+                        <img src="../Public/images/arrow_blue.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$url_lists.sort}&sort=price_asc">价格</a>&nbsp;
+                    <eq name="lists_sort" value="price_asc">
+                        <img src="../Public/images/arrow_blue2.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow2.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$url_lists.sort}&sort=hits_desc">人气</a>&nbsp;
+                    <eq name="lists_sort" value="hits_desc">
+                        <img src="../Public/images/arrow_blue.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow.png"/>
+                    </eq>
+                </span>
+            </div>
+    </div>
+<div class="clear"></div>
+    <volist name="hotel_lists" id="vo">
+        <if condition="empty($hotel_id)">
+            {~$hotel_id=$vo['hotel_id']}
+            <include file="hotel:lists_first" />
+            <elseif condition="$hotel_id eq $vo['hotel_id']"/>
+            <include file="hotel:lists_equal" />
+            <elseif condition="$hotel_id neq $vo['hotel_id']"/>
+            {~$hotel_id=$vo['hotel_id']}
+            <include file="hotel:lists_differ" />
+        </if>
+    </volist>
+    <include file="hotel:lists_last" />
+    <div class="clear"></div>
+    <div class="page">{$page}</div>
+
+</div>
+</div>
+</div>

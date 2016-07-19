@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="../Public/css/user.css"/>
+<link rel="stylesheet" href="../Public/css/hotel_detailed.css"/>
+<script type="text/javascript" src="../Public/js/userhotel.js"></script>
+<div >
+  <div class="col-19 omega page_content one">
+  <div style="margin-top:12px;"></div>
+    <li>
+      <a href="{:U('hotel_coll')}/status/1" class="col-3 title <eq name="status" value="1"> on </eq> col-full">已收藏的酒店</a>
+      <a href="{:U('hotel_coll')}/status/0" class="col-3 title <eq name="status" value="0"> on </eq> add">收藏过的酒店</a>
+    </li>
+    <div class="col-18 alpha body">
+      <table width="100%" class="table_list" id="collect-cmd" url="{:U('hotel/ajax_collect')}">
+        <tr>
+          <th>酒店名称</th>
+          <th width="280" style="text-align:center">收藏日期</th>
+          <th width="80">操作</th>
+        </tr>
+        <volist name="data" id="vo">
+          <tr hotel="{$vo.hotel_id}">
+            <td>
+              <eq name="vo.status" value="0">
+            	{$vo.names}
+              <else/>
+                <a title='查看{$vo.names}' href="{:U('hotel/hotel_detailed')}?hotel={$vo.hotel_id}" target="_blank" class="collect_link">{$vo.names}</a>
+              </eq>
+            </td>
+            <td style="text-align:center"><eq name="vo.status" value="1">{$vo.create_time}<else/>-</eq>
+            </td>
+            <td>
+              <eq name="vo.status" value="1">
+                <a title='点击取消酒店收藏' class='_collect' hotel="{$vo.hotel_id}" value='0'><span class='collect_on'></span></a>
+              <else/>
+                <a title='点击恢复酒店收藏' class='_collect' hotel="{$vo.hotel_id}" value='1'><span class='collect_off'></span></a>
+              </eq>
+            </td>
+          </tr>
+        </volist>
+      </table>
+      <div class="page">{$page}</div>
+    </div>
+  </div>
+</div>
+</div>

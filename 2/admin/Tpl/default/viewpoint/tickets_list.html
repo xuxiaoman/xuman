@@ -1,0 +1,153 @@
+<script language="javascript">
+    function returnfunction() {
+        
+    }
+    //showTips( '{$message}', 33, 1 );
+</script>
+
+<table cellspacing="0" cellpadding="0" class="t1">
+    <tbody>
+        <tr>
+            <th height="27" colspan="2" id="title">您当前位置：<a target="_top" href="{:U('index/index')}">首页</a> > 
+                <a href="{:U('viewpoint/show_list')}">景点管理</a> > 门票管理（{$names}）</th>
+        </tr>
+        <tr>
+            <td>
+              <div id="nav" class="mainnav_title">
+                <ul>
+                  <a href="{:U('tickets_list')}/viewpoint_id/{$viewpoint_id}" class="on">门票管理</a>&nbsp;|
+                  <a href="{:U('tickets_add')}/viewpoint_id/{$viewpoint_id}" class="">添加门票</a>
+                </ul>
+              </div>
+            </td>
+        </tr>
+</tbody></table>
+<form name="myform" id="myform" action="" method="post">
+<div class="table-list">
+  <table cellspacing="0" cellpadding="0" width="100%">
+    <thead>
+      <tr>
+          <th><a href="javascript:void(0);" onclick="sel_all();">全选</a></th>
+          <th>门票名称</th>
+          <th>门票市场价</th>
+          <th>1-9人价</th>
+          <th>10人以上价</th>
+          <th>隐藏</th>
+          <th>排序</th>
+          <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <volist name="list" id="vo">
+        <tr class="ulbc" id="tr_{$vo.id}">
+          <td><input type="checkbox" class="sel" id="sel_{$vo.id}" value="{$vo.id}" name="items_{$vo.id}" /></td>
+          <td><input type="text" name="names_{$vo.id}" id="names_{$vo.id}" value="{$vo.names}" /></td>
+          <td><span style="text-align: left;">
+            <input type="text" class="text2" name="price_{$vo.id}" id="price_{$vo.id}" value="{$vo.price}" />
+          </span></td>
+          <td><span style="text-align: left;">
+            <input type="text" name="inner_price_{$vo.id}" id="inner_price_{$vo.id}" value="{$vo.inner_price}" />
+          </span></td>
+          <td><span style="text-align: left;">
+            <input type="text" name="upon_price_{$vo.id}" id="upon_price_{$vo.id}" value="{$vo.upon_price}" />
+          </span></td>
+          <td>
+          <input type="checkbox" name="tatus_{$vo.id}" id="tatus_{$vo.id}" value="0" <if condition="$vo.tatus eq 0">checked="checked"</if>>
+          </td>
+          <td><input type="text" name="sort[{$vo.id}]" id="sort_{$vo.id}" value="{$vo.sort}" /></td>
+          <td>
+            <a href="javascript:;" onclick="ajax_save('{$vo.id}')">保存</a>&nbsp;<a href="__URL__/tickets_edit/id/{$vo.id}">编辑</a>&nbsp;<a href="javascript:;" onclick= "javascript:if(confirm( '确定要删除该条记录吗？ '))ajax_del({$vo.id});">删除</a></td>
+        </tr>
+      </volist>
+    </tbody>
+  </table>
+</div>
+
+<div class="btn">
+    <input type="submit" class="button" name="dosubmit2" value="删除" onclick="myform.action='{:U('deleteall')}';"/>
+    <input type="button" class="button" name="dosubmit2" value="排序" onclick="myform.action='{:U('tickets_sort_list')}/viewpoint_id/{$viewpoint_id}/p/{$p}';$('#myform').submit();"/>
+    <input type="hidden" name="hotel_id" value="{$hotel_id}" />
+</div>
+</form>
+
+<div class="page">{$page} </div>
+<script language="javascript">
+    function ajax_save(id){
+        var url = "{:U('ajax_tickets_save')}?id="+id;
+        var names = $('#names_'+id).val(); 
+		var price1 = $('#price_'+id).val(); 
+		var price2 = $('#inner_price_'+id).val(); 
+		var price3 = $('#upon_price_'+id).val(); 
+		var tatus = ($('#tatus_'+id).attr("checked")=="checked")?
+					 $('#tatus_'+id).val() : 1; 
+		var _sort = $('#sort_'+id).val();
+		
+        $.ajax({
+            url: url,
+            type: "POST",
+            complete :function(){
+            }, 
+            dataType: 'json', 
+            data: "names="+ names
+				   +"&price="+ price1
+				   +"&inner_price="+ price2
+				   +"&upon_price="+ price3
+				   +"&tatus="+ tatus
+				   +"&sort="+_sort,
+            error: function() { alert('Ajax request error');},
+            success: function(result){
+                if(result==1){
+                    art.dialog.alert("保存成功");
+                }
+            }
+        }); 
+    }
+    
+    function ajax_del(id){
+        var url = "__URL__/ajax_tickets_del?id="+id;
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            complete :function(){
+            }, 
+            dataType: 'json', 
+            error: function() { alert('Ajax request error');},
+            success: function(result){
+                if(result==1){
+                    //$("#tr_"+id).remove();
+                    showTips( '删除成功', 33, 1 );
+                }
+            }
+        }); 
+    }
+    
+    function sel_all(){
+        $('input.sel').each(function(index){
+            if($(this).attr('checked')){
+                $(this).removeAttr('checked');
+            }else{
+                $(this).attr('checked', 'checked');
+            }
+        });
+    }
+    
+    function save_all(){
+        $('input.sel').each(function(index){
+            if($(this).attr('checked')){
+                ajax_save($(this).val());
+            }
+        });
+    }
+    
+    function del_all(){
+        if(confirm( '确定要删除该条记录吗？ ')){
+            $('input.sel').each(function(index){
+                if($(this).attr('checked')){
+                    ajax_del($(this).val());
+                }
+            });
+        }
+    }
+</script>
+<include file="Public:footer" />

@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="../Public/css/user.css"/>
+<link rel="stylesheet" href="../Public/css/hotel_detailed.css"/>
+  <div class="col-19 omega page_content one">
+  <div style="margin-top:12px;"></div>
+    <li>
+      <a href="{:U('userviewpoint/collection')}/status/1" class="col-3 title <eq name="status" value="1"> on </eq> col-full">已收藏的景点</a>
+      <a href="{:U('userviewpoint/collection')}/status/0" class="col-3 title <eq name="status" value="0"> on </eq> add">收藏过的景点</a>
+    </li>
+    <div class="col-18 alpha body">
+      <table width="100%" class="table_list" id="collect-cmd" url="{:U('hotel/ajax_collect')}">
+        <tr>
+          <th>景点名称</th>
+          <th width="280" style="text-align:center">收藏日期</th>
+          <th width="80">操作</th>
+        </tr>
+        <volist name="collections" id="vo">
+          <tr hotel="{$vo.hotel_id}">
+            <td>
+              <eq name="vo.status" value="0">
+              {$vo.names}
+              <else/>
+                <a title='查看{$vo.names}' href="{:U('viewpoint/detail')}?id={$vo.viewpoint_id}" target="_blank" class="collect_link">{$vo.names}</a>
+              </eq>
+            </td>
+            <td style="text-align:center"><eq name="vo.status" value="1">{$vo.create_time}<else/>-</eq>
+            </td>
+            <td>
+              <eq name="vo.status" value="1">
+                <a title='点击取消景点收藏' class='_collect'  
+                  href="{:U('userviewpoint/delete_collection', array('id'=>$vo['id']))}" value='0'>
+                  <span class='collect_on'></span>
+                </a>
+              <else/>
+                <a title='点击恢复景点收藏' class='_collect' 
+                  href="{:U('userviewpoint/set_collection', array('id'=>$vo[id]))}" value='1'>
+                  <span class='collect_off'></span>
+                </a>
+              </eq>
+            </td>
+          </tr>
+        </volist>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

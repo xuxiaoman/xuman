@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'id', 1 => 'line_id', 2 => 'names', 3 => 'pic_path', 4 => 'sort', 5 => 'istitlepage', '_autoinc' => true, '_pk' => 'id', '_type' => array ( 'id' => 'int(11)', 'line_id' => 'int(11)', 'names' => 'varchar(100)', 'pic_path' => 'varchar(100)', 'sort' => 'int(11)', 'istitlepage' => 'tinyint(1)', ), );?>

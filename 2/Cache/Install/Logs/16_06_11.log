@@ -1,0 +1,1129 @@
+[ 2016-06-11T15:12:17+08:00 ] 0.0.0.0 /2/Install/index.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000818s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000914s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000521s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000579s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.045360s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045474s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000672s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000595s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000469s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000680s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002643s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.041797s ]
+INFO: [ view_end ] --END-- [ RunTime:0.041893s ]
+
+[ 2016-06-11T15:12:24+08:00 ] 0.0.0.0 /2/Install/index.php?step=2
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000424s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000476s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [8] Undefined variable: str D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 328 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000630s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000678s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.019554s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019632s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000444s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000369s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000291s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000398s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001637s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000455s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000497s ]
+
+[ 2016-06-11T15:12:33+08:00 ] 0.0.0.0 /2/Install/index.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001489s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001712s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001083s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001268s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.018237s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018698s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001564s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000872s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000826s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001094s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004817s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001221s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001351s ]
+
+[ 2016-06-11T15:12:37+08:00 ] 0.0.0.0 /2/Install/index.php?step=2
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000352s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000403s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [8] Undefined variable: str D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 328 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000603s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000652s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.005842s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005901s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000397s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000347s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000240s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000341s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001442s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000650s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000707s ]
+
+[ 2016-06-11T15:12:43+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000413s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000466s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000348s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000394s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.097704s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.097862s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001099s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000936s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000694s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001095s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004251s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001363s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001509s ]
+
+[ 2016-06-11T15:12:44+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000433s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000495s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:12:45+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000516s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000577s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:12:51+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001248s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001428s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+
+[ 2016-06-11T15:13:02+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000323s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000375s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000456s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000500s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.024005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024076s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000429s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000349s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000264s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000380s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001550s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000430s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000471s ]
+
+[ 2016-06-11T15:13:03+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000462s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000569s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:13:04+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000434s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000496s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:13:10+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000802s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000938s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+
+[ 2016-06-11T15:14:26+08:00 ] 0.0.0.0 /2/Install/index.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000585s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000681s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001884s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002099s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.017339s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017497s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000513s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000550s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000447s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000674s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002410s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000861s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000957s ]
+
+[ 2016-06-11T15:14:33+08:00 ] 0.0.0.0 /2/Install/index.php?step=2
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000374s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000436s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [8] Undefined variable: str D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 328 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000673s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000729s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.016292s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016376s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000586s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000525s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000413s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000588s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002304s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000704s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000769s ]
+
+[ 2016-06-11T15:14:36+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000842s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000954s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000500s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000567s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.020619s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020688s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000571s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000466s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000722s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001249s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003362s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000446s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000495s ]
+
+[ 2016-06-11T15:14:37+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000659s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000764s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:14:38+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000668s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000783s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:14:44+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001257s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001441s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+
+[ 2016-06-11T15:15:09+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000441s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000504s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000678s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000742s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.020981s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021080s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000631s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000528s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000414s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000604s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002372s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000718s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000784s ]
+
+[ 2016-06-11T15:15:10+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001002s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001133s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:15:11+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001004s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001129s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:15:11+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000325s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000373s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000575s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000665s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.026658s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026771s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000468s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000460s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000198s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000296s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001570s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000354s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000392s ]
+
+[ 2016-06-11T15:15:11+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000552s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000637s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000326s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000377s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.017919s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017983s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000308s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000273s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000182s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000286s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001161s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000350s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000388s ]
+
+[ 2016-06-11T15:15:12+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000778s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000892s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:15:13+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000649s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000735s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:15:13+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000428s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000478s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001805s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002018s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.067173s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.067376s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001302s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001148s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000868s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001358s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005100s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000885s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000987s ]
+
+[ 2016-06-11T15:15:15+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000592s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000680s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000304s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000352s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.018082s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018145s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000300s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000257s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000175s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000280s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001201s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000490s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000546s ]
+
+[ 2016-06-11T15:15:16+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001251s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001402s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:15:17+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001496s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001662s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:15:30+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000931s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001069s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+
+[ 2016-06-11T15:16:25+08:00 ] ERR: (ThinkException) 模板不存在[.\Tpl/Index/step_3.html]
+[ 2016-06-11T15:16:25+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000450s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000546s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: file D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [8] Undefined index: line D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [4096] Object of class IndexAction could not be converted to string D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 64 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+
+[ 2016-06-11T15:16:27+08:00 ] ERR: (ThinkException) 模板不存在[.\Tpl/Index/step_3.html]
+[ 2016-06-11T15:16:27+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000336s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000392s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: file D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [8] Undefined index: line D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [4096] Object of class IndexAction could not be converted to string D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 64 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+
+[ 2016-06-11T15:16:27+08:00 ] ERR: (ThinkException) 模板不存在[.\Tpl/Index/step_3.html]
+[ 2016-06-11T15:16:27+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000322s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000375s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: file D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [8] Undefined index: line D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [4096] Object of class IndexAction could not be converted to string D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 64 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+
+[ 2016-06-11T15:16:35+08:00 ] ERR: (ThinkException) 模板不存在[.\Tpl/Index/index.html]
+[ 2016-06-11T15:16:35+08:00 ] 0.0.0.0 /2/Install/index.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000432s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000561s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: file D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [8] Undefined index: line D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [4096] Object of class IndexAction could not be converted to string D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 64 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: class D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index: type D:\WWW\2\Core\Lib\Core\ThinkException.class.php 第 63 行.
+
+[ 2016-06-11T15:17:59+08:00 ] 0.0.0.0 /2/Install/index.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000432s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000484s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000481s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000525s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.005553s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005624s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000409s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000527s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000261s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000364s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001686s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000421s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000460s ]
+
+[ 2016-06-11T15:18:08+08:00 ] 0.0.0.0 /2/Install/index.php?step=2
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000627s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000719s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [8] Undefined variable: str D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 328 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001838s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002034s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.006786s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006866s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000338s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000327s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000256s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000370s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001409s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000424s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000463s ]
+
+[ 2016-06-11T15:18:16+08:00 ] 0.0.0.0 /2/Install/index.php?step=3
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000393s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000447s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000379s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000426s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.023185s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023290s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000809s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001878s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000332s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000502s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003922s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000607s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000673s ]
+
+[ 2016-06-11T15:18:17+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000903s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001034s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:18:18+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001459s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001554s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+NOTIC: [2] mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 118 行.
+
+[ 2016-06-11T15:18:30+08:00 ] 0.0.0.0 /2/Install/index.php?step=3&testdbpwd=1
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001698s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001822s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+
+[ 2016-06-11T15:18:36+08:00 ] 0.0.0.0 /2/Install/index.php?step=4
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000433s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000506s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002362s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002796s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.236980s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.237247s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001009s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000930s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000702s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001082s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004144s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001536s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001688s ]
+
+[ 2016-06-11T15:18:37+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=0&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000568s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000648s ]
+
+[ 2016-06-11T15:18:38+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=1&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002246s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002524s ]
+
+[ 2016-06-11T15:18:40+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=2&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001828s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002060s ]
+
+[ 2016-06-11T15:18:41+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=3&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001891s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002142s ]
+
+[ 2016-06-11T15:18:42+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=4&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001251s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-06-11T15:18:43+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=5&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001266s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001444s ]
+
+[ 2016-06-11T15:18:45+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=6&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001254s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001430s ]
+
+[ 2016-06-11T15:18:46+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=7&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000777s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000889s ]
+
+[ 2016-06-11T15:18:47+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=8&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001253s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-06-11T15:18:48+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=9&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001258s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001436s ]
+
+[ 2016-06-11T15:18:49+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=10&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000841s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000961s ]
+
+[ 2016-06-11T15:18:50+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=11&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001503s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001775s ]
+
+[ 2016-06-11T15:18:52+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=12&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001253s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-06-11T15:18:53+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=13&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001261s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001433s ]
+
+[ 2016-06-11T15:18:54+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=14&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002005s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002235s ]
+
+[ 2016-06-11T15:18:55+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=15&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001297s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001487s ]
+
+[ 2016-06-11T15:18:57+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=16&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001874s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002112s ]
+
+[ 2016-06-11T15:18:58+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=17&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001396s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001673s ]
+
+[ 2016-06-11T15:18:59+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=18&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001256s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-06-11T15:19:00+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=19&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001274s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001453s ]
+
+[ 2016-06-11T15:19:01+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=20&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001313s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001494s ]
+
+[ 2016-06-11T15:19:02+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=21&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001265s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001439s ]
+
+[ 2016-06-11T15:19:04+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=22&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001254s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-06-11T15:19:05+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=23&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001850s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002085s ]
+
+[ 2016-06-11T15:19:06+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=24&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001515s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001694s ]
+
+[ 2016-06-11T15:19:07+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=25&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001349s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001570s ]
+
+[ 2016-06-11T15:19:08+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=26&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002313s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002758s ]
+
+[ 2016-06-11T15:19:10+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=27&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000779s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000889s ]
+
+[ 2016-06-11T15:19:11+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=28&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001252s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001429s ]
+
+[ 2016-06-11T15:19:12+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=29&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001258s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001433s ]
+
+[ 2016-06-11T15:19:13+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=30&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001281s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001459s ]
+
+[ 2016-06-11T15:19:14+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=31&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001252s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-06-11T15:19:16+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=32&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001289s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001464s ]
+
+[ 2016-06-11T15:19:17+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=33&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001469s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001652s ]
+
+[ 2016-06-11T15:19:18+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=34&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001262s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001439s ]
+
+[ 2016-06-11T15:19:19+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=35&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001259s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001433s ]
+
+[ 2016-06-11T15:19:20+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=36&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001297s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001567s ]
+
+[ 2016-06-11T15:19:22+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=37&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001257s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001434s ]
+
+[ 2016-06-11T15:19:23+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=38&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-06-11T15:19:24+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=39&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001253s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001431s ]
+
+[ 2016-06-11T15:19:25+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=40&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001257s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001431s ]
+
+[ 2016-06-11T15:19:26+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=41&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001259s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001440s ]
+
+[ 2016-06-11T15:19:27+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=42&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001261s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001438s ]
+
+[ 2016-06-11T15:19:29+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=43&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001291s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001470s ]
+
+[ 2016-06-11T15:19:30+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=44&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001257s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001432s ]
+
+[ 2016-06-11T15:19:31+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=45&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001429s ]
+
+[ 2016-06-11T15:19:32+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=46&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001429s ]
+
+[ 2016-06-11T15:19:34+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=47&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001983s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002217s ]
+
+[ 2016-06-11T15:19:35+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=48&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000799s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000909s ]
+
+[ 2016-06-11T15:19:36+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=49&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000783s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000893s ]
+
+[ 2016-06-11T15:19:37+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=50&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000851s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000971s ]
+
+[ 2016-06-11T15:19:38+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=51&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001258s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001434s ]
+
+[ 2016-06-11T15:19:39+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=52&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001447s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001666s ]
+
+[ 2016-06-11T15:19:41+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=53&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001272s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001749s ]
+
+[ 2016-06-11T15:19:42+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=54&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000790s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000906s ]
+
+[ 2016-06-11T15:19:43+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=55&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000847s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000966s ]
+
+[ 2016-06-11T15:19:44+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=56&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001433s ]
+
+[ 2016-06-11T15:19:46+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=57&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001250s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001423s ]
+
+[ 2016-06-11T15:19:47+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=58&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001478s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001749s ]
+
+[ 2016-06-11T15:19:48+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=59&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000780s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000890s ]
+
+[ 2016-06-11T15:19:49+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=60&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000886s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001018s ]
+
+[ 2016-06-11T15:19:50+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=61&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001260s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001435s ]
+
+[ 2016-06-11T15:19:51+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=62&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001262s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001439s ]
+
+[ 2016-06-11T15:19:53+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=63&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001254s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-06-11T15:19:54+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=64&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000824s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000942s ]
+
+[ 2016-06-11T15:19:55+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=65&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001263s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001441s ]
+
+[ 2016-06-11T15:19:56+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=66&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000793s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000907s ]
+
+[ 2016-06-11T15:19:57+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=67&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001521s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001722s ]
+
+[ 2016-06-11T15:19:59+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=68&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002069s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002297s ]
+
+[ 2016-06-11T15:20:00+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=69&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001368s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001614s ]
+
+[ 2016-06-11T15:20:01+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=70&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000787s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000902s ]
+
+[ 2016-06-11T15:20:02+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=71&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001250s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001426s ]
+
+[ 2016-06-11T15:20:04+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=72&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002291s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002559s ]
+
+[ 2016-06-11T15:20:05+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=73&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000775s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000884s ]
+
+[ 2016-06-11T15:20:06+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=74&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001430s ]
+
+[ 2016-06-11T15:20:07+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=75&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001398s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001594s ]
+
+[ 2016-06-11T15:20:08+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=76&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001716s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001945s ]
+
+[ 2016-06-11T15:20:09+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=77&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001430s ]
+
+[ 2016-06-11T15:20:11+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=78&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000774s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000885s ]
+
+[ 2016-06-11T15:20:12+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=79&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002030s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002442s ]
+
+[ 2016-06-11T15:20:13+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=80&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001274s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001490s ]
+
+[ 2016-06-11T15:20:14+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=81&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001259s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001433s ]
+
+[ 2016-06-11T15:20:15+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=82&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001257s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001434s ]
+
+[ 2016-06-11T15:20:17+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=83&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001267s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001481s ]
+
+[ 2016-06-11T15:20:18+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=84&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001039s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001155s ]
+
+[ 2016-06-11T15:20:19+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=85&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000781s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000891s ]
+
+[ 2016-06-11T15:20:20+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=86&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001701s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001928s ]
+
+[ 2016-06-11T15:20:21+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=87&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001252s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001428s ]
+
+[ 2016-06-11T15:20:23+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=88&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001307s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001484s ]
+
+[ 2016-06-11T15:20:24+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=89&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000799s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000920s ]
+
+[ 2016-06-11T15:20:25+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=90&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001252s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001427s ]
+
+[ 2016-06-11T15:20:26+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001256s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001431s ]
+
+[ 2016-06-11T15:20:28+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001854s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002157s ]
+
+[ 2016-06-11T15:20:32+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000806s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000918s ]
+NOTIC: [2] mysql_fetch_assoc() expects parameter 1 to be resource, boolean given D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 306 行.
+NOTIC: [2] mysql_fetch_assoc() expects parameter 1 to be resource, boolean given D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 306 行.
+NOTIC: [2] mysql_fetch_assoc() expects parameter 1 to be resource, boolean given D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 306 行.
+NOTIC: [2] mysql_fetch_assoc() expects parameter 1 to be resource, boolean given D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 306 行.
+NOTIC: [2] mysql_fetch_assoc() expects parameter 1 to be resource, boolean given D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 306 行.
+NOTIC: [2] mysql_fetch_assoc() expects parameter 1 to be resource, boolean given D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 306 行.
+
+[ 2016-06-11T15:20:33+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql|beta.sql
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001260s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001443s ]
+NOTIC: [8] Undefined variable: insert_user D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 195 行.
+
+[ 2016-06-11T15:20:34+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql|beta.sql
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001258s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001433s ]
+
+[ 2016-06-11T15:20:35+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql|beta.sql|admin.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000783s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000893s ]
+
+[ 2016-06-11T15:20:36+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql|beta.sql|admin.php|config.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.003237s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003576s ]
+
+[ 2016-06-11T15:20:37+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql|beta.sql|admin.php|config.php|config_api.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000677s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000772s ]
+
+[ 2016-06-11T15:20:38+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql|beta.sql|admin.php|config.php|config_api.php|config_base.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001569s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001710s ]
+
+[ 2016-06-11T15:20:40+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql|beta.sql|admin.php|config.php|config_api.php|config_base.php|config_pic.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001248s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001420s ]
+
+[ 2016-06-11T15:20:41+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql|beta.sql|admin.php|config.php|config_api.php|config_base.php|config_pic.php|config_sys.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001553s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001688s ]
+
+[ 2016-06-11T15:20:42+08:00 ] 0.0.0.0 /2/Install/index.php?step=4&install=1&n=91&importfile=|TripEC.sql|base.sql|beta.sql|admin.php|config.php|config_api.php|config_base.php|config_pic.php|config_sys.php|sys_config.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001257s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001429s ]
+
+[ 2016-06-11T15:20:47+08:00 ] 0.0.0.0 /2/Install/index.php?step=5
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001849s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002023s ]
+NOTIC: [8] Undefined index: importfile D:\WWW\2\Install\Lib\Action\IndexAction.class.php 第 12 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002677s ]
+INFO: [ view_template ] --END-- [ RunTime:0.003025s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.146031s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.146222s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002375s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001557s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001312s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001777s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007512s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001983s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002133s ]
+

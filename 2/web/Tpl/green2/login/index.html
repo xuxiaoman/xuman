@@ -1,0 +1,51 @@
+<!--#names 登录页面 #-->
+<link rel="stylesheet" href="../Public/css/register.css"/>
+<div class="wrapper w1200">
+  <div class="col-24 content alpha">
+    <div class="col-24 content_top alpha">
+      <h1 class="col-10 content_top_font">会员登录</h1>
+    </div>
+    <div class="clear"></div>
+    <div class="col-24" style="padding-top:20px;">
+        
+      <div class="col-12 content_main_left" style='width:600px;'>
+          
+        <form action="{:U('login/login',$_GET)}" method="post" class="check-form">
+          <div class="col-12 content_main_left_number"><span class="col-2 content_main_left_number_title tit_msg">会员账号 :</span>
+	    
+            <div class="col-5 content_main_left_number_number2">
+              <input name="username" datatype="s5-18" type="text" class="col-5 content_main_left_number_number2_box" />
+            </div>
+              <div class="Validform_tipbox" for="username"></div>
+          </div>
+          <div class="col-12 content_main_left_number">
+            <span class="col-2 content_main_left_number_title">登录密码 :</span>
+	    
+            <div class="col-5 content_main_left_number_number2">
+              <input name="password" datatype="s5-18" type="password" class="col-5 content_main_left_number_number2_box" autocomplete="off"/>
+            </div>
+            <div class="Validform_tipbox" for="password"></div>
+            <div class="col-3">
+            </div>
+          </div>
+          <div class="clear"></div>
+          <div class="col-7 login_forget">
+            
+            <div class="col-2 remember_id"><input type="checkbox" name="login_state" value="1" class=" checkbox_login"/>记住密码</div>
+	    <div class="col-3 forget_font"><a href="{:U('register/retrieve_password')}">忘记密码？</a></div> 	  
+	    
+            <div class="col-3 btn_login1"><input type="submit" class="btn green" value="登 录"/></div>
+          </div>
+        </form>
+      </div>
+      <div class="col-8 content_main_right">
+        <div class="font_login">
+          <div class="font_login_title"><span class=" content_main_right_number_title">没有账号，立即注册</span></div>
+          <div class="btn_login">
+            <a href="{:U('register/register')}"><img src="../Public/images/btn_user reg.jpg" width="135" height="32"/></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

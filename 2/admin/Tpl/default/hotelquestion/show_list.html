@@ -1,0 +1,99 @@
+<div id="nav" class="mainnav_title">
+    <ul>
+        <a class="on" href="{:U('show_list')}">酒店咨询</a>
+    </ul>
+</div>
+
+<form name="myform" id="myform" action="" method="post">
+    <div class="table-list">
+        <table cellspacing="0" cellpadding="0" width="100%">
+            <thead>
+            <tr>
+                <th width="40"><a href="javascript:void(0);" onclick="sel_all();">全选</a></th>
+                <th width="80">问题编号</th>
+                <th style="text-align:left">提问内容</th>
+                <th width="152">提问日期</th>
+                <th width="152">答复日期</th>
+                <th width="96">状态</th>
+                <th width="125">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+                <tr class="ulbc" id="tr_{$vo.id}">
+                    <td id="td_sel" align="center"><input type="checkbox" class="sel" id="sel_{$vo.id}" value="{$vo.id}" name="items_{$vo.id}" /></td>
+                    <td align="center">{$vo.id}</td>
+                    <td style="text-align:left;line-height:1.5;">
+                      <div style="height:23px;padding-top:5px;">
+                        <span style="color:#848484;padding-left:3px;">{$vo.user_name}</span> 对 <span style="color:#66F">{$vo.hotel_name}</span>
+                      </div>
+                      <table width="100%" class="dashed_table"><tr>
+                      <td>
+                        <span class="f_left">问：</span><span class="f_left" style="text-align:left;">{$vo.question1}</span><!--
+                        <neq name="vo.question2" value="">
+                          <span class="f_left" style="clear:left">补充：</span><span class="f_left">{$vo.question2}</span>
+                        </neq>-->
+                      </td>
+                      </tr></table>
+                    </td>
+                    <td align="center">{$vo.publish_time|date="Y-m-d H:i:s",###}</td>
+                    <td align="center"><neq name="vo.answer_time" value="">{$vo.answer_time|date="Y-m-d H:i:s",###}<else />--</neq></td>
+                    <td align="center" id="checking_{$vo.id}">
+                     <eq name="vo.status" value="1">
+                       <span style="color:#0C0">已回答</span>
+                     <else />
+                       <span style="color:#F00">未回答</span>
+                     </eq>
+                    </td>
+                    <td align="center" id="control_{$vo.id}">
+                    <a href="javascript:void(0);" onclick="art.dialog.open('{:U('answer')}?id={$vo.id}',{title:'回答问题',width:640,height:480,window:'top',lock:'true'});">编辑回答</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="javascript:if(confirm( '确定要删除该条记录吗？ '))ajax_del({$vo.id});">删除</a>
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <div class="btn">
+        <input type="submit" class="button" name="dosubmit" value="删除" onclick="myform.action='{:U('deleteall')}';"/>
+        <!-- input type="button" class="button" name="dosubmit" value="删除" onclick="myform.action='{:U('deleteall')}';return confirm_deleteall() / -->
+        <input type="button" class="button" name="dosubmit" value="排序"
+               onclick="myform.action='{:U('sort_list')}/p/{$p}';$('#myform').submit();"/>
+    </div>
+</form>
+<script language="javascript">
+    
+    function ajax_del(id){
+        var url = "{:U(ajax_del)}?id="+id;
+		
+        $.ajax({
+            url: url,
+            type: "POST",
+            complete :function(){
+            }, 
+            dataType: 'json', 
+            error: function() { alert('Ajax request error');},
+            success: function(result){
+                if(result==1){
+					art.dialog({
+						title: '删除提示',
+						content: '删除成功',
+						ok:function(){location.reload();},
+					});
+					//$("#tr_"+id).remove();
+					
+                }
+            }
+        }); 
+    }
+	
+	function sel_all(){
+        $('input.sel').each(function(index){
+            if($(this).attr('checked')){
+                $(this).removeAttr('checked');
+            }else{
+                $(this).attr('checked', 'checked');
+            }
+        });
+    }
+</script>
+<div class="page">{$page}</div>

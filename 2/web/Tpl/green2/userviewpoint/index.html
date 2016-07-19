@@ -1,0 +1,74 @@
+<div class="col-19 omega page_content">
+  <div style="margin-top:12px;"></div>
+  <ul class="side1"> 
+    <if condition="$reccent_status eq null" >
+      <li class="col-2 alpha title on col-full">
+        <a href="{:U('userviewpoint/index')}">全部</a>
+      </li>
+      <volist name="status" id="vo">
+        <li>
+          <a href="{$vo.url}" class="col-2 title">
+            {$vo.status_name}
+          </a>
+        </li>
+      </volist>
+      <else />
+      <li class="col-2 alpha title">
+        <a href="{:U('userviewpoint/index')}">全部</a>
+      </li>
+      <volist name="status" id="vo">
+        <if condition="$reccent_status eq $vo.id ">
+          <li>
+            <a href="{$vo.url}" class="col-2 title on">
+              {$vo.status_name}
+            </a>
+          </li>
+          <else />
+          <li>
+            <a href="{$vo.url}" class="col-2 title">
+              {$vo.status_name}
+            </a>
+          </li>
+        </if>
+      </volist>
+    </if>
+  </ul>
+  
+  <div class="col-18 alpha body">
+    <table width="100%" class="table_list">
+      <tr>
+        <th>编号</th>
+        <th>景点/门票</th>
+        <th>总金额</th>
+        <th>点评奖金</th>
+        <th>下单时间</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+      <volist name="list" id="vo">
+        <tr>
+          <td><a href="{:U('order')}/id/{$vo.id}">{$vo.serial_num}</a></td>
+          <td>
+        <li><a href="{:U('./viewpoint/detail')}/id/{$vo.viewpoint_id}">{$vo.names}/{$vo.ticket_num}张</a></li>
+          </td>
+          <td>￥{$vo.all_money}元</td>
+          <td>{$vo.award_price}</td>
+          <td>{$vo.create_time|date="Y-m-d H:i:s", ###}</td>
+          <td>
+          <switch name="vo.order_status">
+            <case value="0">待处理</case>
+            <case value="1">待付款</case>
+            <case value="2">已付款</case>
+            <case value="3">已取票</case>
+            <case value="4">已点评</case>
+            <case value="5">已结束</case>
+            <case value="6">已取消</case>
+          </switch>
+          </td>
+          <td>{$vo.option}</td>
+        </tr>
+      </volist>
+    </table>
+    <div class="page">{$page}</div>
+  </div>
+</div>

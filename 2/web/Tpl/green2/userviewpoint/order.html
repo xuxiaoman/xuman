@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="../Public/css/hotel.css"/>
+<div class="col-19 omega page_content page_content_nav">
+  <div style="margin-top:12px;"></div>
+  <div class=" alpha order">
+    <div class="title_order">
+      <div class="order_font">查看订单</div>
+    </div>
+    <div class="col-18 alpha order_main"> 订单号：{$order['serial_num']} [下单时间：{$order.create_time|date="Y-m-d H:i:s",###}] <br />
+      订单状态：<switch name="order.order_status">
+            <case value="0">待处理</case>
+            <case value="1">待付款</case>
+            <case value="2">已付款</case>
+            <case value="3">已取票</case>
+            <case value="4">已点评</case>
+            <case value="5">已结束</case>
+            <case value="6">已取消</case>
+          </switch></div>
+    <div class="clear"></div>
+    <div class="title_order2">
+      <div class="col-18 alpha order_main"> 景点名称：{$order['names']} </div>
+    </div>
+    <div class="col-18 alpha order_main"> 门票名称：
+      <volist name="order.tickets" id="vo"> {~$tiks[$key] = $vo['ticket_type']} </volist>
+      {$tiks|join="；", ###} </div>
+    <div class="clear"></div>
+    <div class="title_order2">
+      <div class="col-18 alpha order_main">门票数量：{$order['ticket_num']}张</div>
+    </div>
+    <div class="col-18 alpha order_main"> 总金额：<span class="order_main_red"><b>￥{$order['all_money']}元</b></span></div>
+    <div class="clear"></div>
+    <div class="title_order2">
+      <div class="col-18 alpha order_main"> 使用奖金：<span class="order_main_red"><b>￥{$order['use_award']}元</b></span> </div>
+    </div>
+    <div class="col-18 alpha order_main"> 使用代金券：<neq name="order['coupon_num']" value="">{$order['coupon_num']}<span class="order_main_red"><b>（￥{$order['coupon_value']}元）</b></span><else />-</neq></div>
+    <div class="clear"></div>
+    <div class="title_order2">
+      <div class="col-18 alpha order_main"> 定金支付：<span class="order_main_red"><b>￥{$order['earnest_money']}元</b></span> </div>
+    </div>
+    <div class="clear"></div>
+    <div class="col-18 alpha order_main"> 前台支付：<span class="order_main_red"><b>￥{$order['pay_money']}元</b></span> </div>
+    <div class="clear"></div>
+    <div class="title_order2">
+      <div class="col-18 alpha order_main">点评奖金：<span class="order_main_red"><b>￥{$order['award_money']}元</b></span></div>
+    </div>
+    <div class="clear"></div>
+    <div class="col-18 alpha order_main"> 预订人信息：<br/>
+      &nbsp;&nbsp;&nbsp;姓名：{$order['contactor_name']}<br/>
+      &nbsp;&nbsp;&nbsp;电话：{$order['contact_phone']}<br/>
+      &nbsp;&nbsp;&nbsp;E-mail：{$order['contactor_email']} </div>
+    <div class="clear"></div>
+    <div class="title_order2" style="height:60px;">
+    <div class="col-18 alpha order_main"><a class="yellowlink" href="{:U('viewpoint/order_success')}/id/{$order.id}">下一步</a>
+      </div>
+    </div>
+  </div>
+</div>

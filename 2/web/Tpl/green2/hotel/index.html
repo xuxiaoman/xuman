@@ -1,0 +1,145 @@
+<link rel="stylesheet" href="../Public/css/hotel_detailed.css"/>
+<link rel="stylesheet" href="../Public/css/hotel.css"/>
+<link rel="stylesheet" href="../Public/css/hotels.css"/>
+<script type="text/javascript" src="../Public/js/jquery.city_list_plugs.js"></script>
+<script type="text/javascript" src="../Public/js/hotel.js"></script>
+
+<div class="wrapper w1200">
+  <div class="col-24 suffix_20"></div>
+  <div class="wrapper w1200">
+    <div class="col-6 col-first nav nav_adv1">
+      <div class="step_main_add col-only ">
+        <div class=" sidebar_title">
+          <h5><strong>酒店查询</strong></h5>
+        </div>
+        <div class="col-6 side_form1">
+          <form action="{:U('lists')}" name="hotelForm">
+            <div class="side_form2">
+                <div class="form_nav">目的城市：<input name="cid" type="hidden" id="cid" value="{$search.city_info.cid}"/><input type="text" size="28px" for-val="cid" id="cityName" class="inputText city-list-plugs" url="{:U('get_hotel_city')}" value="{$search.city_info.names}"/></div>
+                <div class="form_nav">入住日期：<input name="start_date" type="text" class="ui-date" size="28px"
+                                   value="{$search.start_date}"/></div>
+                <div class="form_nav">离店日期：<input name="end_date" type="text" class="ui-date" size="28px" value="{$search.end_date}"/></div>
+                <div class="form_nav">酒店名称：<input name="" type="text" size="28px"/></div>
+                <div colspan="2" class="filter_check  btn_z" ><button class="btn info">酒店查询</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="col-18 col-last advertisement" style="position: relative">
+        <div class="eislideshow" id="ei-slider" style="height: 250px">
+          <ul class="ei-slider-large">
+                <Wj:advert name="hotel_banner" id="ad" limit="3" adcount="adcount" sort="ad.sort">
+                    <li><a target="_blank" href="{$ad.url}"><img src="{$ad.pic|get_file}" alt="{$ad.pic|get_file='names'}"/></a></li>
+                </Wj:advert>
+            </ul>
+            <ul class="ei-slider-thumbs">
+                <Wj:sfor max="adcount" id="i">
+                    <eq name="i" value="0">
+                    <li class="active_thumbs"><a href="#"></a></li>
+                    <else/>
+                    <li><a href="#"></a></li>
+                    </eq>
+                </Wj:sfor>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clear" style="padding:3px;"></div>
+
+  <div class="wrapper w1200">
+
+	 <div class="col-6 " style="margin-left:0;">
+
+      <div class="col-6 col-first nav nav_adv" style="margin-bottom:10px;">
+        <div class=" alpha" style="margin:0">
+          <div class="step_main_right_add alpha">
+            <div class=" sidebar_title alpha">
+              <h5 class="col-5 sidebar_title_f"><strong>酒店点评</strong></h5>
+            </div>
+            <ul >
+              <volist name="impr" id="vo">
+                <li class="hotel_search">
+                  <div class="hotel_comment" style=" padding-left:8px;"><span class=" font_brown1"><b><a href="{:U('hotel_detailed')}?hotel={$vo.hotelid}">{$vo.names}</a></b></span><br/>
+                    <div class=" font_brown1">{$vo.content}</div>
+                    <div>用户
+                      <eq name="vo.show_name" value="1">{$vo.username}
+                        <else/>
+                        （匿名）</eq>
+                      获得<span class="c_red">￥{$vo.bonus_comm}</span> 奖金 </div>
+                  </div>
+                </li>
+              </volist>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div class="clear"></div>
+  
+      <div class="col-6 col-first nav nav_adv">
+          <div class="step_main_right_add alpha ">
+              <dl>
+                <dt><h5><strong>可靠保障 值得信赖</strong></h5></dt>
+                <dd class="chang adv_down_right1" ><a href="#"><span class="adv_down_btn">酒店订单状态说明</span></a></dd>
+                <dd class="chang adv_down_right2"><a href="#"><span class="adv_down_btn">酒店网上预订须知</span></a></dd>
+                <dd class="chang adv_down_right3"><a href="#"><span class="adv_down_btn">酒店预定常见问题</span></a></dd>
+                <dd class="chang adv_down_right4"><a href="#"><span class="adv_down_btn">酒店预订流程</span></a></dd>
+              </dl>
+          </div>
+      </div>
+
+    </div>
+
+    <div class="col-18 col-last">
+      <div class="col-18 hotel_main">
+        <div class="title col-18">
+          <h4><strong>热门酒店</strong></h4>
+          <span class="hot_more"><a class="btn default xs more" href="javascript:;" onClick="hotelForm.submit();">更多</a></span>
+          <div class="clear"></div>
+          <div class="title-bottom"></div>
+        </div>
+        <ul>
+          <volist name='hot_hotels' id='vo'>
+            <div class="clear"></div>
+            <div class="filter_list_main list"> <img src="{$vo.id|get_hotel_img=###,'p'}" style="width:150px;height:104px;"/>
+              <div class="list_content">
+                <div class="on"><a class="title" href="{:U('hotel_detailed',array('hotel'=>$vo['id']))}" target="_blank">{$vo.names}</a> </div>
+                <span class="special ellipsis" style="line-height:22px;"><small>HOT</small>{$vo.detail|f_html|msubstr=0,76}</span>
+                <p class="content_info"> 满意度：<span class="warning">{~echo($vo['total_points']/$vo['sum_people'])?($vo['total_points']/$vo['sum_people']):0}%</span> <span class="default">{$vo.sum_people}</span>人点评</p>
+              </span> </div>
+              <div class="content"> <span class="content_rmb">￥</span><span class="content_price">{$vo.price} </span>起
+                <div class="booked">访问量：{$vo.hits}次</div>
+                <div class="moreinfo">
+                  <div class="btn-more"><a href="{:U('hotel_detailed',array('hotel'=>$vo['id']))}" target="_blank">查看详情</a></div>
+                </div>
+              </div>
+            </div>
+          </volist>
+        </ul>
+      </div>
+
+      <div class="col-18 hotel_main">
+        <div class="title col-18">
+          <h4><strong>特价酒店</strong></h4>
+          <span class="hot_more"><a class="btn default xs more" href="javascript:;" onClick="hotelForm.submit();">更多</a></span>
+          <div class="clear"></div>
+          <div class="title-bottom"></div>
+        </div>
+        <ul class="preferential">
+          <volist name="price_hotels" id="vo">
+            <li><a href="{:U('hotel_detailed',array('hotel'=>$vo['id']))}" target="_blank"><img src="{$vo.id|get_hotel_img=###,'p'}" style="width:214px;height:140px;"/>
+              <div class="caption">{$vo.names}</div></a>
+              <div class="info">￥</span><span class="highlight">{$vo.price}</span>起</div>
+            </li>
+          </volist>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

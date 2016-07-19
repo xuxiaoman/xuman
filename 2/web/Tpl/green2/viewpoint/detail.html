@@ -1,0 +1,340 @@
+<link rel="stylesheet" href="../Public/css/view.css"/>
+<link rel="stylesheet" href="../Public/css/view_detail_1.css"/>
+<script type="text/javascript" src="../Public/js/view.js"></script>
+
+<script src="__ROOT__/Public/js/jquery.cityLink.js"></script>
+<script src="http://api.map.baidu.com/api?key=02b627b5ad5892889e9384d61d91bd08&v=1.1&services=true" type="text/javascript"></script>
+<script src="http://api.map.baidu.com/getscript?v=1.1&ak=&services=true&t=20130716024057" type="text/javascript"></script>
+<script src="__ROOT__/Public/js/baidu.js"></script>
+<style type="text/css">
+#l-map{	height:300px; width:600px;  display:block; border-radius:6px; border:1px solid #E9ECF1;text-align:center;}/*商家设置,LBS回复*/
+#l-map span.map-text{ display:block; margin-top:120px;}
+/*website*/
+.website-img{ height:100px;}
+.website-logo{ height:60px;}
+.website-slide{margin-bottom:0; height:100px;}
+.btn_medium{ padding: 0px 10px;font-size: 13px;line-height: 26px; height:28px;}
+.col03{ width:200px;}
+.help-block { margin-left:5px;color: rgb(141, 141, 141); text-align:left; }
+</style>
+
+<div class="wrapper w1200">
+ <div class="col-24 nav_nav">
+  <div class=" travel_main3"style="margin-top:10px;">
+    <div class=" travel_title alpha">
+      <h1 class="col-5 hot_route">{$viewpoint.names}</h1>
+    </div>
+    <div class="clear"></div>
+    <div class="att_font"><span class="font_brown">景区地址：{$viewpoint.view_address}</span><a href="javascript:void(0);" onclick="$('#transfer').trigger('click')"><img src="../Public/images/map_icon.jpg" width="13" height="13"/></a>
+        <div class="btn grey" ><span class="btn_css"><a href="javascript:;" id='add_coll' ><img src="../Public/images/btn_icon.png" width="17" height="16" align="absmiddle"/><if condition="$colls.status eq 0">收藏该景点<else />该景点已收藏</if></a></span>
+                        <input name="coll" id="coll" type="hidden" value="{:U('add_coll',array('id'=>$viewpoint['id']))}">
+</div>
+    </div>
+    <div class="clear"></div>
+    <div class="att_img">
+      <div class="att_img_left"><img src="__ROOT__{$show.picpath}" width="500" height="295" /></div>
+      <div class="att_img_right">
+        <div class="att_img_on">
+            <if condition="$grade eq null"><span class="xj1" style="font-size:30px;">尚未获得评分</span><else />
+          <div class="att_img_on_left"><span class="att_score">{$grade}</span><span>分</span></div>
+          <div class="att_img_on_right">{$stars}</div>
+          </if>
+        </div>
+        <div class="clear"></div>
+        <div class="att_img_down"><div class="float_left"> <span class="open_time"><strong>开放时间：</strong><samp>08:30-18:30</samp><br />
+                <strong>适宜人群：</strong><foreach  name="person_list" item="vo">{$vo}&nbsp;</foreach><br />
+          <strong>景区主题：</strong><foreach  name="type" item="vo">{$vo}&nbsp;</foreach><br />
+          <strong>取票方式：</strong>{$viewpoint.tickets_address}</span></div>
+            <div class="introduction_special"><span class="open_times"><strong>特色购物：</strong>{$viewpoint.special_shopping}</span></div> 
+            <div class="introduction_special"><span class="open_times"><strong>特色美食：</strong>{$viewpoint.special_food}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class=" price_list travel_main4" >
+    <table width="960px" class="table_list" style=" ">
+     <thead>
+      <tr>
+        <th>门票类型</th>
+        <th>景区原价</th>
+        <th>2人以上价</th>
+        <th>10人以上价</th>
+        <th>支付方式</th>
+        <th>操作</th>
+      </tr>
+     </thead>
+      <volist name="ticket" id="vo">
+      <tbody >
+      <tr>
+        <td><strong>{$vo.names}</strong></td>
+        <td class="yj">￥{$vo.price}</td>
+        <td class="xj1">￥{$vo.inner_price}</td>
+        <td class="xj2">￥{$vo.upon_price}</td>
+        <td>在线支付</td>
+        <td>
+            <div class="filter_check">
+            <input name="" type="submit" value="   立即预定   " class="btn warning active" onclick="location.href='{:U('viewpoint/order')}/id/{$vo.id}'">
+          </div>
+        </td>
+      </tr>
+      </tbody>
+      </volist>
+    </table>
+  </div>
+  <div class="clear"></div>
+  <span class="scroll_REF" style="height:0;">&nbsp;</span>
+  <div class=" col-24  page_content2 scroll_nav"style="width:1180px; z-index:99999;">
+    <ul>
+      <li class="title">景点介绍</li>
+      <li class="title">预订须知</li>
+      <li class="title">景点图片</li>
+      <!--<li class="title">景点视频</li>-->
+      <li class="title" id="transfer">交通地图</li>
+      <li class="title">景点点评</li>
+      <li class="title">景点咨询</li>
+    </ul>
+  </div>
+  <div class="clear"></div>
+
+  <div class="travel_main1">
+
+      <div class="travel_title alpha">
+          
+ <div style="width:100px;height:200px;float:left;padding-left:10px"><div class="ticket_info_style">
+        <h1 class="hot_route">景点介绍</h1><i class="detail_icon3"></i></div>
+</div>
+    </div>
+      <div class="features" style="float:left">
+      <div class="introduction_img">
+
+        <div class="introduction_img_on">  <span>{$viewpoint.view_info}</span>
+        </div>
+        <div class="clear"></div>
+        <!--<div class="introduction_img_down">
+            <volist name="pic" id="vo">
+          <div class="int_img_left"><img src="__ROOT__{$vo.picpath}" width="402" height="300" /> <span class="font_brown">{$vo.title}</span></div>
+          </volist>
+        </div>-->
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class=" travel_main1">
+    <div class="travel_title alpha" style="float:left">
+         <div style="width:100px;height:200px;float:left;padding-left:10px"><div class="ticket_info_style">
+        <h1 class="hot_route">预订须知</h1><i class="detail_icon1"></i></div></div>
+    </div>
+    <div class="features" style="float:left">
+      <div class="introduction_img">
+
+        <div class="introduction_img_on">  <span>{$viewpoint.view_info}</span>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <div class=" travel_main1">
+    <div class="travel_title alpha">
+        <div style="width:100px;height:200px;float:left;padding-left:10px"><div class="ticket_info_style">
+        <h1 class="hot_route">景点图片</h1><i class="detail_icon2"></i></div></div>
+    </div>
+    <div class="features" style="float:left">
+      <div class="att_img_int">
+        <ul>
+          <volist  name="pic" id="vo">
+              <li><a rel="Viewpoint" href="__ROOT__{$vo.picpath}"><img src="__ROOT__{$vo.picpath}" width="164" height="123" /></a></li>
+          </volist>
+        </ul>
+      </div>
+    </div>
+  </div>
+ 
+  <div class=" travel_main1">
+    <div class="travel_title alpha">
+        <div style="width:100px;height:200px;float:left;padding-left:10px"><div class="ticket_info_style">
+        <h1 class="hot_route">视频分享</h1><i class="detail_icon6"></i></div></div>
+    </div>
+    <div class="features" style="float:left">
+      <div class="att_img_int">
+        <ul>
+            <li><a href="http://v.ku6.com/show/09AMWYHDi4g6Irgpoh4cpA...html" target="_blank"><span class="crop" title="lol 安妮小鱼人火男视频 小智lol解说" target="_blank">
+<img class="img" style="" src="http://t2.baidu.com/it/u=631648175,3684227688&fm=20" alt="lol 安妮小鱼人火男视频 小智lol解说" onerror="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,1)" onload="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,0);">
+</span></a></li>
+          <li><a href="http://www.56.com/u88/v_MTAyMTc2MTcz.html" target="_blank"><span class="crop" title="lol 安妮小鱼人火男视频 小智lol解说" target="_blank">
+<img class="img" style="" src="http://t1.baidu.com/it/u=1670685292,3988762338&fm=20" alt="lol 安妮小鱼人火男视频 小智lol解说" onerror="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,1)" onload="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,0);">
+</span></a></li>
+          <li><a href="http://v.baidu.com/kan/AakV/AakD?fr=v.hao123.com/search" target="_blank"><span class="crop" title="lol 安妮小鱼人火男视频 小智lol解说" target="_blank">
+<img class="img" style="" src="http://t2.baidu.com/it/u=2264420695,1775295099&fm=20" alt="lol 安妮小鱼人火男视频 小智lol解说" onerror="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,1)" onload="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,0);">
+</span></a></li>
+          <li><a href="http://v.ku6.com/show/09AMWYHDi4g6Irgpoh4cpA...html" target="_blank"><span class="crop" title="lol 安妮小鱼人火男视频 小智lol解说" target="_blank">
+<img class="img" style="" src="http://t2.baidu.com/it/u=631648175,3684227688&fm=20" alt="lol 安妮小鱼人火男视频 小智lol解说" onerror="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,1)" onload="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,0);">
+</span></a></li>
+          <li><a href="http://v.ku6.com/show/09AMWYHDi4g6Irgpoh4cpA...html" target="_blank"><span class="crop" title="lol 安妮小鱼人火男视频 小智lol解说" target="_blank">
+<img class="img" style="" src="http://t2.baidu.com/it/u=631648175,3684227688&fm=20" alt="lol 安妮小鱼人火男视频 小智lol解说" onerror="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,1)" onload="V.dispatch("data.cacheImg.imgOnload",this,0,20,2,0);">
+</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>-->
+  <div class=" travel_main1">
+    <div class="travel_title alpha">
+        <div style="width:100px;height:200px;float:left;padding-left:10px"><div class="ticket_info_style">
+        <h1 class="hot_route">地图交通</h1><i class="detail_icon2"></i></div></div>
+    </div>
+      <div class="features" style="float:left;width:380px">
+       <div class="introduction_img">
+
+        <div class="introduction_img_on"style="width:380px">  <span>{$viewpoint.view_info}</span>
+        </div>
+        <div class="clear"></div>
+       </div>
+       
+     </div>
+      
+            <div class="controls" style="float:right;">
+                <div id="l-map" class="col06" style=" position: relative; z-index:-1">
+                    <i class="icon-spinner icon-spin icon-large"></i><span class="map-text">地图加载中...</span>
+                </div>
+                <div class="r-result">
+                    <input type="hidden" id="lng" name="location_x" value="{$viewpoint.location_x}" class="col01"/><input type="hidden" id="lat" name="location_y" value="{$viewpoint.location_y}" class="col01"/>
+                </div>
+
+            </div>
+  </div>
+  <div class="clear"></div>
+  <div class=" travel_main1">
+    <div class="travel_title alpha">
+      <div style="width:100px;height:200px;float:left;padding-left:10px"><div class="ticket_info_style">
+        <h1 class="hot_route">景点点评</h1><i class="detail_icon4"></i></div></div>
+    </div>
+    <div class="grade">
+      <div class="grade_left">
+        <div class="main"> <span>综合满意度</span> <span class="cent">{$impr_counts.avg_satisfaction|floatval}%</span> <span>{$impr_counts.tmp_count}人评价</span> </div>
+        <div class="cent_color">
+          <div class="twig">
+            <div class="twig_title">装饰：</div>
+            <div class="twig_right">
+                <div class="twig_right1" style="width:{$impr_counts['avg_decoration']}%;"></div>
+            </div>
+            <div class="twig_title_red">&nbsp;{$impr_counts.avg_decoration|floatval}分</div>
+          </div>
+          <div class="twig"> <span class="twig_title">特产：</span>
+            <div class="twig_right">
+                <div class="twig_right2" style="width:{$impr_counts['avg_goods']}%;"></div>
+            </div>
+            <div class="twig_title_red">&nbsp;{$impr_counts.avg_goods|floatval}分</div>
+          </div>
+          <div class="twig"> <span class="twig_title">交通：</span>
+            <div class="twig_right">
+                <div class="twig_right3" style="width:{$impr_counts['avg_traffic']}%;"></div>
+            </div>
+            <div class="twig_title_red">&nbsp;{$impr_counts.avg_traffic|floatval}分</div>
+          </div>
+          <div class="twig"> <span class="twig_title">住宿：</span>
+            <div class="twig_right">
+                <div class="twig_right4" style="width:{$impr_counts['avg_hygiene']}%;"></div>
+            </div>
+              <div class="twig_title_red">&nbsp;{$impr_counts.avg_hygiene|floatval}分</div>
+          </div>
+        </div>
+      </div>
+      <div class="grade_right">
+            <div class="filter_check">
+                <input name="publish" id="publish" url="{:U('./userviewpoint')}" type="button" value="   发表评论   " class="btn warning active">
+                <input name="consult" id="consult" type="hidden" value="{:U('consult',array('id'=>$viewpoint['id']))}">
+            </div>
+            <div class="btn_css_font"><span class="font_brown red"><strong>只有预定过此产品的用户才能参加点评!</strong></span></div>
+        </div>
+    </div>
+    <volist name="impr_lists" id="vo">
+    <div class="grade">
+      <div class="appraise">
+        <div class="appraise_left"> <span class="font_brown">装饰：<span class="font_red">{$vo.decoration|impr_detail}</span> 特产：<span class="font_red">{$vo.goods|impr_detail}</span> 交通：<span class="font_red">{$vo.traffic|impr_detail}</span> 卫生：<span class="font_red">{$vo.hygiene|impr_detail}</span> 满意度：<span class="font_red">{$vo.satisfaction|floatval}%</span> 点评奖金：<span class="font_red">{$vo.award_price|f_money}元</span></span><span class="appraise_right"></span></div>
+        <div class="appraise_right"> <span class="font_red">{$vo.user_id|get_user}<span class="font_brown">{$vo.publish_time|f_time}</span></span></div>
+      </div>
+      
+      <div class="appraise"> <span class="font_brown">{$vo.content}</span> </div>
+      <div class="impression">
+        <table width="100%" class="table_form">
+          <tr>
+            <th>客户印象：</th>
+            <td>{$vo.view_id|impr_list}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    </volist>
+  </div>
+  <div class=" travel_main1">
+    <div class="travel_title alpha">
+      <div style="width:100px;height:200px;float:left;padding-left:10px"><div class="ticket_info_style">
+        <h1 class="hot_route">客户咨询</h1><i class="detail_icon5"></i></div></div>
+    </div>
+    <div class="features" style="float:left; margin-left:18px;">
+      <empty name="viewpoint_que">
+            <span class="down">该产品暂无咨询信息！ </span>
+            <else/>
+            <span class="down">&nbsp;</span>
+     <volist name="viewpoint_que" id="que">
+      <div class="customer">
+        <div class="customer_on">
+          <div class="customer_on_1">
+            <div class="customer_on_left"><span class="font_blue"><img src="../Public/images/att_img_iocn.jpg" width="17" height="17" />&nbsp;咨询内容：{$que.question1}</span></div>
+            <div class="customer_on_right"><span class="font_red">{$que.user_id|get_user}&nbsp;<span class="font_brown">{$que.publish_time|f_time}</span></span></div>
+            <div class="customer_on_left"><span class="font_brown"><img src="../Public/images/att_img_iocn2.jpg" width="17" height="17" />&nbsp;客服回复：{$que.answer|default="请等待回复"}</span></div>
+          </div>
+        </div>
+      </div>
+         </volist>
+        </empty>
+      <div class="clear"></div>
+      <div class="doubt"><span class="down">您的问题？告诉我们您的疑惑，我们会在第一时间为您解答。</span></div>
+            <div class="doubt_main">
+                <form action="{:U('consult',array('id'=>$viewpoint['id']))}" ajax="true" class="check-form" method="post" id="consult">
+                    <table width="100%" class="table_form">
+                        <tr>
+                            <th>咨询内容:</th>
+                            <td>
+                                <textarea name="question1" id="textarea" datatype="*5-255" cols="55" rows="5" class="textarea" tip="请输入文本" nullmsg="请输入文本"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>验证码:</th>
+                            <td  style="height:40px;">
+                                <input type="text" class="txt verify" imgpath="{:U('Common/verify')}" ajaxUrl="{:U('validform')}" name="verify" datatype="n4-4" errmsg="请填写验证码"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <td ><input name="consult_submit" type="submit" value="提交咨询" class="btn warning active"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+    </div>
+  </div>
+ </div>
+</div>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
+</script> 
+<script type="text/javascript">
+    
+ $(function () {
+         $.fn.cityLink({
+            linkId: {
+                province: "province",
+                city: "city",
+                county: "area"
+            },
+            defaults: {
+                province: "{$province}",
+                city: "{$city}",
+                county: "{$area}"
+            }});
+            <if condition="$viewpoint.location_x neq ''">baidu_map({ lat: {$viewpoint.location_y},lng: {$viewpoint.location_x},adr: ""});<else />baidu_map();</if>
+
+});
+
+</script>

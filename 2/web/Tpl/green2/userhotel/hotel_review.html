@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../Public/css/user.css"/>
+<link rel="stylesheet" href="../Public/css/hotel.css"/>
+<div>
+  <div class="col-19 omega page_content one">
+  <div style="margin-top:12px;"></div>
+    <li>
+      <a href="{:U('hotel_review')}" class="col-3 title <eq name="status" value="2">on</eq> col-full">已审核点评</a>
+      <a href="{:U('hotel_review')}/status/1" class="col-3 <eq name="status" value="1">on</eq> title add">待审核点评</a>
+      <a href="{:U('hotel')}/status/3" class="col-3 title add">我要点评</a>
+    </li>
+    <volist name="imprs" id="vo">
+      <div class="col-18 alpha body">
+        <div class="content_main_right_massage-box">
+          <div class="title"><b>编号：</b>{$vo.orderid}<eq name="vo.status" value="1"><span style="color:#F33">（审核中）</span></eq></div>
+          <div class="title"><b>酒店/房间：</b>{$vo.hotel_name} / {$vo.room_name}</div>
+          <div class="title"><b>设备装潢：</b><span class="rev_font">{$vo.decoration}</span>&nbsp;；&nbsp;<b>交通位置：</b><span class="rev_font">{$vo.traffic}</span>&nbsp;；&nbsp;<b>卫生情况：</b><span class="rev_font">{$vo.hygiene}</span>&nbsp;；&nbsp;<b>性价比：</b><span class="rev_font">{$vo.prices}</span>&nbsp;；&nbsp;<b>满意度：</b><span class="rev_font">{$vo.points}%</span>
+            <eq name="vo.status" value="2">&nbsp;；&nbsp;<b>点评奖金：</b><span class="rev_font">{$vo.bonus_comm}元</span></eq>
+          </div>
+          <div class="title">{$vo.content}</div>
+          <div class="title"><b>印象：</b><span class="rev_font">{$vo.imprs}</span></div>
+        </div>
+      </div>
+    </volist>
+    <div class="clear"></div>
+    <div class="page">&nbsp;&nbsp;{$page}</div>
+  </div>
+</div>
+</div>

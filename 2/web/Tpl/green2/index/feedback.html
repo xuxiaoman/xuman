@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="../Public/css/register.css"/>
+<link rel="stylesheet" href="../Public/css/feedback.css"/>
+<div class="wrapper w1200">
+  <div class="col-24 content alpha">
+    <div class="content_top alpha">
+      <h1 class="col-10 content_top_font">意见反馈</h1>
+    </div>
+    <div class="clear"></div>
+    <div style="text-align:center">
+      <form action="{:U('feedback')}" method="post" name="myform" id="myform" class="check-form">
+        <table width="100%" border="0">
+          <thead>
+            <tr>
+              <td colspan="3">
+                <span>
+                	您的宝贵建议是我们前进的动力。
+                </span>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th width="400"><span>*</span>&nbsp;请填写您的意见或建议：</th>
+              <td width="300"><textarea name="content" id="content" datatype="*" nullmsg="请填写您的意见或建议" sucmsg=" " errmsg="请填写您的意见或建议"></textarea></td>
+              <td><div class="Validform_tipbox" for="content" style="margin:0;"></div></td>
+            </tr>
+            <tr>
+              <th>请填写您的邮箱地址：</th>
+              <td><input type="text" id="email" name="email"></td>
+              <td rowspan="3" valign="top">
+              </td>
+            </tr>
+            <tr>
+              <th>请填写您的QQ号码：</th>
+              <td><input type="text" id="qq" name="qq"></td>
+            </tr>
+            <tr>
+              <th>请填写您的联系电话：</th>
+              <td><input type="text" id="phone" name="phone"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><input name="sendout" id="sendout" type="submit" value="   提交   " class="btn green"></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

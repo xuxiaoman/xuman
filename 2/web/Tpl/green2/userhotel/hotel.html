@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="../Public/css/hotel.css"/>
+<script src="../Public/js/userhotel.js" type="text/javascript"></script>
+	<div class="col-19 omega page_content page_content_nav">
+   <div style="margin-top:12px;"></div>
+		<div>
+        	<ul class="side" style="width:890px;margin-left:14px">
+              <li>
+              	<a class="col-2 alpha title col-full <eq name='status' value=''>on</eq>" href="{:U('hotel')}">全部</a>
+              </li>
+              <li><a class="col-2 title <eq name='status' value='0'>on</eq>" href="{:U('hotel')}/status/0">待处理</a></li>
+              <li><a class="col-2 title <eq name='status' value='1'>on</eq>" href="{:U('hotel')}/status/1">待付款</a></li>
+              <li><a class="col-2 title <eq name='status' value='2'>on</eq>" href="{:U('hotel')}/status/2">已付款</a></li>
+              <li><a class="col-2 title <eq name='status' value='3'>on</eq>" href="{:U('hotel')}/status/3">已入住</a></li>
+              <li><a class="col-2 title <eq name='status' value='4'>on</eq>" href="{:U('hotel')}/status/4">已点评</a></li>
+              <li><a class="col-2 title <eq name='status' value='5'>on</eq>" href="{:U('hotel')}/status/5">已结束</a></li>
+              <li><a class="col-2 title <eq name='status' value='6'>on</eq>" href="{:U('hotel')}/status/6">已取消</a></li>
+              <li><a class="col-2 title <eq name='status' value='7'>on</eq>" href="{:U('hotel')}/status/7">撤单中</a></li>
+            </ul>
+            <div class="col-18 alpha body" style="margin-left:14px">
+            	<table width="100%" class="table_list">
+                	<tr>
+                      <th>编号</th>
+                      <th>酒店/房型</th>
+                      <th>入住时间</th>
+                      <th>总价格</th>
+                      <th>点评金额</th>
+                      <th>下单时间</th>
+                      <th>状态</th>
+                      <th>操作</th>
+                    </tr>
+                    <volist name="orders" id="vo">
+                    <tr>
+                      <td><a href="{:U('hotel_userorder')}/id/{$vo.order_id}">{$vo.order_id}</a></td>
+                      <td><a href="{:U('./hotel/hotel_detailed')}/hotel/{$vo.hotelid}">{$vo.hotelname}/{$vo.roomname}</a></td>
+                      <td>{$vo.come_date|date="Y-m-d",###}</td>
+                      <td>{$vo.all_money}元</td>
+                      <td>{$vo.bonus_comm}元</td>
+                      <td>{$vo.add_time|date="Y-m-d",###}<br />{$vo.add_time|date="H:i:s",###}</td>
+                      <td>
+                       <switch name="vo.status" >
+                         <case value="0">待处理</case>
+                         <case value="1">待付款</case>
+                         <case value="2">已付款</case>
+                         <case value="3">已入住</case>
+                         <case value="4">已点评</case>
+                         <case value="5">已结束</case>
+                         <case value="6">已取消</case>
+                         <case value="7">申请撤单中</case>
+                       </switch>
+                      </td>
+                      <td><a href="{:U('hotel_userorder')}/id/{$vo.order_id}">查看</a><switch name="vo.status">
+                      <case value="0">|<a href="javascript:;" class="change-status" url="{:U('order_control')}/status/6/id/{$vo.order_id}">撤销</a></case>
+                      <case value="1">|<a href="javascript:;" class="change-status" url="{:U('order_control')}/status/6/id/{$vo.order_id}">撤销</a>|<a href="{:U('hotel/hotel_pay')}/id/{$vo.order_id}">付款</a></case>
+                      <case value="2">|<a href="javascript:;" class="change-status" url="{:U('order_control')}/status/6/id/{$vo.order_id}">撤销</a></case>
+                      <case value="3">|<a href="{:U('order_control')}/status/4/id/{$vo.order_id}">点评</a></case>
+                      <case value="4">|<a href="{:U('hotel_review')}?order_id={$vo.order_id}">查看点评</a></case>
+                      <case value="5">|<a href="{:U('hotel_review')}?order_id={$vo.order_id}">查看点评</a></case>
+                      <case value="7">|<a href="javascript:;" class="change-status" url="{:U('order_control')}/status/auto/id/{$vo.order_id}">恢复</a></case>
+                      </switch>
+                      </td>
+                    </tr>
+                    </volist>
+                </table>
+                <div class="page">{$page}</div>
+            </div>
+        </div>
+    </div>
+

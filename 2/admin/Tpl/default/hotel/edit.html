@@ -1,0 +1,290 @@
+<script type="text/javascript" src="../Public/js/hotel.js?99"></script>
+<table cellspacing="0" cellpadding="0" class="t1">
+    <tbody><tr>
+            <th height="27" colspan="2" id="title">编辑酒店</th>
+        </tr>
+
+    </tbody>
+</table>
+<form action="__URL__/edit" id="myform" name="myform" enctype="multipart/form-data" method="post" onsubmit="return formcheck()">
+    <input type="hidden" id="id" name="id" value="{$id}">
+<table border="0" cellspacing="0" cellpadding="0" class="table_form" width="100%">
+<tr>
+    <th width="120"><span class="red">*</span>酒店名称：</th>
+    <td colspan="2">
+        <input name="names" type="text" class="txt" id="names" datatype="*" nullmsg="请填写酒店介绍" errmsg="请填写酒店介绍" sucmsg=" " value="{$objHotel.names}"/>
+    </td>
+</tr>
+<tr>
+    <th>所属品牌：</th>
+    <td colspan="2"><select id="sel_hotel_chain" name="sel_hotel_chain">
+                    <option value="0">请选择</option>
+                    <volist name="list_hotel_chain" id="vo">
+                        <option value="{$vo.id}" <if condition="$vo.id eq $objHotel['hotel_chain_id']"> selected="selected"</if>>{$vo.names}
+                    </volist>
+                </select></td>
+</tr>
+<tr>
+    <th><span class="red">*</span>酒店类型：</th>
+    <td colspan="2"><select id="sel_hotel_type" name="sel_hotel_type" class="txt" datatype="/^[^0]\d*$/" nullmsg="请选择酒店类型" errmsg="请选择酒店类型" sucmsg=" ">
+                    <volist name="list_hotel_type" id="vo">
+                        <option value="{$vo.id}" <if condition="$vo.id eq $objHotel['hotel_type_id']"> selected="selected"</if>>{$vo.names}
+                    </volist>
+                </select></td>
+</tr>
+<tr>
+    <th><span class="red">*</span>所属城市：</th>
+    <td colspan="2"><select id="sel_city_belong" name="sel_city_belong" postPath="../../ajax_area/id/{$id}" onchange="changearea(this)" class="txt" datatype="/^[^0]\d*$/" nullmsg="请选择所属城市" errmsg="请选择所属城市" sucmsg=" ">
+                    <option value="0">请选择</option>
+                    <volist name="list_city_belong" id="vo">
+                    <option value="{$vo.cid}" <if condition="$vo.cid eq $objHotel['city_id']"> selected="selected"</if>>{$vo.names}</option>
+                    </volist>
+                </select>
+        </span>
+
+    </td>
+</tr>
+<tr>
+    <th>所属地区：</th>
+    <td colspan="2" id="area_option" height="24">
+    <label id="a0"><select id="business_circle" name="business_circle" class="txt" selectid="{$selectid.business_circle}"></select></label>
+    <label id="a1"><select id="canton" name="canton" class="txt" selectid="{$selectid.canton}"></select></label>
+    <label id="a2"><select id="subway_lines" name="subway_lines" class="txt" selectid="{$selectid.subway_lines}"></select></label>
+    <label id="a3"><select id="station" name="station" class="txt" selectid="{$selectid.station}"></select></label>
+    <label id="a4"><select id="sightseeing_spots" name="sightseeing_spots" class="txt" selectid="{$selectid.sightseeing_spots}"></select></label>
+    <label id="a5"><select id="college" name="college" class="txt" selectid="{$selectid.college}"></select></label>
+    </td>
+</tr>
+<tr style="display:none;"><td></td>
+  <td colspan="2"><span id="msg_area" class="msg1"></span></td>
+</tr>
+<tr>
+    <th>视频地址：</th>
+    <td colspan="2"><input name="video" type="text" id="video" class="txt" value='{$objHotel.video}' /></td>
+</tr>
+<tr>
+    <th><span class="red">*</span>开业时间：</th>
+    <td colspan="2"><input name="open_time" type="text" id="open_time" value='{$objHotel.open_time|date="Y-m-d",###}' class="txt calender required date" datatype="*" nullmsg="请填写开业时间" errmsg="请填写开业时间" sucmsg=" " readonly="readonly" /></td>
+</tr>
+<tr>
+    <th>最近装修时间：</th>
+    <td colspan="2"><input name="fix_time" type="text" id="fix_time" value='{$objHotel.fix_time|date="Y-m-d",###}' class="txt calender required date" readonly="readonly" /></td>
+</tr>
+<tr>
+    <th><span class="red">*</span>酒店地址：</th>
+    <td colspan="2"><input name="address" type="text" id="address" class="txt" value='{$objHotel.address}' datatype="*" nullmsg="请填写酒店地址" errmsg="请填写酒店地址" sucmsg=" " /></td>
+</tr>
+<tr>
+    <th><span class="red">*</span>酒店联系方式：</th>
+    <td colspan="2"><input name="contact" type="text" id="contact" class="txt" value='{$objHotel.contact}' datatype="/(^[0-9]{7,11}$)|(^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$)/" nullmsg="请填写酒店联系方式" errmsg="请填写酒店格式错误" sucmsg=" " /></td>
+</tr>
+<tr>
+        <th>地点</th>
+        <td>
+        
+            <div class="controls">
+                <div class="input-append">
+			<input type="text"  class="col03" id="suggestId" placeholder="请输入关键字"> <button type="button" class="btn-primary btn btn_medium" id="positioning" >搜索</button> 
+                    <span class=" help-block">注意：准确位置请拖动地图标注!</span>
+                </div>
+                <div id="l-map" class="col06">
+                    <i class="icon-spinner icon-spin icon-large"></i><span class="map-text">地图加载中...</span>
+                </div>
+                <div id="r-result">
+                    <input type="text" id="lng" name="location_x" value="{$objHotel.location_x}" class="col01"/><input type="text" id="lat" name="location_y" value="{$objHotel.location_y}" class="col01"/>
+                </div>
+
+            </div>
+        
+        </td>
+        </tr>
+<tr>
+    <th><span class="red">*</span>酒店介绍：</th>
+    <td>
+        <textarea name="detail" cols="100" rows="22" id="detail" class="kind-text" datatype="*" nullmsg="请填写酒店介绍" errmsg="请填写酒店介绍" sucmsg=" " style="width:80%">{$objHotel.detail}</textarea>
+    </td>
+    <td width="150">&nbsp;</td>
+</tr>
+<tr>
+    <th><span class="red">*</span>交通指南：</th>
+    <td>
+        <textarea name="traffic_info" cols="100" rows="12" id="traffic_info" class="kind-text" datatype="*" nullmsg="请填写交通指南" errmsg="请填写交通指南" sucmsg=" " style="width:80%">{$objHotel.traffic_info}</textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th><span class="red">*</span>周围环境:</th>
+    <td><textarea name="around_info" cols="100" rows="12" id="around_info" class="kind-text" datatype="*" nullmsg="请填写周围环境" errmsg="请填写周围环境" sucmsg=" " style="width:80%">{$objHotel.around_info}</textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th><span class="red">*</span>位置距离:</th>
+    <td>
+        <textarea name="location" cols="100" rows="12" id="location" class="kind-text" datatype="*" nullmsg="请填写位置距离" errmsg="请填写位置距离" sucmsg=" " style="width:80%">{$objHotel.location}</textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th>酒店特别提示：</th>
+    <td>
+        <textarea name="tip" cols="100" rows="12" id="tip" class="kind-text"  style="width:80%">{$objHotel.tip}</textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th>附加服务：</th>
+    <td>
+        <textarea name="adds_service" cols="100" rows="12" id="adds_service" class="kind-text"  style="width:80%">{$objHotel.adds_service}</textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th>支持卡类：</th>
+    <td colspan="2">
+        <div>
+            <input id="paycart_all" class="allselect1" name="paycart_all" type="checkbox">
+            <label for="paycart_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div">
+            <ul><volist name="list_paycart" id="vo">
+                <li class="f_left"><input id="paycart_{$vo.id}" type="checkbox" name="paycart[]" value="{$vo.id}" class="sel_paycart"
+                                      <foreach name="arry_paycart" item="vo1">
+                                <if condition="$vo.id eq $vo1">checked="checked"</if>
+                            </foreach>
+                            >
+                        <label for="paycart_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label></li>
+            </volist></ul>
+        </div>
+    </td>
+</tr>
+<tr>
+    <th>特色服务：</th>
+    <td colspan="2">
+        <div>
+            <input id="special_service_all" class="allselect2" name="special_service_all" type="checkbox">
+            <label for="special_service_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div">
+           <ul><volist name="list_special_service" id="vo">
+                <li class="f_left"><input id="special_service_{$vo.id}" type="checkbox" name="special_service[]" value="{$vo.id}" class="sel_special_service"
+                                      <foreach name="arry_special_service" item="vo1">
+                                <if condition="$vo.id eq $vo1">checked="checked"</if>
+                            </foreach>
+                            >
+                        <label for="special_service_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label></li>
+            </volist></ul>
+        </div>
+    </td>
+</tr>
+<tr>
+    <th>服务项目：</th>
+    <td colspan="2">
+        <div>
+            <input id="service_item_all" class="allselect3" name="service_item_all" type="checkbox">
+            <label for="service_item_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div">
+            <ul><volist name="list_service_item" id="vo">
+                <li class="f_left"><input id="service_item_{$vo.id}" type="checkbox" name="service_item[]" value="{$vo.id}" class="sel_service_item"
+                                      <foreach name="arry_service_item" item="vo1">
+                                <if condition="$vo.id eq $vo1">checked="checked"</if>
+                            </foreach>
+                            >
+                        <label for="service_item_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label></li>
+            </volist></ul>
+        </div>
+    </td>
+</tr>
+<tr>
+    <th>餐饮服务：</th>
+    <td colspan="2">
+        <div>
+            <input id="service_dinner_all" class="allselect4" name="service_dinner_all" type="checkbox">
+            <label for="service_dinner_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div">
+           <ul><volist name="list_service_dinner" id="vo">
+                <li class="f_left"><input id="service_dinner_{$vo.id}" type="checkbox" name="service_dinner[]" value="{$vo.id}" class="sel_service_dinner"
+                                      <foreach name="arry_service_dinner" item="vo1">
+                                <if condition="$vo.id eq $vo1">checked="checked"</if>
+                            </foreach>
+                            >
+                        <label for="service_dinner_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label></li>
+            </volist></ul>
+        </div>
+    </td>
+</tr>
+<tr>
+    <th>休闲娱乐：</th>
+    <td colspan="2">
+        <div>
+            <input id="recreation_all" class="allselect5" name="recreation_all" type="checkbox">
+            <label for="recreation_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div">
+            <ul><volist name="list_recreation" id="vo">
+                <li class="f_left"><input id="recreation_{$vo.id}" type="checkbox" name="recreation[]" value="{$vo.id}" class="sel_recreation"
+                                      <foreach name="arry_recreation" item="vo1">
+                                <if condition="$vo.id eq $vo1">checked="checked"</if>
+                            </foreach>
+                            >
+                        <label for="recreation_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label></li>
+            </volist></ul>
+        </div>
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>房间设施：</th>
+    <td colspan="2">
+        <div style="height:14px;">
+          <span class="f_left">
+            <input id="room_facilitie_all" class="allselect6" name="room_facilitie_all" type="checkbox">
+            <label for="room_facilitie_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+          </span>
+          <span class="Validform_checktip f_left"></span>
+        </div>
+        <div class="edit_list_div">
+            <ul><volist name="list_room_facilitie" id="vo">
+                <li class="f_left"><input id="room_facilitie_{$vo.id}" type="checkbox" name="room_facilitie[]" value="{$vo.id}" class="sel_room_facilitie"
+                                      <foreach name="arry_room_facilitie" item="vo1">
+                                <if condition="$vo.id eq $vo1">checked="checked"</if>
+                            </foreach>
+                            datatype="*" nullmsg="请至少勾选一项房间设施" errmsg="请至少勾选一项房间设施" sucmsg=" " min="1">
+                        <label for="room_facilitie_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label></li>
+            </volist></ul>
+        </div>
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>状态：</th>
+    <td colspan="2"><select id="status" name="status" class="txt" datatype="*" nullmsg="请选择状态" errmsg="请选择状态" sucmsg=" ">
+      <option value="0" 
+      <if condition="$objHotel['status'] eq 0">selected="selected"</if>
+      >正常
+      
+      <option value="3" 
+      <if condition="$objHotel['status'] eq 3">selected="selected"</if>
+      >特价推荐
+      
+      <option value="4" 
+      <if condition="$objHotel['status'] eq 4">selected="selected"</if>
+      >热门推荐
+      
+      <option value="2" 
+      <if condition="$objHotel['status'] eq 2">selected="selected"</if>
+      >隐藏
+                
+    </select></td>
+</tr>
+<tr>
+    <th><span class="red">*</span>排序：</th>
+    <td colspan="2"><input name="sort" type="text" id="sort" value='{$objHotel.sort}' class="txt" datatype="n" nullmsg="请填写排序" errmsg="请填写数字" sucmsg=" " /><span id="red_sort" class="red"></span></td>
+</tr><tr><td height="50"></td></tr>
+</table>
+<div id="btnbox" class="btn">
+    <INPUT TYPE="submit" value=" 保 存 " name="save" class="button">
+    <input TYPE="reset" value=" 还 原 " name="rset" class="button">
+</div>
+</form>
+<include file="Public:footer"/>

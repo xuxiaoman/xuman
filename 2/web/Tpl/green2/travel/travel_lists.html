@@ -1,0 +1,225 @@
+<!--#names 路线筛选列表页 #-->
+<link rel="stylesheet" href="../Public/css/travel.css"/>
+
+<div class="wrapper w1200">
+    <div class="clear"></div>
+    <div class="col-6">
+        <div class="col-6 sidebar">
+            <div class="col-5 sidebar_title"><h5><strong>旅游主题</strong></h5></div>
+            <div class=" sidebar_main">
+                <div class="clear"></div>
+                <ul class="sidebar_nav">
+                    <volist name='line_topics' id="vo">
+                        <li><a href="{$base_url}?theme={$key}">{$vo}</a></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="col-6 sidebar">
+            <div class="col-6 sidebar_title ">
+                <h5><strong>热门线路点评</strong></h5>
+            </div>
+            <ul>
+                <volist name="line_comments" id="vo">
+                    <li class="hotel_search">
+                        <div class="hotel_comment" style=" padding-left:8px;">
+                    <span class=" font_brown1">
+                        <b><a href="{:U('travel/detail', array('id'=>$vo['line_id']))}">{$vo.names}</a></b>
+                    </span><br/>
+
+                            <div class=" font_brown1">{$vo.content}</div>
+                            <br/>
+                        </div>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col-18 filter filter_nav">
+        <div class="filter_on">
+            <div class="title"><h3>线路筛选</h3>
+
+                <div class="arrow_box"></div>
+            </div>
+            <div class="filter_on_main">
+                <div class="fontstyle">
+                    <span class="lable-keyword">出发城市</span>
+
+                    <div class="progress_slider">
+                        <form action="{:U('Common/handoff')}">
+                            <input name="cid" type="hidden" id="cid" value="{$currentCity.id}"/>
+                            <input type="text" size="28px" for-val="cid" id="cityName" class="inputText city-list-plugs" url="{:U('get_line_city')}" value=""/>
+                            <button type="submit" class="btn info sm">搜索</button>
+                        </form>
+                    </div>
+
+                </div>
+                <volist name="no_search" id="no_se">
+                    <notempty name="no_se">
+                        <div class="fontstyle">
+                 <span class="lable-keyword">
+                 {$titles[$key]}
+                 {~$no_search_key=$key}
+                 </span>
+                            <volist name="no_se" id="no_se_a">
+                                {~$params=array_merge($base_param,array($no_search_key=>$key))}
+                                <a href="{$base_url}?{$params|url_params}">{$no_se_a}</a>
+                            </volist>
+                        </div>
+                    </notempty>
+                </volist>
+                <div class="filter_prcie">
+                    <span class="lable-keyword">线路价格</span>
+
+                    <div class="progress_slider">
+                        <form action="">
+                            <volist name="search_lists.price" id="pri">
+                                {~$params=array_merge($base_param,array("price"=>$key))}
+                                <if condition="$search['price'] eq $key">
+                                    <a href="{$base_url}?{$params|url_params}" class="selected">{$pri}</a>
+                                    <else/>
+                                    <a href="{$base_url}?{$params|url_params}">{$pri}</a>
+                                </if>
+                            </volist>
+                            自定义：<input class="self_input" value="{$search_lists.min_price}" name="min_price" type="text"/>
+                            -
+                            <input type="text" class="self_input" name="max_price" value="{$search_lists.max_price}"/>
+                            <volist name="search" id="search_row">
+                                <input type="hidden" name="{$key}" value="{$search_row.0}"/>
+                            </volist>
+                            <button class="btn xs primary">确定</button>
+                        </form>
+                    </div>
+                </div>
+                <if condition="$search">
+                    <div class="clear"></div>
+                    <div class="box-select">
+                        <span class="lable-keyword" style="display: inline-block">已选条件</span>
+
+                        <div class="font_css_select">
+                            <volist name="search" id="search_row">
+                                <dl class="select_one">
+                                    <dt class="select_two">{$titles[$key]}:{$search_row[1]}</dt>
+                                    <dd class="select_three">
+                                        <?php $params=$base_param;
+                             if(isset($key)){
+                                unset($params[$key]);
+                             }
+                           ?>
+                                        <a href="{$base_url}?{$params|url_params}"><img src="../Public/images/sel.jpg" width="13" height="13"/></a>
+                                    </dd>
+                                </dl>
+                            </volist>
+                        </div>
+                    </div>
+                </if>
+            </div>
+            <div class="clear"></div>
+
+
+            <div class="filter_list">
+                <div class="title">
+                <span class="col-8 col-first filter_list_th">
+                    <a href="{$base_url}?{$base_param|url_params}&sort=price_desc">价格</a>&nbsp;
+                    <eq name="lists_sort" value="price_desc">
+                        <img src="../Public/images/arrow_blue.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$base_url}?{$base_param|url_params}&sort=price_asc">价格</a>&nbsp;
+                    <eq name="lists_sort" value="price_asc">
+                        <img src="../Public/images/arrow_blue2.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow2.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$base_url}?{$base_param|url_params}&sort=hits_desc">人气</a>&nbsp;
+                    <eq name="lists_sort" value="hits_desc">
+                        <img src="../Public/images/arrow_blue.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$base_url}?{$base_param|url_params}&sort=day_desc">天数</a>&nbsp;
+                    <eq name="lists_sort" value="day_desc">
+                        <img src="../Public/images/arrow_blue.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$base_url}?{$base_param|url_params}&sort=day_asc">天数</a>&nbsp;
+                    <eq name="lists_sort" value="day_asc">
+                        <img src="../Public/images/arrow_blue2.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow2.png"/>
+                    </eq>
+                </span>
+
+                    <div class=" push-7 col-3 col-last filter_list_icon">
+                        <img src="../Public/images/icon.png" width="18" height="14"/>&nbsp;<a href="##" id="t_list">列表</a>&nbsp;<img src="../Public/images/icon2.png" width="14" height="14"/>&nbsp;<a href="##" id="t_big">大图</a>
+                    </div>
+                </div>
+                <div class="show_list">
+                    <volist name="lists" id="vo">
+                        <div class="filter_list_main">
+                            <div class="photo">
+                                <img src="__ROOT__{$vo.line_id|get_titlepage='pic_path'}" width="120" height="76"/>
+                            </div>
+                            <div class="photo_font">
+                                <div class="on"><a href="{:U('detail',array('id'=>$vo['id']))}">{$vo.names} </a></div>
+                                <div class="down">出发日期：<span class="down_font">{$vo.line_id|get_tuan}</span><br/>
+                                    {$vo.line_id|get_special_info|f_html|msubstr=0,50}
+                                </div>
+
+                            </div>
+                            <div class="detail"><span class="detail_money">￥</span><span class="detail_on">{$vo.price_adult}</span>起
+                                <div class="fatalism"><span class="fatalism">行程天数：{$vo.trip_days}天</span></div>
+                                <div class="filter_check">
+                                    <a class="btn warning active" href="{:U('detail',array('id'=>$vo['id']))}">查看详情</a>
+                                </div>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="show_big" style="display: none">
+                    <volist name="lists" id="vo">
+                        <div class="filter_img">
+                            <div class="filter_photo">
+                                <img src="__ROOT__{$vo.line_id|get_titlepage='pic_path'}" width="365" height="248"/>
+                            </div>
+                            <div>
+                                <span class="filter_main"><a href="{:U('detail',array('id'=>$vo['id']))}">{$vo.names}</a></span>
+                            </div>
+                            <div class="filter_main_two">
+                                <div class="left"><span class="down">出发日期：{$vo.line_id|get_tuan}</span></div>
+                                <div class="right"><span class="detail_money">￥</span><span class="detail_on">{$vo.price_adult}</span>起
+                                </div>
+                            </div>
+                        </div>
+                    </volist>
+                </div>
+                <div class="clear"></div>
+                <div class="filter_page">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#t_big,#t_list").bind("click", function () {
+            var t_id = $(this).attr("id");
+            if (t_id == "t_big") {
+                $(".show_big").show();
+                $(".show_list").hide();
+            } else {
+                $(".show_list").show();
+                $(".show_big").hide()
+            }
+        });
+        $("body").height(parseInt($("body").height()) + 10);
+    })
+</script>

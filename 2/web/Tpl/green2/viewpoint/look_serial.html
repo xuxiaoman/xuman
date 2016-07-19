@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="../Public/css/hotel.css"/>
+<style type="text/css">
+body {
+	background-color:#F8F8EF;
+}
+</style>
+<div class="serial-list">
+<table border="0" width="100%">
+  <tr>
+    <th>代金券编号</th>
+    <th>面值（元）</th>
+    <th>创建时间</th>
+    <th>到期时间</th>
+    <th>是否有效</th>
+  </tr>
+  <tr>
+    <td>{$serial_info.look.serial_num}</td>
+    <td><neq name="serial_info.look.coupon_value" value="">{$serial_info.look.coupon_value}<else/>0</neq></td>
+    <td><neq name="serial_info.look.create_time" value="">{$serial_info.look.create_time|date="Y年m月d日 H:i:s", ###}<else/>-</neq></td>
+    <td><neq name="serial_info.look.expire_time" value="">{$serial_info.look.expire_time|date="Y年m月d日 H:i:s", ###}<else/>-</neq></td>
+    <td>
+      <if condition="(($serial_info['look']['status'] eq 0) AND ($serial_info['look']['expire_time'] egt time()))">
+        <span style="color:green;">是</span>
+      <else/>
+        <span style="color:red;">否</span>
+      </if></td>
+  </tr>
+</table>
+<div class="tip">我使用过的代金券：</div>
+<table border="0" width="100%">
+  <tr>
+    <th>代金券编号</th>
+    <th>面值（元）</th>
+    <th>创建时间</th>
+    <th>到期时间</th>
+    <th>使用时间</th>
+  </tr>
+  <volist name="serial_info.mine" id="vo">
+  <tr>
+    <td>{$vo.serial_num}</td>
+    <td>{$vo.coupon_value}</td>
+    <td>{$vo.create_time|date="Y-m-d", ###}</td>
+    <td>{$vo.expire_time|date="Y-m-d", ###}</td>
+    <td>{$vo.use_time|date="Y-m-d H:i:s", ###}</td>
+  </tr>
+  </volist>
+</table>
+</div>
+<div id="page">{$page}</div>

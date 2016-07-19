@@ -1,0 +1,215 @@
+<!--#names 路线筛选列表页 #-->
+<link rel="stylesheet" href="../Public/css/hotel_detailed.css"/>
+<link rel="stylesheet" href="../Public/css/view.css"/>
+
+<div class="wrapper w1200">
+  <div class="clear"></div>
+   <div class="col-6">
+      <div class="col-6 sidebar nav_adv">
+            <div class="col-6 sidebar_title">
+                <h5><strong>景点查询</strong></h5>
+            </div>
+           <div class="col-24 suffix_20 web_map"></div>
+           <div class="  alpha step_main_right_top" style="float:left;" >
+      <div class="clear"></div>
+      <div class=" side_form1">
+          <form action="{:U('filter')}">
+            <div class="side_form2">
+                <div class="form_nav">景点城市：<input type="text" size="28px" id="cityName" name="cityName"/></div>
+                <div class="form_nav" >景点名称：<input name="viewName" type="text" size="28px"/></div>
+                <div colspan="2" class="filter_check  btn_z" ><button class="btn info">景点查询</button></div>
+            </div>
+          </form>
+        </div>
+      <div class="col-6 ticket_query_font">
+      
+      </div>
+    </div>
+    
+      </div>
+        <div class="clear"></div>
+        <div class="clear"></div>
+        <div class="col-6 sidebar nav_adv" style="padding-bottom:40px;">
+            <div class="col-6 sidebar_title " style="height:25px;">
+                <h5><strong>热销订单推荐</strong></h5>
+            </div>
+            <volist name="hotest_targets" id="vo" key="k">
+                <ul class="col-6 sidebar_hot">
+                    <li class="hotlist-widget">
+                        
+                        <div class="hotlist-widget-context" style="text-align: left;width:200px;">
+                            <a class="hotlist-widget-title" href="{:U('order',array('id'=>$vo['id']))}" >{$vo.names|f_html|msubstr=0,6}</a>
+
+                            <div class="hotlist-widget-info" style="float:right">￥{$vo.price}元起</div>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </volist>
+        </div>
+  </div>
+
+
+  <div class="col-18 filter filter_nav">
+    <div class="filter_on">
+      <div class="title"> <h3>景点筛选</h3><div class="arrow_box"></div></div>
+     <div class="filter_on_main">
+         <div class="fontstyle">
+             <span class="lable-keyword">景点城市</span> <a href="{:U('filter')}?cityName=北京">北京</a><a href="{:U('filter')}?cityName=上海">上海</a><a href="{:U('filter')}?cityName=广州">广州</a><a href="{:U('filter')}?cityName=深圳">深圳</a><a href="{:U('filter')}?cityName=天津">天津</a><a href="{:U('filter')}?cityName=南京">南京</a><a href="{:U('filter')}?cityName=杭州">杭州</a><a href="{:U('filter')}?cityName=南宁">南宁</a>
+         </div>
+          <volist name="no_search" id="no_se">
+             <notempty name="no_se">
+             <div class="fontstyle">
+                 <span class="lable-keyword">
+                 {$titles[$key]}
+                 {~$no_search_key=$key}
+                 </span>
+                 <volist name="no_se" id="no_se_a">
+                     {~$params=array_merge($base_param,array($no_search_key=>$key))}
+                     <a href="{$base_url}?{$params|url_params}">{$no_se_a}</a>
+                 </volist>
+             </div>
+             </notempty>
+         </volist>
+      <div class="filter_prcie">
+         <span class="lable-keyword">景点价格</span>
+         <div class="progress_slider">
+             <form action="">
+                     <volist name="search_lists.price" id="pri">
+                         {~$params=array_merge($base_param,array("price"=>$key))}
+                         <if condition="$search['price'] eq $key">
+                             <a href="{$base_url}?{$params|url_params}" class="selected">{$pri}</a>
+                             <else/>
+                             <a href="{$base_url}?{$params|url_params}">{$pri}</a>
+                         </if>
+                     </volist>
+                     自定义：<input class="self_input" value="{$search_lists.min_price}" name="min_price" type="text" />
+                     -
+                     <input type="text" class="self_input" name="max_price" value="{$search_lists.max_price}"/>
+                    <volist name="search" id="search_row">
+                     <input type="hidden" name="{$key}" value="{$search_row.0}"/>
+                     </volist>
+                     <button class="btn xs primary">确定</button>
+             </form>
+          </div>
+       </div>
+         <if condition="$search">
+             <div class="clear"></div>
+             <div class="box-select">
+                 <span class="lable-keyword" style="display: inline-block">已选条件</span>
+                 <div class="font_css_select">
+                     <volist name="search" id="search">
+                     <dl class="select_one">
+                         <dt class="select_two">{$titles[$key]}:{$search[1]}</dt>
+                         <dd class="select_three">
+                             <?php $params=$base_param;
+                             if(isset($key)){
+                                unset($params[$key]);
+                             }
+                           ?>
+                             <a href="{$base_url}?{$params|url_params}"><img src="../Public/images/sel.jpg" width="13" height="13"/></a>
+                         </dd>
+                     </dl>
+                     </volist>
+                 </div>
+             </div>
+         </if>
+              </div>
+     <div class="clear"></div>
+
+
+        <div class="filter_list">
+            <div class="title">
+                <span class="col-8 col-first filter_list_th">
+                    <a href="{$base_url}?{$base_param|url_params}&sort=price_desc">价格</a>&nbsp;
+                    <eq name="lists_sort" value="price_desc">
+                        <img src="../Public/images/arrow_blue.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$base_url}?{$base_param|url_params}&sort=price_asc">价格</a>&nbsp;
+                    <eq name="lists_sort" value="price_asc">
+                        <img src="../Public/images/arrow_blue2.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow2.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$base_url}?{$base_param|url_params}&sort=hits_desc">人气</a>&nbsp;
+                    <eq name="lists_sort" value="hits_desc">
+                        <img src="../Public/images/arrow_blue.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$base_url}?{$base_param|url_params}&sort=num_desc">销量</a>&nbsp;
+                    <eq name="lists_sort" value="day_desc">
+                        <img src="../Public/images/arrow_blue.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow.png"/>
+                    </eq>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{$base_url}?{$base_param|url_params}&sort=num_asc">销量</a>&nbsp;
+                    <eq name="lists_sort" value="day_asc">
+                        <img src="../Public/images/arrow_blue2.png"/>
+                        <else/>
+                        <img src="../Public/images/arrow2.png"/>
+                    </eq>
+                </span>
+                <div class=" push-7 col-3 col-last filter_list_icon">
+                    <img src="../Public/images/icon.png" width="18" height="14"/>&nbsp;<a href="##" id="t_list">列表</a>&nbsp;<img src="../Public/images/icon2.png" width="14" height="14"/>&nbsp;<a href="##" id="t_big">大图</a>
+                </div>
+            </div>
+    <div class="show_list">
+      <volist name="lists" id="vo">
+      <div class="filter_list_main">
+        <div class="photo"><img src="__ROOT__{$vo.pic_path}" width="120" height="76" /></div>
+        <div class="photo_font">
+          <div class="on"><a href="{:U('detail',array('id'=>$vo['id']))}">{$vo.names} </a></div>
+          <div class="down">景点主题：<span class="down_font">{$vo.type_name}</span><br />
+              {$vo.view_info|f_html|msubstr=0,50}</div>
+
+        </div>
+        <div class="detail"> <span class="detail_money">￥</span><span class="detail_on">{$vo.price}</span>起
+          <div class="fatalism"> <span class="fatalism">售票地址：{$vo.tickets_address}</span> </div>
+          <div class="filter_check">
+            <a class="btn warning active" href="{:U('detail',array('id'=>$vo['id']))}">查看详情</a>
+          </div>
+        </div>
+      </div>
+      </volist>
+    </div>
+    <div class="show_big" style="display: none">
+          <volist name="lists" id="vo">
+        <div class="filter_img">
+          <div class="filter_photo"><img src="__ROOT__{$vo.pic_path}" width="365" height="248" /></div>
+          <div> <span class="filter_main"><a href="{:U('detail',array('id'=>$vo['id']))}">{$vo.names}</a></span> </div>
+          <div class="filter_main_two">
+            <div class="left"> <span class="down">景点主题：{$vo.type_name}</span> </div>
+            <div class="right"> <span class="detail_money">￥</span><span class="detail_on">{$vo.price}</span>起 </div>
+          </div>
+        </div>
+          </volist>
+    </div>
+            <div class="clear"></div>
+    <div class="filter_page">{$page}</div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){ 
+        $("#t_big,#t_list").bind("click",function(){
+            var t_id=$(this).attr("id");
+            if(t_id=="t_big"){
+                $(".show_big").show();
+                $(".show_list").hide();
+            }else{
+                $(".show_list").show();
+                $(".show_big").hide()
+            }
+        });
+		  $("body").height(parseInt($("body").height())+10);
+    })
+</script>

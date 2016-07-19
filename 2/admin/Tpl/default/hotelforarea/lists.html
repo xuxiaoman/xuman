@@ -1,0 +1,142 @@
+<div id="nav" class="mainnav_title">
+  <ul>
+    <a class="on" href="{:U('lists')}">城市列表</a>
+  </ul>
+</div>
+<table width="100%">
+  <tr>
+  	 <td height="30">
+      <div style="float:right;">&nbsp;每个城市类别中最多展示 <select name="list_count" id="list_count" style="text-align:center">
+        <option value="3" <eq name="list_count" value="3">selected="selected"</eq>>3</option>
+        <option value="5" <eq name="list_count" value="5">selected="selected"</eq>>5</option>
+        <option value="7" <eq name="list_count" value="7">selected="selected"</eq>>7</option>
+        <option value="8" <eq name="list_count" value="8">selected="selected"</eq>>8</option>
+        <option value="10" <eq name="list_count" value="10">selected="selected"</eq>>10</option>
+        <option value="12" <eq name="list_count" value="12">selected="selected"</eq>>12</option>
+        <option value="14" <eq name="list_count" value="14">selected="selected"</eq>>14</option>
+        <option value="16" <eq name="list_count" value="16">selected="selected"</eq>>16</option>
+        </select>
+      家酒店</div>
+      
+      <div style="float:right;">频道页面中最多展示 <select name="city_count" id="city_count" style="text-align:center">
+        <option value="3" <eq name="city_count" value="3">selected="selected"</eq>>3</option>
+        <option value="5" <eq name="city_count" value="5">selected="selected"</eq>>5</option>
+        <option value="7" <eq name="city_count" value="7">selected="selected"</eq>>7</option>
+        <option value="8" <eq name="city_count" value="8">selected="selected"</eq>>8</option>
+        <option value="10" <eq name="city_count" value="10">selected="selected"</eq>>10</option>
+        </select>
+      个城市类别&nbsp;|</div>
+    </td>
+  </tr>
+</table>
+<form name="myform" id="myform" action="" method="post">
+  <div class="table-list">
+    <table cellspacing="0" cellpadding="0" width="100%">
+      <thead>
+        <tr>
+          <th width="135"><a href="javascript:void(0);" onclick="sel_all();">全选</a></th>
+          <th>城市</th>
+          <th>酒店总数</th>
+          <th>在频道页中显示酒店列表</th>
+        </tr>
+      </thead>
+      <tbody>
+        <volist name="list" id="vo">
+          <tr class="ulbc" id="tr_{$vo.id}">
+            <td style="text-align:center;"><input type="checkbox" class="sel" id="sel_{$vo.id}" value="{$vo.id}" name="items[{$vo.id}]" /></td>
+            <td style="text-align: center;">{$vo.names}</td>
+            <td style="text-align: center;">{$vo.hotelcount} 家</td>
+            <td align="center">
+              <eq name="vo.isshow" value="1">
+                 <span style="color:#0C0">显示中</span>&nbsp;|
+                 <a href="javascript:void(0);" onclick="showornot({$vo.id},0)">设为不显示</a>
+              <else/>
+                 <span style="color:#F00;">不显示</span>&nbsp;|
+                 <a href="javascript:void(0);" onclick="showornot({$vo.id},1)">设为显示</a>
+              </eq>
+            </td>
+          </tr>
+        </volist>
+      </tbody>
+    </table>
+  </div>
+</form>
+<script language="javascript">
+	
+	function sel_all(){
+        $('input.sel').each(function(index){
+            if($(this).attr('checked')){
+                $(this).removeAttr('checked');
+            }else{
+                $(this).attr('checked', 'checked');
+            }
+        });
+    }
+	 
+	 $("#list_count").bind("change", function(){
+		 $.post(
+		 	"{:U(set_ListCount)}",
+			{data:$(this).val()},
+			function(msg){
+				if(msg == true){
+					art.dialog.alert("设置成功!");
+				}
+			},
+			"json"
+		 );
+	 });
+	 
+	 function showornot(id, value){
+		 $.post(
+		 	"{:U(showornot)}",
+			{cid:id,isshow:value},
+			function(msg){
+				if(msg==true){
+					location.reload();
+				}else{
+					art.dialog.alert("设置失败，城市类别位置已满!!");
+				}
+			},
+			"json"
+		 );
+	 }
+	 
+	 $("#list_count").bind("change", function(){
+		 $.post(
+		 	"{:U(set_ListCount)}",
+			{data:$(this).val(), type:"HOTEL_CHListCount"},
+			function(msg){
+				if(msg == true){
+					art.dialog.alert("设置成功!");
+				}
+				else if(msg == "reload"){
+					location.reload();
+				}
+				else{
+					art.dialog.alert("设置失败!");
+				}
+			},
+			"json"
+		 );
+	 });
+	 
+	 $("#city_count").bind("change", function(){
+		 $.post(
+		 	"{:U(set_ListCount)}",
+			{data:$(this).val(), type:"HOTEL_CListCount"},
+			function(msg){
+				if(msg == true){
+					art.dialog.alert("设置成功!");
+				}
+				else if(msg == "reload"){
+					location.reload();
+				}
+				else{
+					art.dialog.alert("设置失败!");
+				}
+			},
+			"json"
+		 );
+	 });
+</script>
+<div class="page" id="p">{$page}</div>

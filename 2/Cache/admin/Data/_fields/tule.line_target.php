@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'id', 1 => 'start_id', 2 => 'type_id', 3 => 'area_id', 4 => 'travel_num', 5 => 'classify', 6 => 'sort', '_autoinc' => true, '_pk' => 'id', '_type' => array ( 'id' => 'int(11)', 'start_id' => 'int(11)', 'type_id' => 'int(11)', 'area_id' => 'int(11)', 'travel_num' => 'int(11)', 'classify' => 'int(11)', 'sort' => 'int(11)', ), );?>

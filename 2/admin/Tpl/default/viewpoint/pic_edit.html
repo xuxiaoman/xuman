@@ -1,0 +1,30 @@
+<div id="nav" class="mainnav_title">
+    <ul>
+      <a class="on" href="{:U('pic_edit')}/id/{$id}">编辑景点图片</a>
+    </ul>
+</div>
+
+<form action="__URL__/pic_edit" enctype="multipart/form-data" method="post" onSubmit="return formcheck();">
+    <input type="hidden" id="id" name="id" value="{$id}">    
+    <table border="0" cellspacing="0" cellpadding="0" class="table_form" width="580">
+        <tr>
+            <th width="86"><span class="red">*</span>名称&nbsp;</th>
+        <td><span class="f_left">
+        <input type="text" name="names" id="names" value="{$objViewpointPic.title}" class="txt" datatype="*" nullmsg="请填写图片名称" errmsg="请填写图片名称" sucmsg=" " />
+        </span><span id="msg_names" class="msg1 f_left"></span>
+         </td>
+        </tr>
+        <tr>
+            <th width="86">设为封面图片</th>
+        <td><span class="f_left">
+        <input name="istitlepage" type="radio" value="1"<if condition="$objViewpointPic.istitlepage eq 1">checked="checked"</if> />开启
+        <input name="istitlepage" type="radio" value="0"<if condition="$objViewpointPic.istitlepage eq 0">checked="checked"</if> />取消
+        </span><span class="Validform_checktip f_left"></span>
+        </tr>
+    </table>
+    <div id="btnbox" class="btn">
+        <INPUT TYPE="submit" value=" 保 存 " name="save" class="button">
+        <input TYPE="reset" value=" 重 置 " class="button">
+    </div>
+</form>
+<include file="Public:footer" />

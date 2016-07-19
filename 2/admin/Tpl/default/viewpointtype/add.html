@@ -1,0 +1,50 @@
+<div id="nav" class="mainnav_title">
+  <ul>
+   <a class="on" href="{:U('add')}?types={$types}">添加景点类型</a>
+  </ul>
+</div>
+<form action="{:U('add')}" enctype="multipart/form-data" method="post" onSubmit="return formcheck();" id="add_form">
+	<input type="hidden" name="types" value="{$types}" />
+    <table border="0" cellspacing="0" cellpadding="0" class="table_form" width="420">
+        <tr>
+            <th width="90"><span class="red">*</span>名称</th>
+            <td><label>
+                    <input type="text" name="names" id="names" class="txt" datatype="*" nullmsg="请填写景点类型" errmsg="请填写景点类型" sucmsg=" " />
+                </label><span id="msg_names" class="red"></span></td>
+        </tr>
+        <tr>
+            <th><span class="red">*</span>排序</th>
+            <td><label>
+                    <input name="sort" type="text" id="sort" value='' class="txt" datatype="n" nullmsg="请填写排序" errmsg="请填写排序" sucmsg=" " />
+                </label>
+            </td>
+        </tr>
+    </table>
+    <div id="btnbox" class="btn">
+        <INPUT TYPE="submit" value=" 添 加 " name="save" class="button">
+        <input TYPE="reset"  value=" 重 置 " class="button">
+    </div>
+</form>
+<script type="text/javascript">$(function () {
+    $("#upload2").jUpload({
+        trigger_id: "jtrigger",
+        queueID:"queueID"
+    });
+})
+	function formcheck()
+    {
+
+        if($.trim($("#names").val())=='')
+        {
+            $("#msg_names").html("请填写名称");
+            $("#names").focus();
+            return false;
+        }
+        if($.trim($("#sort").val())=='')
+        {
+            $("#msg_sort").html("请填写排序");
+            $("#sort").focus();
+            return false;
+        }
+    }
+</script>

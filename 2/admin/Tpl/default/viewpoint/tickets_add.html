@@ -1,0 +1,106 @@
+<table cellspacing="0" cellpadding="0" class="t1">
+    <tbody>
+        <tr>
+            <th height="20" colspan="2" id="title">您当前位置：<a target="_top" href="{:U('index/index')}">首页</a> >
+                <a href="{:U('viewpoint/show_list')}">景点管理</a> > <a href="__URL__/tickets_list/viewpoint_id/{$viewpoint_id}">门票管理</a> > 添加门票({$names})</th>
+        </tr>
+    </tbody></table>
+<div id="nav" class="mainnav_title">
+    <ul>
+      <a class="on" href="{:U('tickets_add')}/viewpoint_id/{$viewpoint_id}">添加门票</a>
+    </ul>
+</div>
+<form action="__URL__/tickets_add" class="validate"  validateinfo="parent:td" enctype="multipart/form-data" method="post" onSubmit="return formcheck();">
+	<table border="0" cellspacing="0" cellpadding="0" class="table_form" width="100%">
+        <tr>
+            <th width="120"><span class="red">*</span>门票名称：</th>
+            <td>
+                <input type="hidden" id="viewpoint_id" name="viewpoint_id" value="{$viewpoint_id}">
+                <input type="text" name="names" id="names" class="txt" datatype="*" nullmsg="请填写门票名称" errmsg="请填写门票名称" sucmsg=" " /> 
+            </td>
+        </tr>
+        <tr name="seo">
+            <th height="30"><span class="red">*</span>处理方式：</th>
+            <td><span id="L_OfferedProperties">
+                    <input id="deal_type1" type="radio" name="deal_type" value="1" checked="checked" />
+                    <label for="deal_type1">人工处理</label>　
+                    <input id="deal_type2" type="radio" name="deal_type" value="2" />
+                    <label for="deal_type2">自动处理</label>
+                    <label>注："人工处理"订单提交后需经后台审核方可在线支付,"自动处理"订单提交后可直接支付，无需后台审核设置</label>
+            </td>
+        </tr>
+        <tr name="seo" style="display:none;">
+            <th>门票定金：</th>
+            <td>
+            <input name="video" type="text" id="video" value='100' class="txt" datatype="numrange" nullmsg="请填写定金" errmsg="请填数字" min="0" max="100" sucmsg=" "/>
+                <label class="msg_span">% 注："0"为前台支付，"100"为全额支付，定金支付请填写相应百份比数字</label>            </td>
+        </tr>
+        <tr name="seo">
+            <th>点评奖：</th>
+            <td>
+              <input name="review_bonus" type="text" class="txt" id="review_bonus" datatype="/^([0-9]*)(\\.)?([0-9]{0,2})$/" errmsg="请填数字" sucmsg=" " value='' />
+                <span class="msg_span">元</span>
+            </td>
+        </tr>
+        <tr>
+            <th>票面价：</th>
+            <td>
+            <input name="price" type="text" id="price" class="txt" value='' datatype="/^([0-9]*)(\\.)?([0-9]{0,2})$/" errmsg="请填数字" sucmsg=" " />
+                <span class="msg_span">元/张</span></td>
+        </tr>
+        <tr>
+            <th>1-9人优惠价格：</th>
+            <td>
+                <input name="inner_price" type="text" datatype="/^([0-9]*)(\\.)?([0-9]{0,2})$/" errmsg="请填数字" sucmsg=" " id="inner_price" class="txt" value='' />
+                <span class="msg_span">元/张</span>
+            </td>
+        </tr>
+        <tr>
+            <th>10人以上优惠价格：</th>
+            <td>
+                <input name="upon_price" type="text" datatype="/^([0-9]*)(\\.)?([0-9]{0,2})$/" errmsg="请填数字" sucmsg=" " id="upon_price" class="txt" value='' />
+                <span class="msg_span">元/张</span>
+            </td>
+        </tr>
+        <tr>
+            <th>可使用奖金：</th>
+            <td>
+               <input name="award_price" type="text" id="award_price" datatype="/^([0-9]*)(\\.)?([0-9]{0,2})$/" errmsg="请填数字" sucmsg=" " class="txt" value='' />
+                <span class="msg_span">元/张</span>
+            </td>
+        </tr>
+        <tr>
+            <th>日期限制：</th>
+            <td><span class="f_left"><input name="begin_time" id="begin_time" type="text" class="txt calender required date" datatype="date,elt" elt="#end_time" nullmsg="请填日期限制" errmsg="开始日期必须小于结束日期" sucmsg=" " /></span><span class="f_left" style="padding:12px 5px 0 2px;">到</span>
+              <span class="f_left"><input name="end_time" id="end_time" type="text" class="txt calender required date" datatype="date,egt" nullmsg="请填日期限制" errmsg="请填日期限制" egt="#begin_time" sucmsg=" " /></span>
+              <span class="Validform_checktip f_left" for="begin_time"></span>
+              <span class="Validform_checktip f_left" for="end_time"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>特殊价：</th>
+          <td>
+          <input name="special_money" type="text" id="special_money" class="txt" datatype="/^([0-9]*)(\\.)?([0-9]{0,2})$/" errmsg="请填数字" sucmsg=" " />
+          <span class="msg_span">元/张</span>
+          </td>
+        </tr>
+        <tr>
+            <th height="30"><span class="red">*</span>状态：</th>
+            <td>
+              <label for="tatus">隐藏</label>
+              <input name="tatus" id="tatus" type="checkbox" value="0"/></td>
+        </tr>
+        <tr>
+            <th height="30"><span class="red">*</span>排序：</th>
+            <td>
+              <input name="sort" type="text" class="txt" datatype="n" nullmsg="请填写排序" errmsg="请填写排序" sucmsg=" " id="sort" value='50' />
+            </td>
+        </tr>
+    </table>
+    <div id="btnbox" class="btn">
+        <INPUT TYPE="submit" name="submit"  value=" 保 存 " class="button" >
+        <input TYPE="reset"  value=" 重 置 " class="button">
+    </div>
+    
+    
+</form>

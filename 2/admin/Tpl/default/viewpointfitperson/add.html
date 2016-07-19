@@ -1,0 +1,29 @@
+<div id="nav" class="mainnav_title">
+  <ul>
+   <a class="on" href="{:U('add')}?types={$types}">添加适宜人群</a>
+  </ul>
+</div>
+
+<form action="{:U('add')}" enctype="multipart/form-data" method="post" onSubmit="return formcheck();">
+    <input type="hidden" name="types" value="{$types}" />
+    <table border="0" cellspacing="0" cellpadding="0" class="table_form" width="420">
+        <tr>
+            <th width="90"><span class="red">*</span>名称</th>
+            <td><label>
+                    <input type="text" name="names" id="names" class="txt" datatype="*" nullmsg="请填写适宜人群" errmsg="请填写适宜人群" sucmsg=" " />
+                </label></td>
+        </tr>
+        <tr>
+            <th><span class="red">*</span>排序</th>
+            <td><label>
+                    <input name="sort" type="text" id="sort" value='' class="txt" datatype="n" nullmsg="请填写排序" errmsg="请填写排序" sucmsg=" " />
+                </label>
+             </td>
+        </tr>
+    </table>
+    <div id="btnbox" class="btn">
+        <INPUT TYPE="submit" value=" 添 加 " name="save" class="button">
+        <input TYPE="reset"  value=" 重 置 " class="button">
+    </div>
+</form>
+<include file="Public:footer" />

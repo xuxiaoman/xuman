@@ -1,0 +1,294 @@
+<script type="text/javascript" src="../Public/js/hotel.js?1232"></script>
+<div id="nav" class="mainnav_title">
+    <ul>
+        <a href="{:U('show_list')}">酒店列表</a> |
+        <a class="on" href="{:U('add')}">添加酒店</a>
+    </ul>
+</div>
+<form action="{:U('add')}" name="myform" id="myform" enctype="multipart/form-data" method="post">
+<table border="0" cellspacing="0" cellpadding="0" class="table_form select" width="100%">
+<tr>
+    <th width="128"><span class="red">*</span>酒店名称：</th>
+    <td colspan="2">
+        <input type="text" name="names" id="names" class="txt" datatype="*" nullmsg="请填写酒店名称" errmsg="请填写酒店名称" sucmsg=" " />
+    </td>
+</tr>
+<tr>
+    <th>所属品牌：</th>
+    <td colspan="2">
+        <select id="sel_hotel_chain" class="txt" name="sel_hotel_chain">
+            <option value="0">请选择</option>
+            <volist name="list_hotel_chain" id="vo">
+                <option value="{$vo.id}">{$vo.names}</option>
+            </volist>
+        </select>
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>酒店类型：</th>
+    <td colspan="2"><select id="sel_hotel_type" name="sel_hotel_type" class="txt" datatype="/^[^0]\d*$/" nullmsg="请选择酒店类型" errmsg="请选择酒店类型" sucmsg=" ">
+        <volist name="list_hotel_type" id="vo">
+            <option value="{$vo.id}">{$vo.names}</option>
+        </volist>
+    </select>
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>所属城市：</th>
+    <td colspan="2"><select id="sel_city_belong" name="sel_city_belong" postPath="../hotel/ajax_area" class="txt" datatype="/^[^0]\d*$/" nullmsg="请选择所属城市" errmsg="请选择所属城市" sucmsg=" ">
+        <option value="0">请选择</option>
+        <volist name="list_city_belong" id="vo">
+            <option value="{$vo.cid}">{$vo.names}</option>
+        </volist>
+    </select>
+        </span>
+
+    </td>
+</tr>
+<tr>
+    <th>所属地区：</th>
+    <td colspan="2" id="area_option" height="24">
+    <label id="a0"><select id="business_circle" name="business_circle" class="txt" selectid="0"></select></label>
+    <label id="a1"><select id="canton" name="canton" class="txt" selectid="0"></select></label>
+    <label id="a2"><select id="subway_lines" name="subway_lines" class="txt" selectid="0"></select></label>
+    <label id="a3"><select id="station" name="station" class="txt" selectid="0"></select></label>
+    <label id="a4"><select id="sightseeing_spots" name="sightseeing_spots" class="txt" selectid="0"></select></label>
+    <label id="a5"><select id="college" name="college" class="txt"></select></label>
+    </td>
+</tr>
+<tr>
+    <th>视频地址：</th>
+    <td colspan="2">
+        <input name="video" type="text" id="video" class="txt" value=''/>
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>开业时间：</th>
+    <td colspan="2">
+        <input name="open_time" type="txt" id="open_time"  readonly="readonly" class="txt calender required date" value='' datatype="*" nullmsg="请填写开业时间" errmsg="请填写开业时间" sucmsg=" " />
+    </td>
+</tr>
+<tr>
+    <th>最近装修时间：</th>
+    <td colspan="2">
+        <input name="fix_time" type="txt" id="fix_time"  readonly="readonly" class="txt calender required date" />
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>酒店地址：</th>
+    <td colspan="2">
+      <input name="address" type="txt" id="address" class="txt" value='' datatype="*" nullmsg="请填写酒店地址" errmsg="请填写酒店地址" sucmsg=" " />
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>酒店联系方式：</th>
+    <td colspan="2">
+        <input name="contact" type="txt" id="contact" class="txt" datatype="/(^[0-9]{7,11}$)|(^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$)/" nullmsg="请填写酒店联系方式" errmsg="请填写酒店格式错误" sucmsg=" " />
+    </td>
+</tr>
+<tr>
+        <th>位置：</th>
+        <td>
+        
+            <div class="controls">
+                <div class="input-append">
+
+					<input type="text"  class="col03" id="suggestId" placeholder="请输入关键字"> <button type="button" class="btn-primary btn btn_medium" id="positioning" >搜索</button> 
+                    <span class=" help-block">注意：准确位置请拖动地图标注!</span>
+                </div>
+                <div id="l-map" class="col06">
+                    <i class="icon-spinner icon-spin icon-large"></i><span class="map-text">地图加载中...</span>
+                </div>
+                <div id="r-result">
+                    <input type="text" id="lng" name="location_x" value="" class="col01"/><input type="text" id="lat" name="location_y" value="" class="col01"/>
+                </div>
+
+            </div>
+        
+        </td>
+        </tr>
+        
+<tr>
+    <th><span class="red">*</span>酒店介绍：</th>
+    <td>
+        <textarea name="detail" cols="100" rows="22" id="detail" class="kind-text" datatype="*1-65535" nullmsg="请填写酒店介绍" errmsg="酒店介绍最多填写65535个字符" sucmsg=" " style="width:80%"></textarea>
+    </td>
+    <td width="150">&nbsp;</td>
+</tr>
+<tr>
+    <th><span class="red">*</span>交通指南：</th>
+    <td>
+        <textarea name="traffic_info" cols="100" rows="12" id="traffic_info" class="kind-text" datatype="*" nullmsg="请填写交通指南" errmsg="请填写交通指南" sucmsg=" " style="width:80%"></textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th><span class="red">*</span>周围环境:</th>
+    <td><textarea name="around_info" cols="100" rows="12" id="around_info" class="kind-text" datatype="*" nullmsg="请填写周围环境" errmsg="请填写周围环境" sucmsg=" " style="width:80%"></textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th><span class="red">*</span>位置距离:</th>
+    <td>
+        <textarea name="location" cols="100" rows="12" id="location" class="kind-text" datatype="*" nullmsg="请填写位置距离" errmsg="请填写位置距离" sucmsg=" " style="width:80%"></textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th>酒店特别提示：</th>
+    <td>
+        <textarea name="tip" cols="100" rows="12" id="tip" class="kind-text" style="width:80%"></textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th>附加服务：</th>
+    <td>
+        <textarea name="adds_service" cols="100" rows="12" id="adds_service" class="kind-text" style="width:80%"></textarea>
+    </td>
+    <td>&nbsp;</td>
+</tr>
+<tr>
+    <th>支持卡类：</th>
+    <td colspan="2">
+        <div>
+            <input id="paycart_all" class="allselect1" name="paycart_all" type="checkbox">
+            <label for="paycart_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div"><ul>
+            <volist name="list_paycart" id="vo">
+              <li class="f_left">
+                <input id="paycart_{$vo.id}" type="checkbox" class="allselectchild1" name="paycart[]" value="{$vo.id}"
+                              class="sel_paycart">
+                <label for="paycart_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label>
+              </li>
+            </volist>
+        </ul></div>
+    </td>
+</tr>
+<tr>
+    <th>特色服务：</th>
+    <td colspan="2">
+        <div>
+            <input id="special_service_all" class="allselect2" name="special_service_all" type="checkbox">
+            <label for="special_service_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div">
+          <ul>
+            <volist name="list_special_service" id="vo">
+                <li class="f_left"><input id="special_service_{$vo.id}" class="allselectchild2" type="checkbox" name="special_service[]" value="{$vo.id}" class="sel_special_service">
+                <label for="special_service_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label></li>
+            </volist>
+          </ul>
+        </div>
+    </td>
+</tr>
+<tr>
+    <th>服务项目：</th>
+    <td colspan="2">
+        <div>
+            <input id="service_item_all" class="allselect3" name="service_item_all" type="checkbox">
+            <label for="service_item_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div"><ul>
+            <volist name="list_service_item" id="vo">
+                <li class="f_left"><input id="service_item_{$vo.id}" class="allselectchild3" type="checkbox" name="service_item[]" value="{$vo.id}"
+                       class="sel_service_item">
+                <label for="service_item_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label></li>
+           </volist>
+        </ul></div>
+    </td>
+</tr>
+<tr>
+    <th>餐饮服务：</th>
+    <td colspan="2">
+        <div>
+            <input id="service_dinner_all" class="allselect4" name="service_dinner_all" type="checkbox">
+            <label for="service_dinner_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div">
+           <ul><volist name="list_service_dinner" id="vo">
+                <li class="f_left"><input id="service_dinner_{$vo.id}" class="allselectchild4" type="checkbox" name="service_dinner[]" value="{$vo.id}"
+                       class="sel_service_dinner">
+                <label for="service_dinner_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label></li>
+            </volist>
+       </ul></div>
+    </td>
+</tr>
+<tr>
+    <th>休闲娱乐：</th>
+    <td colspan="2">
+        <div>
+            <input id="recreation_all" class="allselect5" name="recreation_all" type="checkbox">
+            <label for="recreation_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+        </div>
+        <div class="edit_list_div">
+           <ul><volist name="list_recreation" id="vo">
+                <li class="f_left"><input id="recreation_{$vo.id}" class="allselectchild5" type="checkbox" name="recreation[]" value="{$vo.id}"
+                       class="sel_recreation">
+                <label for="recreation_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label>
+            </li></volist>
+        </ul></div>
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>房间设施：</th>
+    <td colspan="2">
+        <div style="height:14px;">
+          <span class="f_left">
+            <input id="room_facilitie_all" class="allselect6" name="room_facilitie_all" type="checkbox">
+            <label for="room_facilitie_all" style="margin-left: 5px; margin-right: 10px;">全选</label>
+          </span>
+          <span class="Validform_checktip f_left"></span>
+        </div>
+        <div class="edit_list_div" style="clear:both">
+           <ul><volist name="list_room_facilitie" id="vo" key="i">
+                <li class="f_left"><input id="room_facilitie_{$vo.id}" class="allselectchild6" type="checkbox" name="room_facilitie[]" value="{$vo.id}" class="sel_room_facilitie" datatype="*" nullmsg="请至少勾选一项房间设施" errmsg="请至少勾选一项房间设施" sucmsg=" " min="1">
+                <label for="room_facilitie_{$vo.id}" style="margin-left: 5px; margin-right: 10px;">{$vo.names}</label>
+            </li></volist>
+        </ul></div>
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>状态：</th>
+    <td colspan="2">
+        <select id="status" name="status" class="txt" datatype="*" nullmsg="请选择状态" errmsg="请选择状态" sucmsg=" ">
+            <option value="0">正常</option>
+            <option value="3">特价推荐</option>
+            <option value="4">热门推荐</option>
+            <option value="2">隐藏</option>
+        </select>
+    </td>
+</tr>
+<tr>
+    <th><span class="red">*</span>排序：</th>
+    <td colspan="2">
+        <input name="sort" type="text" id="sort" class="txt" value='50' datatype="n" nullmsg="请填写排序" errmsg="请填写数字" sucmsg=" " />
+        <span id="red_sort" class="red"></span></td>
+</tr><tr><td height="50"></td></tr>
+</table>
+<div id="btnbox" class="btn">
+    <INPUT TYPE="submit" value=" 保 存 " name="save" class="button">
+    <input name="rset" TYPE="reset" class="button" id="rset" value=" 重 置 ">
+</div>
+</form>
+
+<script language="javascript">
+
+    $(function () {
+         $.fn.cityLink({
+            linkId: {
+                province: "province",
+                city: "city",
+                county: "area"
+            },
+            defaults: {
+                province: "{$province}",
+                city: "{$city}",
+                county: "{$area}"
+            }});
+            <if condition="$Hotel.location_x neq ''">baidu_map({ lat: {$Hotel.location_y},lng: {$Hotel.location_x},adr: ""});<else />baidu_map();</if>
+    });
+</script>
+<include file="Public:footer"/>

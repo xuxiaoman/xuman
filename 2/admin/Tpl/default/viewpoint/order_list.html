@@ -1,0 +1,106 @@
+<div id="nav" class="mainnav_title">
+  <ul>
+    <a class="on" href="{:U('order_list')}">景点订单管理</a>
+  </ul>
+</div>
+<form action="" method="get">
+  <table class="search_table" width="100%">
+    <tr>
+      <td class="search"> 标题:
+        <input id="title" type="text" class="input-text" name="title" value="{$title}"/>
+        &nbsp;
+        <input type="submit" name="submit" value="查询" class="button"/>
+        </td>
+    </tr>
+  </table>
+</form>
+<form name="myform" id="myform" action="" method="post">
+  <div class="table-list">
+    <table cellspacing="0" cellpadding="0" width="100%">
+      <thead>
+        <tr>
+          <th><a href="javascript:void(0);" onclick="sel_all();">全选</a></th>
+          <th style="text-align: left;">订单号</th>
+          <th>下单用户</th>
+          <th>代金券编号</th>
+          <th>订单状态</th>
+          <th>订单时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <volist name="list" id="vo">
+          <tr class="ulbc" id="tr_{$vo.id}">
+            <td id="td_sel" align="center"><input type="checkbox" class="sel" id="sel_{$vo.id}" value="{$vo.id}" name="items_{$vo.id}" /></td>
+            <td style="text-align: left;">{$vo.order_num}</td>
+            <td align="center">{$vo.username}</td>
+            <td align="center"><neq name="vo.serial_num" value="">{$vo.serial_num}
+                <else />
+                -</neq></td>
+            <td align="center">
+              <switch name="vo.order_status" >
+                <case value="0"><span style="color:#06F">待处理</span></case>
+                <case value="1"><span style="color:#0C0">待付款</span></case>
+                <case value="2"><span style="color:#0C0">已付款</span></case>
+                <case value="3"><span style="color:#0C0">已取票</span></case>
+                <case value="4"><span style="color:#0C0">已点评</span></case>
+                <case value="5"><span style="color:#868686">已结束</span></case>
+                <case value="6"><span style="color:#868686">已取消</span></case>
+                <case value="7"><span style="color:#F00">申请取消订单</span></case>
+              </switch></span></td>
+            <td align="center">{$vo.orderAddTime|date="Y年m月d日 H:i:s", ###}</td>
+            <td align="center"><a href="javascript:void(0);" onclick="art.dialog.open('{:U('view_showorder')}/id/{$vo.id}',{title:'查看订单',width:630,height:580,window:'top',lock:'true'});">查看</a>
+              <switch name="vo.order_status" >
+                <case value="0">|<a url="{:U('order_control')}/id/{$vo.id}/status/1" href="javascript:;" onClick="controls(this, {$vo.id})">审核</a>|<a url="{:U('order_control')}/id/{$vo.id}/status/6" href="javascript:;" onClick="controls(this, {$vo.id})">取消</a></case>
+                <case value="1">|<a url="{:U('order_control')}/id/{$vo.id}/status/2" href="javascript:;" onClick="controls(this, {$vo.id})">付款</a>|<a url="{:U('order_control')}/id/{$vo.id}/status/6" href="javascript:;" onClick="controls(this, {$vo.id})">取消</a></case>
+                <case value="2">|<a url="{:U('order_control')}/id/{$vo.id}/status/3" href="javascript:;" onClick="controls(this, {$vo.id})">取票</a>|<a url="{:U('order_control')}/id/{$vo.id}/status/6" href="javascript:;" onClick="controls(this, {$vo.id})">取消</a></case>
+                <case value="7">|<a url="{:U('order_control')}/id/{$vo.id}/status/6" href="javascript:;" onClick="controls(this, {$vo.id})">同意</a>|<a url="{:U('order_control')}/id/{$vo.id}/status/auto" href="javascript:;" onClick="controls(this, {$vo.id})">驳回</a></case>
+              </switch></td>
+          </tr>
+        </volist>
+      </tbody>
+    </table>
+  </div>
+</form>
+<script language="javascript">
+    function controls(obj, id){
+		  art.dialog.confirm("确定要设为已" + $(obj).html() + "吗？", function(){
+			 var url = $(obj).attr("url");
+			 $.ajax({
+				  url: url,
+				  type: "GET",
+				  complete :function(){
+				  }, 
+				  dataType: 'json', 
+				  data: {id:id},
+				  error: function() { alert('Ajax request error');},
+				  success: function(msg){
+						if(msg == true){
+							location.reload();
+						}else{
+							alert(msg);
+						}
+				  }
+        })}); 
+    }
+    
+    function sel_all(){
+        $('input.sel').each(function(index){
+            if($(this).attr('checked')){
+                $(this).removeAttr('checked');
+            }else{
+                $(this).attr('checked', 'checked');
+            }
+        });
+    }
+    
+    function save_all(){
+        $('input.sel').each(function(index){
+            if($(this).attr('checked')){
+                ajax_save($(this).val());
+            }
+        });
+    }
+
+</script>
+<div class="page" style="margin-top:10px;">{$page}</div>

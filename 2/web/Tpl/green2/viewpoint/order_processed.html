@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="../Public/css/hotels.css"/>
+<script type="text/javascript" src="../Public/js/bank_js_one.js"></script>
+<script type="text/javascript" src="../Public/js/bank_js_two.js"></script>
+<div class="wrapper w1200">
+  <div class="clear"></div>
+  <div class="col-24"  style="margin-top:10px; background:#FFF; padding:10px 0;">
+  <div class="col-24 step_top1">
+    <div class="col-5 step_one"> <img  class="step_img" src="../Public/images/step_bg.png" width="100%"/> <span class="offset-1 col-5 step_font">1.选择景点/门票</span></div>
+    <div class="col-5 step_two"> <img src="../Public/images/step_bg3.png" width="100%"/> <span class="offset-1 col-5 step_font">2.填写核对订单</span></div>
+    <div class="col-5 step_three"> <img src="../Public/images/step_bg2.png" width="100%"/> <span class="offset-1 col-5 step_font">3.成功提交订单/支付</span></div>
+    <div class="col-5 step_four"> <img src="../Public/images/step_bg4.png"  width="100%" /> <span class="offset-1 col-5 step_font">4.点评拿奖金</span></div>
+  </div>
+  <div class="col-24 untreated">
+      <form action="{:U('lineorder/form')}" method="post" name="myform" id="myform"  target="_blank">
+    <div class="untreated_main">
+      <div class="handle">
+        <div class="handle_font"> 
+      <div class="number">
+        <div class="number_icon"><img src="../Public/images/r.jpg" width="53" height="48" /></div>
+        <div class="number_font">
+         <span class="number_font_css">订单号：<span class="font_red">{$usinfo.serial_num}</span></span> 
+         <span class="number_font_css">订单已提交，正在为您处理（稍后我们工作人员确认订单后，请您进入会员中心进行支付）</span> 
+        </div>
+      </div>
+         <span class="font_brown" style='height:70px'></span>
+       </div>
+      </div>
+      <div class="step_title">
+        <h1 class="step_title_css">景点信息</h1>
+      </div>
+      <div class="visitor">
+        <table width="860px" height="70" class="table_list_pay">
+            <tr>
+              <th width="135px">编号</th>
+              <th width="150px">景点名称</th>
+              <th width="180px">门票张数</th>
+              <th width="130px">总金额</th>
+              <th width="180px" >使用卡券</th>
+              <th width="155px">使用奖金</th>
+            </tr>
+            <tr>
+              <td>{$usinfo.serial_num}</td>
+              <td>{$usinfo.view_name}</td>
+              <td>{$usinfo.ticket_num}张</td>
+              <td>{$usinfo.all_money}元</td>
+              <td><neq name="usinfo.coupon_num" value="">{$usinfo.coupon_num}
+                  <else />
+                  -</neq></td>
+              <td><neq name="usinfo.use_award" value="">{$usinfo.use_award}元
+                  <else />
+              0.00</neq></td>
+            </tr>
+            </table>
+            <table width="900px" height="70" class="table_list_pay">
+            <tr>
+              <th width="135px" >联系人</th>
+              <th width="150px">联系电话</th>
+              <th width="340px" style="text-align:center">门票</th>
+              <th width="150px" >应付金额</th>
+            </tr>
+            <tr>
+              <td>{$usinfo.contact_name}</td>
+              <td>{$usinfo.contact_phone}</td>
+              <td style="text-align:center">
+                <volist name="usinfo.tickets" id="vo">
+                  {~$tiks[$key] = $vo['ticket_type']."（".$vo['ticket_count']."张）"}
+                </volist>
+                {$tiks|join="；", ###}
+              </td>
+              <td>{$usinfo.must_pay}元</td>              
+            </tr>
+          </table>
+      </div>
+            <div class="clear"></div>
+            <div class="payments">
+                <div id="tabbox">
+                    <ul class="tabs" id="tabs">
+                        <li><a href="http://www.51xuediannao.com/js/nav/">储蓄卡</a></li>
+                        <li><a href="http://www.51xuediannao.com/js/slide/">信用卡</a></li>
+                    </ul>
+                    <ul class="tab_conbox" id="tab_conbox">
+                        <li class="tab_con">
+							<volist name="banks['data'][1]" id="vo">
+                            <div class="tab_con_bank">
+                                <input type="radio" id="wangyin1_{$vo.class}" name="bank" value="{$vo.code}" />
+                                <label  id="{$vo.class}_label" for="wangyin1_{$vo.class}" class="bank {$vo.class}"><img src="{$vo.icon}"/></label>
+                            </div>
+							</volist>
+                        </li>
+                        <li class="tab_con">
+                            <volist name="banks['data'][2]" id="vo">
+                            <div class="tab_con_bank">
+                                <input type="radio" id="wangyin2_{$vo.class}" name="bank" value="{$vo.code}" />
+                                <label  id="{$vo.class}_label" for="wangyin2_{$vo.class}" class="bank {$vo.class}"><img src="{$vo.icon}"/></label>
+                            </div>
+							</volist>
+                        </li>
+                    </ul>
+                     <input type="hidden" name="MerchantID" value="{:C('MerchantID')}" id="MerchantID">
+                     <input type="hidden" name="amount" value="{$usinfo.should_money}" id="amount">
+                </div>
+            </div>
+      <div class="handle_btn">
+       <center>
+
+            <div class="handle_btn_one" style="margin-left:160px;"> <button type="submit" class="btn3 btn primary orange" >下一步</button> </div>
+            <div class="handle_btn_one"> <a class="btn3 orange button" href="{:U('userviewpoint/order')}/id/{$usinfo.order_id}">查看本订单</a> </div>
+          </center>
+      </div>
+    </div></form>
+  </div>
+</div>
+

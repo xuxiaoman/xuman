@@ -1,0 +1,262 @@
+<div id="nav" class="mainnav_title">
+    <ul>
+        <a href="{:U('show_list')}">景点列表</a> |
+        <a class="on" href="{:U('add')}">添加景点</a>
+    </ul>
+</div>
+<form action="{:U('add')}" enctype="multipart/form-data" method="post">
+    <table border="0" cellspacing="0" cellpadding="0" class="table_form" width="100%">
+        <tr>
+            <th width="120"><span class="red">*</span>景点名称：</th>
+            <td colspan="2"><span class="f_left"><input type="text" name="names" id="names" class="txt" datatype="*" nullmsg="请填写景点名称" errmsg="请填写景点名称" sucmsg=" " />
+              &nbsp;<span class="msg_span"><input id="SEO" type="checkbox" name="SEO" value="yes"/>
+            <label for="SEO">SEO优化</label></span></span>
+            <span class="Validform_checktip f_left"></span>
+            </td>
+        </tr>
+        <tr name="seo">
+            <th>SEO标题：</th>
+            <td colspan="2"><textarea name="title" rows="2" cols="20" id="title" style="height:50px;width:600px;"></textarea> <span id="box_keyword" class="Dp">建议不超出30个字</span></td>
+        </tr>
+        <tr name="seo">
+            <th>SEO关键词：</th>
+            <td colspan="2"><textarea name="keyword" rows="2" cols="20" id="keyword" style="height:50px;width:600px;"></textarea>
+                <span id="box_keyword" class="Dp">将被搜索引擎用来搜索您网站的关键内容，每个关键字用英文逗号分隔</span></td>
+        </tr>
+        <tr name="seo">
+            <th>SEO描述：</th>
+            <td colspan="2"><textarea name="detail" rows="2" cols="20" id="detail" style="height:50px;width:600px;"></textarea>
+                <span id="box_detail" class="Dp">描述中请不要带英文的逗号，建议不超出80个字</span></td>
+        </tr>
+        <tr>
+            <th><span class="red">*</span>所属地区：</th>
+            <td colspan="2"><select id="city_id" name="city_id"  class="txt" datatype="/^[^0]\d*$/" nullmsg="请选择所属地区" errmsg="请选择所属地区" sucmsg=" ">
+                <option value="0">请选择</option>
+                <volist name="list_city_id" id="vo">
+                    <option value="{$vo.cid}">{$vo.names}</option>
+                </volist>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <th><span class="red">*</span>景点级别：</th>
+            <td colspan="2">
+                <select id="rank" name="rank" class="txt" datatype="/^[^0]\d*$/" nullmsg="请选择景点级别" errmsg="请选择景点级别" sucmsg=" ">
+                    <option value="0">请选择</option>
+                    <option value="2">A</option>
+                    <option value="2">AA</option>
+                    <option value="2">AAA</option>
+                    <option value="2">AAAA</option>
+                    <option value="2">AAAAA</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><span class="red">*</span>景点类型：</th>
+            <td colspan="2">
+                <select id="view_type" name="view_type" class="txt" datatype="/^[^0]\d*$/" nullmsg="请选择景点类型" errmsg="请选择景点类型" sucmsg=" ">
+                    <option value="0">请选择</option>
+                    <volist name="list_view_type" id="vo">
+                        <option value="{$vo.id}">{$vo.names}</option>
+                    </volist>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><span class="red">*</span>适宜人群：</th>
+            <td colspan="2">
+                    <volist name="list_fit_person" id="vo">
+                        <input type="checkbox" name="fit_person[]" />{$vo.names}
+                    </volist>
+            </td>
+        </tr>
+        <tr>
+            <th>视频地址：</th>
+            <td colspan="2">
+                <input name="video" type="text" id="video" class="txt" value=''/>
+
+            </td>
+        </tr>
+        <tr>
+            <th>景区地址：</th>
+            <td colspan="2">
+                <input name="view_address" type="text" id="view_address" class="txt" value=''/>
+
+            </td>
+        </tr>
+        <tr>
+            <th>取票地点：</th>
+            <td colspan="2">
+                <input name="tickets_address" type="text" id="tickets_address" class="txt" value=''/>
+
+            </td>
+        </tr>
+        <tr>
+            <th>联系方式：</th>
+            <td colspan="2">
+                <input name="contact" type="text" id="contact" class="txt" value=''/>
+
+            </td>
+        </tr>
+        <tr>
+        <th>地点</th>
+        <td>
+        
+            <div class="controls">
+                <div class="input-append">
+
+					<input type="text"  class="col03" id="suggestId" placeholder="请输入关键字"> <button type="button" class="btn-primary btn btn_medium" id="positioning" >搜索</button> 
+                    <span class=" help-block">注意：准确位置请拖动地图标注!</span>
+                </div>
+                <div id="l-map" class="col06">
+                    <i class="icon-spinner icon-spin icon-large"></i><span class="map-text">地图加载中...</span>
+                </div>
+                <div id="r-result">
+                    <input type="text" id="lng" name="location_x" value="" class="col01"/><input type="text" id="lat" name="location_y" value="" class="col01"/>
+                </div>
+
+            </div>
+        
+        </td>
+        </tr>
+        <tr>
+            <th>景区介绍：</th>
+            <td>
+              <textarea class="kind-text" name="view_info" cols="100" rows="12" style="width:100%" id="view_info"></textarea>
+            </td>
+            <td width="150"></td>
+        </tr>
+        <tr>
+            <th>交通指南：</th>
+            <td>
+                <textarea name="traffic_info" class="kind-text" cols="100" style="width:100%" rows="12" id="traffic_info"></textarea>
+
+            </td>
+            <td width="150"></td>
+        </tr>
+        <tr>
+            <th>购票须知：</th>
+            <td>
+                <textarea class="kind-text" name="buy_info" cols="100" style="width:100%" rows="12" id="buy_info1"></textarea>
+            </td>
+            <td width="150"></td>
+        </tr>
+        <tr>
+            <th>特色购物：</th>
+            <td>
+                <textarea class="kind-text" name="special_shopping" style="width:100%" cols="100" rows="12" id="special_shopping"></textarea>
+            </td>
+            <td width="150"></td>
+        </tr>
+        <tr>
+            <th>特色美食：</th>
+            <td>
+                <textarea class="kind-text" name="special_food" style="width:100%" cols="100" rows="12" id="special_food"></textarea>
+
+            </td>
+            <td width="150"></td>
+        </tr>
+        <tr>
+            <th><span class="red">*</span>状态：</th>
+            <td colspan="2">
+                <select id="status" name="status">
+                    <option value="0">正常</option>
+                    <option value="1">推荐</option>
+                    <option value="2">隐藏</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><span class="red">*</span>排序：</th>
+            <td colspan="2">
+                <input name="sort" type="text" value='50' class="txt" id="sort" datatype="n" nullmsg="请填写排序" errmsg="请填数字" sucmsg=" "/>
+            </td>
+        </tr>
+        <tr><td height="50"></td>
+        </tr>
+    </table>
+    <div id="btnbox" class="btn">
+<INPUT TYPE="submit" name="submit"  value=" 保 存 " class="button" >
+        <input TYPE="reset"  value=" 重 置 " class="button">
+    </div>
+</form>
+<script language="javascript">
+
+    function chekcseo() {
+        if ($('#SEO').filter(':checked').length == 1) { $('tr[name="seo"]').show(); } else { $('tr[name="seo"]').hide(); }
+    }
+    $(document).ready(function(){
+		$('#SEO').click(function () { chekcseo(); });
+		chekcseo();
+        $("#paycart_all").click(function(){
+            $('input.sel_paycart').each(function(){
+                if($(this).attr('checked')){
+                    $(this).removeAttr('checked');
+                }else{
+                    $(this).attr('checked', 'checked');
+                }
+            });
+        });
+        $("#special_service_all").click(function(){
+            $('input.sel_special_service').each(function(){
+                if($(this).attr('checked')){
+                    $(this).removeAttr('checked');
+                }else{
+                    $(this).attr('checked', 'checked');
+                }
+            });
+        });
+        $("#service_item_all").click(function(){
+            $('input.sel_service_item').each(function(){
+                if($(this).attr('checked')){
+                    $(this).removeAttr('checked');
+                }else{
+                    $(this).attr('checked', 'checked');
+                }
+            });
+        });
+        $("#service_dinner_all").click(function(){
+            $('input.sel_service_dinner').each(function(){
+                if($(this).attr('checked')){
+                    $(this).removeAttr('checked');
+                }else{
+                    $(this).attr('checked', 'checked');
+                }
+            });
+        });
+        $("#recreation_all").click(function(){
+            $('input.sel_recreation').each(function(){
+                if($(this).attr('checked')){
+                    $(this).removeAttr('checked');
+                }else{
+                    $(this).attr('checked', 'checked');
+                }
+            });
+        });
+        $("#room_facilitie_all").click(function(){
+            $('input.sel_room_facilitie').each(function(){
+                if($(this).attr('checked')){
+                    $(this).removeAttr('checked');
+                }else{
+                    $(this).attr('checked', 'checked');
+                }
+            });
+        });
+    });
+    
+    $(function () {
+         $.fn.cityLink({
+            linkId: {
+                province: "province",
+                city: "city",
+                county: "area"
+            },
+            defaults: {
+                province: "{$province}",
+                city: "{$city}",
+                county: "{$area}"
+            }});
+            <if condition="$Viewpoint.location_x neq ''">baidu_map({ lat: {$Viewpoint.location_y},lng: {$Viewpoint.location_x},adr: ""});<else />baidu_map();</if>
+    });
+</script>
+<include file="Public:footer" />

@@ -1,0 +1,165 @@
+<div id="nav" class="mainnav_title">
+  <ul>
+    <a class="on" href="{:U('lists')}">酒店推荐列表</a> | <a href="{:U('add')}">添加推荐</a>
+  </ul>
+</div>
+<form action="" method="get">
+  <table class="search_table" width="100%">
+    <tr>
+      <td class="search"> 标题:
+        <input id="title" type="text" class="text" name="title" value=""/>
+        &nbsp;
+        <select id="catid" name="catid">
+          <option value="hotel.names" selected="selected">按酒店名称查</option>
+          <option value="recom.sort">按排序号查</option>
+          <!--{$option_nav}-->
+        </select>
+        <select id="order" name="order">
+          <option value="recom.sort" selected="selected">按排序号排序</option>
+          <option value="recom.id">按ID号排序</option>
+          <!--<option value="hits">点击排序</option>-->
+        </select>
+        <input type="submit" name="submit" value="查询" class="button"/>
+
+        <div style="float:right;">频道页面中最多展示 <select name="list_count" id="list_count" style="text-align:center">
+          <option value="3" <eq name="list_count" value="3">selected="selected"</eq>>3</option>
+          <option value="5" <eq name="list_count" value="5">selected="selected"</eq>>5</option>
+          <option value="8" <eq name="list_count" value="8">selected="selected"</eq>>8</option>
+          <option value="10" <eq name="list_count" value="10">selected="selected"</eq>>10</option>
+          <option value="12" <eq name="list_count" value="12">selected="selected"</eq>>12</option>
+        </select>
+        条推荐&nbsp;</div>
+      </td>
+    </tr>
+  </table>
+</form>
+<form name="myform" id="myform" action="" method="post">
+  <div class="table-list">
+    <table cellspacing="0" cellpadding="0" width="100%">
+      <thead>
+        <tr>
+          <th width="135"><a href="javascript:void(0);" onclick="sel_all();">全选</a></th>
+          <th>酒店名称</th>
+          <th>推荐图片</th>
+          <th>类型</th>
+          <th>推荐房价</th>
+          <th>内容</th>
+          <th>状态</th>
+          <th width="140">排序</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <volist name="list" id="vo">
+          <tr class="ulbc" id="tr_{$vo.id}">
+            <td style="text-align:center;"><input type="checkbox" class="sel" id="sel_{$vo.id}" value="{$vo.id}" name="items[{$vo.id}]" /></td>
+            <td style="text-align: center;">{$vo.names}</td>
+            <td style="text-align: center;"><img src="__ROOT__{$vo.pic}" width="200" height="130" id="pic_{$vo.id}" />
+            <input name="pic_url[{$vo.id}]" type="hidden" id="pic_url_{$vo.id}" value="__ROOT__{$vo.pic}" /></td>
+            <td style="text-align: center;"><input id="rec_type1{$vo.id}" name="rec_type{$vo.id}" type="radio" value="1" 
+                    
+              <eq name="vo.rec_type" value="1"> checked="checked" </eq>
+              />
+              <label for="rec_type1{$vo.id}">特价推荐</label>
+              <input id="rec_type2{$vo.id}" name="rec_type{$vo.id}" type="radio" value="2" 
+                    
+              <eq name="vo.rec_type" value="2"> checked="checked" </eq>
+              />
+              <label for="rec_type2{$vo.id}">热门推荐</label></td>
+            <td style="text-align: center;">{$vo.money} 元</td>
+            <td style="text-align: center;"><textarea name="content{$vo.id}" cols="30" rows="7" id="content{$vo.id}">{$vo.content}</textarea></td>
+            <td style="text-align: center;"><input id="status1{$vo.id}" name="status{$vo.id}" type="radio" value="1" 
+                    
+              <eq name="vo.status" value="1"> checked="checked" </eq>
+              />
+              <label for="status1{$vo.id}">前台可见</label>
+              <input id="status2{$vo.id}" name="status{$vo.id}" type="radio" value="2" 
+                    
+              <eq name="vo.status" value="2"> checked="checked" </eq>
+              />
+              <label for="status2{$vo.id}">前台不可见</label></td>
+            <td style="text-align:center;"><input type="text" name="sort[{$vo.id}]" id="sort_{$vo.id}" value="{$vo.sort}" size="9" style="height:28px;text-align:center;" /></td>
+            <td align="center"><a href="javascript:void(0);" onclick="ajax_save('{$vo.id}')">保存</a>&nbsp;|&nbsp;<a href="__URL__/edit/id/{$vo.id}">编辑</a>&nbsp;|&nbsp;<a href="#" onclick="javascript:if(confirm( '确定要删除该条记录吗？ '))ajax_del({$vo.id});">删除</a></td>
+          </tr>
+        </volist>
+      </tbody>
+    </table>
+  </div>
+  <div class="btn">
+    <input type="submit" class="button" name="dosubmit" value="删除" onclick="myform.action='{:U('deleteall')}';"/>
+    <!-- input type="button" class="button" name="dosubmit" value="删除" onclick="myform.action='{:U('deleteall')}';return confirm_deleteall() / -->
+    <input type="button" class="button" name="dosubmit" value="排序"
+               onclick="myform.action='{:U('sort_list')}/p/{$p}';$('#myform').submit();"/>
+  </div>
+</form>
+<script language="javascript">
+	function ajax_save(id){
+        var url = "{:U(ajax_save)}?id="+id;
+		  var _sort = ($('#sort_'+id).val()!="")? $('#sort_'+id).val() : 1;
+		  var rec_type = $("input[name='rec_type"+id+"']:checked").val();
+		  var content = $('#content'+id).val();
+		  var status = $("input[name='status"+id+"']:checked").val();
+        $.ajax({
+            url: url,
+            type: "POST",
+            complete :function(){
+            }, 
+            dataType: 'json', 
+            data: "sort="+_sort+"&rec_type="+rec_type+"&content="+content+"&status="+status,
+            error: function() { alert('Ajax request error');},
+            success: function(result){
+                if(result==1){
+                    art.dialog.alert("保存成功");
+                }else{
+						 art.dialog.alert(result);
+					 }
+            }
+        }); 
+    }
+    function ajax_del(id){
+        var url = "{:U(ajax_del)}?id="+id;
+		  var pic = $("#pic_"+id).attr("src");
+        $.ajax({
+            url: url,
+            type: "POST",
+				data:{picurl:pic},
+            complete :function(){
+            }, 
+            dataType: 'json', 
+            error: function() { alert('Ajax request error');},
+            success: function(result){
+                if(result==1){
+					art.dialog({
+						title: '删除提示',
+						content: '删除成功',
+						ok:function(){location.reload();},
+					});
+              }
+            }
+        }); 
+    }
+	
+	function sel_all(){
+        $('input.sel').each(function(index){
+            if($(this).attr('checked')){
+                $(this).removeAttr('checked');
+            }else{
+                $(this).attr('checked', 'checked');
+            }
+        });
+    }
+	 
+	 $("#list_count").bind("change", function(){
+		 $.post(
+		 	"{:U(set_ListCount)}",
+			{data:$(this).val()},
+			function(msg){
+				if(msg == true){
+					art.dialog.alert("设置成功!");
+				}
+			},
+			"json"
+		 );
+	 });
+</script>
+<div class="page">{$page}</div>

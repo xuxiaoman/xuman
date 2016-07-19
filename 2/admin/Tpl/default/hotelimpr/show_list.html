@@ -1,0 +1,135 @@
+<div id="nav" class="mainnav_title">
+    <ul>
+        <a class="on" href="{:U('show_list')}">点评管理</a>
+    </ul>
+</div>
+<table width="100%">
+  <tr>
+    <td height="30">
+      <div style="float:right;">频道页面中最多展示 <select name="list_count" id="list_count" style="text-align:center">
+          <option value="1" <eq name="list_count" value="1">selected="selected"</eq>>1</option>
+          <option value="2" <eq name="list_count" value="2">selected="selected"</eq>>2</option>
+          <option value="3" <eq name="list_count" value="3">selected="selected"</eq>>3</option>
+          <option value="4" <eq name="list_count" value="4">selected="selected"</eq>>4</option>
+          <option value="5" <eq name="list_count" value="5">selected="selected"</eq>>5</option>
+          <option value="6" <eq name="list_count" value="6">selected="selected"</eq>>6</option>
+          <option value="7" <eq name="list_count" value="7">selected="selected"</eq>>7</option>
+          <option value="8" <eq name="list_count" value="8">selected="selected"</eq>>8</option>
+        </select>
+        条点评&nbsp;</div>
+    </td>
+  </tr>
+</table>
+<form name="myform" id="myform" action="" method="post">
+    <div class="table-list">
+        <table cellspacing="0" cellpadding="0" width="100%">
+            <thead>
+            <tr>
+                <th width="61"><a href="javascript:void(0);" onclick="sel_all();">全选</a></th>
+                <th width="90">点评编号</th>
+                <th style="text-align:left">点评内容</th>
+                <th width="149">点评日期</th>
+                <th width="116">状态</th>
+                <th width="188">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+                <tr class="ulbc" id="tr_{$vo.id}">
+                    <td id="td_sel" align="center"><input type="checkbox" class="sel" id="sel_{$vo.id}" value="{$vo.id}" name="items_{$vo.id}" /></td>
+                    <td align="center">{$vo.id}</td>
+                    <td style="text-align:left;line-height:24px;"><span style="color:#848484">{$vo.user_name}</span> 对 <span style="color:#66F">{$vo.hotel_name}</span> 给予了 <span style="color:#F30;font-weight:bold;">{$vo.score}</span><br/>{$vo.content}</td>
+                    <td align="center">{$vo.publish_time|date="Y-m-d H:i:s",###}</td>
+                    <td align="center" id="checking_{$vo.id}">
+                     <eq name="vo.impr_status" value="2">
+                       <span style="color:#0C0">已审核</span>
+                     <else />
+                       <span style="color:#F00">未审核</span>
+                     </eq>
+                    </td>
+                    <td align="center" id="control_{$vo.id}">
+                    <eq name="vo.impr_status" value="1">
+                      <a href="javascript:;" onclick="art.dialog.open('{:U('award')}/id/{$vo.id}',{title:'审核用户的点评',width:500,height:200,window:'top',lock:'true'});">审核</a>&nbsp;|&nbsp;
+                    </eq><a href="javascript:void(0);" onclick="javascript:if(confirm( '确定要删除该条记录吗？ '))ajax_del({$vo.id});">删除</a>
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <div class="btn">
+        <input type="submit" class="button" name="dosubmit" value="删除" onclick="myform.action='{:U('deleteall')}';"/>
+        <!-- input type="button" class="button" name="dosubmit" value="删除" onclick="myform.action='{:U('deleteall')}';return confirm_deleteall() / -->
+        <input type="button" class="button" name="dosubmit" value="排序"
+               onclick="myform.action='{:U('sort_list')}/p/{$p}';$('#myform').submit();"/>
+    </div>
+</form>
+<script language="javascript">
+    
+    function ajax_del(id){
+        var url = "{:U(ajax_del)}?id="+id;
+		
+        $.ajax({
+            url: url,
+            type: "POST",
+            complete :function(){
+            }, 
+            dataType: 'json', 
+            error: function() { alert('Ajax request error');},
+            success: function(result){
+                if(result==1){
+					art.dialog({
+						title: '删除提示',
+						content: '删除成功',
+						ok:function(){location.reload();},
+					});
+					//$("#tr_"+id).remove();
+					
+                }
+            }
+        }); 
+    }
+	
+	function ajax_check(id){
+        var url = "{:U(ajax_check)}?id="+id;
+		
+        $.ajax({
+            url: url,
+            type: "POST",
+            complete :function(){
+            }, 
+            dataType: 'json', 
+            error: function() { alert('Ajax request error');},
+            success: function(result){
+                if(result==1){
+					$("#checking_"+id).html('<span style="color:#0C0">已审核</span>');
+					$("#control_"+id).html('<a href="javascript:void(0);" onclick="javascript:if(confirm( \'确定要删除该条记录吗？\'))ajax_del('+ id +');">删除</a>');
+                }
+            }
+        }); 
+    }
+	
+	function sel_all(){
+        $('input.sel').each(function(index){
+            if($(this).attr('checked')){
+                $(this).removeAttr('checked');
+            }else{
+                $(this).attr('checked', 'checked');
+            }
+        });
+    }
+	 
+	 $("#list_count").bind("change", function(){
+		 $.post(
+		 	"{:U(set_ListCount)}",
+			{data:$(this).val()},
+			function(msg){
+				if(msg == true){
+					art.dialog.alert("设置成功!");
+				}
+			},
+			"json"
+		 );
+	 });
+</script>
+<div class="page">{$page}</div>

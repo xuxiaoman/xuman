@@ -1,0 +1,52 @@
+<!--#names 按天显示方式视图 #-->
+{~$dining=array(1=>1,2=>2,3=>3)}
+<volist name="view_result" id="vid">
+    <div class="reference">
+        <div class="ref_left">
+            <div class="first"><b><span>第<span class="font_red">{$vid.day_info.day}</span>天</span></b></div>
+        </div>
+        <div class="ref_right">
+            <div class="ref_right_line">
+                <div class="ref_right_top">
+                    <div class="red_main">
+                        <div class="red_left"><span class="red_left_title">行程</span></div>
+                        <div class="red_right">
+                            <span class="font_red">{$vid.day_info.title}</span>
+                        </div>
+                    </div>
+                    <div class="red_main">
+                        <div class="blue_left"><span class="red_left_title">用餐</span></div>
+                        <div class="red_right"><span class="font_brown">早餐：<in name="dining.1" value="$vid.day_info.dining">
+                            √
+                            <else/>
+                            ×
+                        </in>
+                            午餐：<in name="dining.2" value="$vid.day_info.dining">√
+                                <else/>
+                                ×
+                            </in>
+                            晚餐：<in name="dining.3" value="$vid.day_info.dining">√
+                                <else/>
+                                ×
+                            </in>
+                        </span></div>
+                    </div>
+                    <div class="red_main">
+                        <div class="brown_left"><span class="red_left_title">住宿</span></div>
+                        <div class="red_right"><span class="font_brown">住宿：{$vid.day_info.stay|default="暂无信息"}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ref_right_below">
+                    <volist name="vid.Section_info" id="sid">
+                        <div class="ref_right_time">
+                            <div class="khaki_left"><span class="font_brown_bg">第{$key+1}段：{$sid.title}</span></div>
+                            <span class="font_brown">{$sid.content}</span>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</volist>

@@ -1,0 +1,178 @@
+<link rel="stylesheet" href="../Public/css/hotel_detailed.css"/>
+<link rel="stylesheet" href="../Public/css/hotels.css"/>
+<script type="text/javascript" src="../Public/js/jquery.city_list_plugs.js"></script>
+<script type="text/javascript" src="../Public/js/hotel.js"></script>
+<div class="wrapper w1200">
+  <div class="col-24">
+    <div class="row">
+      <div class="span-3 col-first side_form">
+        <div class="step_main_add col-only">
+          <div class="col-6 sidebar_title">
+            <h2>酒店查询</h2>
+          </div>
+          <div class="col-6 side_form1">
+            <form action="{:U('lists')}">
+              <table class="side_form2">
+                <tr>
+                  <td>目的城市：</td>
+                  <td><input name="cid" type="hidden" id="cid" value="{$search.city_info.cid}"/>
+                    <input type="text" size="16px" for-val="cid" id="cityName" class="inputText city-list-plugs"
+                                   url="{:U('get_hotel_city')}" value="{$search.city_info.names}"/></td>
+                </tr>
+                <tr>
+                  <td>入住日期：</td>
+                  <td><input name="start_date" type="text" class="ui-date" size="16px"
+                                   value="{$search.start_date}"/></td>
+                </tr>
+                <tr>
+                  <td>离店日期：</td>
+                  <td><input name="end_date" type="text" class="ui-date" size="16px" value="{$search.end_date}"/></td>
+                </tr>
+                <tr>
+                  <td>酒店名称：</td>
+                  <td><input name="" type="text" size="16px"/></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><div class="filter_check  btn_z">
+                      <button class="btn info">酒店查询</button>
+                    </div></td>
+                </tr>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-18">
+        <div class="col-18 col-last advertisement" style="position: relative">
+          <div class="eislideshow" id="ei-slider" style="height: 240px">
+            <ul class="ei-slider-large">
+              <volist name='hotel_img_id' id='vo'>
+                <li><a target="_blank" href="#"><img src="{$vo.id|get_hotel_img}" height="204" /></a></li>
+              </volist>
+            </ul>
+            <ul class="ei-slider-thumbs">
+              {~for($i=0;$i<count($hotel_img_id);$i++):}
+                <eq name="i" value="0">
+                  <li class="active_thumbs"><a href="#"></a></li>
+                  <else/>
+                  <li><a href="#"></a></li>
+                </eq>
+              {~endfor}
+            </ul>
+          </div>
+        </div>
+        <div class="col-18 advertisement_down">
+          <div class="col-4 adv_down_left">可靠保障 值得信赖 </div>
+          <div class="col-14 adv_down_right">
+            <div class="col-3 adv_down_right1"><a href="#"><span class="adv_down_btn">酒店订单状态说明</span></a></div>
+            <div class="col-3 adv_down_right2"><a href="#"><span class="adv_down_btn">酒店网上预订须知</span></a></div>
+            <div class="col-3 adv_down_right3"><a href="#"><span class="adv_down_btn">酒店预定常见问题</span></a></div>
+            <div class="col-3 adv_down_right4"><a href="#"><span class="adv_down_btn">酒店预订流程</span></a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class="col-24 hotel_det">
+    <div class="row">
+      <div class="col-11 special_offer_l">
+        <h1>特价酒店</h1>
+        <div class="col-5 special_offer_img">
+          <neq name="price_hotels[0]" value="">
+            <div class=" col-5 img_main"><a href="{:U('hotel_detailed')}?hotel={$price_hotels[0][hotel_id]}"> <img src="__ROOT__{$price_hotels[0]['pic']}" class="hotel_banner hotels"/><span>{$price_hotels[0]['names']} <span class="font_orange">￥{$price_hotels[0]['money']}起</span></span></a></div>
+          </neq>
+        </div>
+        <div class="col-5 special_offer_img">
+          <neq name="price_hotels[1]" value="">
+            <div class="col-5 img_main"><a href="{:U('hotel_detailed')}?hotel={$price_hotels[1][hotel_id]}"> <img src="__ROOT__{$price_hotels[1]['pic']}" class="hotel_banner hotels"/><span>{$price_hotels[1]['names']} <span class="font_orange">￥{$price_hotels[1]['money']}起</span></span></a></div>
+          </neq>
+        </div>
+        <div class="clear"></div>
+        <div class="special_offer_font" style="margin-top:15px;">
+          <ul>
+            <volist name="price_hotels" id="vo">
+              <li><span class="special_font_left"><a href="{:U('hotel_detailed')}?hotel={$vo.hotel_id}">{$vo.names}</a></span><span class="special_font_right">￥{$vo.money}<span
+                                class="font_brown">起</span></span></li>
+            </volist>
+          </ul>
+        </div>
+      </div>
+      <div class="offset-1 col-11 special_offer_l">
+        <h1>热门酒店</h1>
+        <div class="col-5 special_offer_img">
+          <neq name="hot_hotels[0]" value="">
+            <div class=" col-5 img_main"><a href="{:U('hotel_detailed')}?hotel={$hot_hotels[0][hotel_id]}"> <img src="__ROOT__{$hot_hotels[0]['pic']}" class="hotel_banner hotels"/><span>{$hot_hotels[0]['names']} <span class="font_orange">￥{$hot_hotels[0]['money']}起</span></span></a></div>
+          </neq>
+        </div>
+        <div class="col-5 special_offer_img">
+          <neq name="hot_hotels[1]" value="">
+            <div class="col-5 img_main"><a href="{:U('hotel_detailed')}?hotel={$hot_hotels[1][hotel_id]}"> <img src="__ROOT__{$hot_hotels[1]['pic']}" class="hotel_banner hotels"/><span>{$hot_hotels[1]['names']} <span class="font_orange">￥{$hot_hotels[1]['money']}起</span></span></a></div>
+          </neq>
+        </div>
+        <div class="clear"></div>
+        <div class="special_offer_font" style="margin-top:15px;">
+          <ul>
+            <volist name="hot_hotels" id="vo">
+              <li><span class="special_font_left"><a href="{:U('hotel_detailed')}?hotel={$vo.hotel_id}">{$vo.names}</a></span><span class="special_font_right">￥{$vo.money}<span
+                                class="font_brown">起</span></span></li>
+            </volist>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div class="col-24 hotel_talk">
+    <div class="col-5 alpha">
+      <div class="step_main_right_add alpha">
+        <div class="col-5 sidebar_title alpha">
+          <h1 class="col-5 sidebar_title_f">酒店点评</h1>
+        </div>
+        <ul style="border:1px solid #DDDDDD;">
+          <volist name="impr" id="vo">
+            <li class="hotel_search">
+              <div class="hotel_comment" style=" padding-left:15px;"><span class=" font_brown"><b><a
+                                href="{:U('hotel_detailed')}?hotel={$vo.hotelid}">{$vo.names}</a></b></span><br/>
+                <div class=" font_brown">{$vo.content}</div>
+                <div>用户
+                  <eq name="vo.show_name" value="1">{$vo.username}
+                    <else/>
+                    （匿名） </eq>
+                  获得<span class="c_red">￥{$vo.bonus_comm}</span> 奖金 </div>
+              </div>
+            </li>
+          </volist>
+        </ul>
+      </div>
+    </div>
+    <div class="col-19 page_content alpha">
+      <ul>
+        <volist name="hotelinfo" id="vo">
+          <li><a href="javascript:;" ind="c_{$key}" class="col-2 title __listhead">{$vo.city}</a></li>
+        </volist>
+      </ul>
+      <volist name="hotelinfo" id="hotels">
+        <div class="col-19 adv_select_body __index" id="c_{$key}">
+          <ul>
+            <volist name="hotels" id="vo">
+              <if condition="is_array($vo) eq true">
+                <li class="adv_select_img">
+                  <div class="adv_select_img_z"> <img src="__ROOT__{$vo.picpath}" width="182" height="130"/>
+                    <div class="adv_select_img_means"><span></span>
+                      <h4><a href="{:U('hotel_detailed')}?hotel={$vo.hotelid}">{$vo.hotelname} <b
+                                                style="color: #F90;">￥{$vo.price}元</b> 起</a></h4>
+                    </div>
+                  </div>
+                </li>
+              </if>
+            </volist>
+          </ul>
+        </div>
+      </volist>
+    </div>
+  </div>
+</div>
+</div>
